@@ -20,7 +20,9 @@ class Overnews extends  AdminBase{
      * 新闻管理列表
      */
     public function index(){
-
+        $where = $this->logicOvernews->getWhere($this->param);
+        $list  = $this->logicOvernews->getThisList($where);
+        $this->assign('list',$list);
         return $this->fetch();
     }
 
@@ -28,7 +30,10 @@ class Overnews extends  AdminBase{
      * 添加
      */
     public function add(){
+        IS_POST && $this->jump($this->logicOvernews->setThisArr($this->param));
 
+        $cates = $this->logicOverviewCates->getThisList('');
+        $this->assign('cates',$cates);
         return $this->fetch();
     }
 
@@ -36,7 +41,12 @@ class Overnews extends  AdminBase{
      * 编辑
      */
     public function edit(){
+        IS_POST && $this->jump($this->logicOvernews->editThisArr($this->param));
 
+        $info = $this->logicOvernews->getIdInfo($this->param);
+        $cates = $this->logicOverviewCates->getThisList('');
+        $this->assign('cates',$cates);
+        $this->assign('info',$info);
         return $this->fetch();
     }
 
@@ -44,16 +54,14 @@ class Overnews extends  AdminBase{
      * 删除
      */
     public function del(){
-
-        return $this->fetch();
+        IS_GET && $this->jump($this->logicOvernews->delThisInfo($this->param));
     }
 
     /**
      * 排序
      */
     public function setSort(){
-
-        return $this->fetch();
+        $this->jump($this->logicAdminBase->setSort('Overnews', $this->param));
     }
 
 

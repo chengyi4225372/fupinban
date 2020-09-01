@@ -5,8 +5,22 @@
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>地区名称</label>
-                        <input class="form-control" name="area" placeholder="请输入地区名称" value="" type="text">
+                        <label>综述管理分类</label>
+                        <select name="cates_id" class="form-control">
+                            {volist name='cates' id='vo'}
+                            <option value="{$vo.id}">{$vo.title}</option>
+                            {/volist}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>文章分类</label>
+                        <select name="type_id" class="form-control">
+                            <option value="1">殷殷嘱咐</option>
+                            <option value="2">领导关怀</option>
+                        </select>
                     </div>
                 </div>
 
@@ -15,15 +29,6 @@
                         <label>标题</label>
                         <span>（新闻文章标题）</span>
                         <input class="form-control" name="title" placeholder="请输入新闻文章标题" value="" type="text">
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>地区展示图</label>
-                        <br/>
-                        {assign name="p_imgs" value="$info.imgs|default=''" /}
-                        {:widget('file/index', ['name' => 'p_imgs', 'value' => '', 'type' => 'img'])}
                     </div>
                 </div>
 

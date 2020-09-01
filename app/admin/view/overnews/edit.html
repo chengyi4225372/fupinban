@@ -1,0 +1,53 @@
+<form action="{:url('add')}" method="post" class="form_single">
+    <div class="box">
+        <div class="box-body">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>综述管理分类</label>
+                        <select name="cates_id" class="form-control">
+                            {volist name='cates' id='vo'}
+                            <option value="{$vo.id}" {eq name="$info.cates_id" value="$vo.id"} aria-checked="" {/eq}>{$vo.title}</option>
+                            {/volist}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>文章分类</label>
+                        <select name="type_id" class="form-control">
+                            <option value="1" {eq name="$info.type_id" value="1"} aria-checked="" {/eq}>殷殷嘱咐</option>
+                            <option value="2" {eq name="$info.type_id" value="2"} aria-checked="" {/eq}>领导关怀</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>标题</label>
+                        <span>（新闻文章标题）</span>
+                        <input class="form-control" name="title" placeholder="请输入新闻文章标题" value="{$info.title|default=''}" type="text">
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>文章内容</label>
+                        <textarea class="form-control textarea_editor" name="content" placeholder="请输入文章内容">
+                        {$info.content|default=''}
+                        </textarea>
+                        {:widget('editor/index', array('name'=> 'content','value'=> '0'))}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="box-footer">
+            <input type="hidden" name="id" value="{$info.id}" />
+            {include file="layout/edit_btn_group"/}
+        </div>
+    </div>
+</form>
