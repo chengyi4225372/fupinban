@@ -15,6 +15,7 @@ namespace app\admin\controller;
  */
 
 class Overnews extends  AdminBase{
+   protected $type = ['1'=>'殷殷嘱咐','2'=>'领导关怀'];
 
     /**
      * 新闻管理列表
@@ -22,7 +23,10 @@ class Overnews extends  AdminBase{
     public function index(){
         $where = $this->logicOvernews->getWhere($this->param);
         $list  = $this->logicOvernews->getThisList($where);
+        $cates = $this->logicOverviewCates->getThisList('');
+        $this->assign('cates',$cates);
         $this->assign('list',$list);
+        $this->assign('type',$this->type);
         return $this->fetch();
     }
 
@@ -38,12 +42,12 @@ class Overnews extends  AdminBase{
     }
 
     /**
-     * 编辑
+     * 编辑+
      */
     public function edit(){
         IS_POST && $this->jump($this->logicOvernews->editThisArr($this->param));
 
-        $info = $this->logicOvernews->getIdInfo($this->param);
+        $info = $this->logicOvernews->getIdInfo($this->param['id']);
         $cates = $this->logicOverviewCates->getThisList('');
         $this->assign('cates',$cates);
         $this->assign('info',$info);
@@ -54,7 +58,7 @@ class Overnews extends  AdminBase{
      * 删除
      */
     public function del(){
-        IS_GET && $this->jump($this->logicOvernews->delThisInfo($this->param));
+        IS_GET && $this->jump($this->logicOvernews->delThisInfo($this->param['id']));
     }
 
     /**

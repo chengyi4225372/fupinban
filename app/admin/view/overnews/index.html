@@ -41,13 +41,15 @@
             </thead>
 
             <tbody>
+            {empty name='list'}
+            {else /}
+            {volist name='list' id='vo'}
             <tr>
-
-                <td>id</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>create_time</td>
+                <td>{$vo.id}</td>
+                <td>{$vo['cate_id']}</td>
+                <td>{$type[$vo.type_id]}</td>
+                <td>{$vo.title|default=''}</td>
+                <td>{$vo.create_time}</td>
                 <td class="text-center">
                     <ob_link><a href="{:url('edit',['id'=>$vo.id])}"><span class='badge bg-green'>编 辑</span></a></ob_link>
                     &nbsp;
@@ -55,11 +57,13 @@
                     <ob_link><a class="confirm ajax-get"  href="{:url('del',['id'=>$vo.id])}"><span class='badge bg-green'>删 除</span></a></ob_link>
                 </td>
             </tr>
+            {/volist}
+            {/empty}
         </table>
     </div>
 
     <div class="box-footer clearfix text-center">
-        render
+       {$list->render()}
     </div>
 
 </div>
