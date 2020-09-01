@@ -1,0 +1,26 @@
+<form action="{:url()}" method="post" class="form_single">
+    <div class="box">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>分类名称</label>
+                        <input class="form-control" name="title" placeholder="请输入分类名称" type="text">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>分类图片</label>
+                        <br/>
+                        {:widget('file/index', ['name' => 'imgs', 'value' =>'', 'type' => 'img'])}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+
+            {include file="layout/edit_btn_group"/}
+        </div>
+    </div>
+</form>
