@@ -35,7 +35,6 @@ class Explorenews extends AdminBase{
      public function add(){
          IS_POST && $this->jump($this->logicExploreNews->setThisArr($this->param));
 
-
          $cates = $this->logicExploreCates->getWhereList();
          $this->assign('cates',$cates);
          return $this->fetch();
@@ -64,8 +63,8 @@ class Explorenews extends AdminBase{
      /**
       * 排序
       */
-      public function setSort(){
-          $this->jump($this->logiAdminBase->setSort('ExploreNews'),$this->param);
+      public function setsort(){
+          $this->jump($this->logicAdminBase->setSort('ExploreNews', $this->param));
       }
 
 }
