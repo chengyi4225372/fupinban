@@ -17,6 +17,16 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>文章内容</label>
+                    <textarea class="form-control textarea_editor" name="content" placeholder="请输入文章内容">
+
+                    </textarea>
+                    {:widget('editor/index', array('name'=> 'content','value'=>'0'))}
+                </div>
+            </div>
         </div>
         <div class="box-footer">
 

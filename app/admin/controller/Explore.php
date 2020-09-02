@@ -17,14 +17,11 @@ namespace app\admin\controller;
 
 class Explore extends AdminBase{
 
-
-
-
     /**
      * 探索实践分类列表
      */
      public function  getlist(){
-         $where= $this->logicExploreCates->getwhere();
+         $where= $this->logicExploreCates->getwhere($this->param);
          $list =$this->logicExploreCates->getWhereList($where);
          $this->assign('list',$list);
          return $this->fetch();

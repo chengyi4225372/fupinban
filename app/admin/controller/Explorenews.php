@@ -19,7 +19,13 @@ class Explorenews extends AdminBase{
      * 列表
      */
     public function index(){
+        $where = $this->logicExploreNews->getWhere($this->param);
+        $list  = $this->logicExploreNews->getThisList($where);
 
+        $cates = $this->logicExploreCates->getWhereList();
+        $cates = array_column($cates->toArray()['data'],'title','id');
+        $this->assign('list',$list);
+        $this->assign('cates',$cates);
         return $this->fetch();
     }
 
@@ -27,7 +33,11 @@ class Explorenews extends AdminBase{
      * 添加
      */
      public function add(){
+         IS_POST && $this->jump($this->logicExploreNews->setThisArr($this->param));
 
+
+         $cates = $this->logicExploreCates->getWhereList();
+         $this->assign('cates',$cates);
          return $this->fetch();
      }
 
@@ -35,7 +45,12 @@ class Explorenews extends AdminBase{
       * 编辑
       */
      public function edit(){
+         IS_POST && $this->jump($this->logicExploreNews->updateThisArr($this->param));
 
+         $info = $this->logicExploreNews->getThisVal($this->param['id']);
+         $cates= $this->logicExploreCates->getWhereList();
+         $this->assign('cates',$cates);
+         $this->assign('info',$info);
          return $this->fetch();
      }
 
@@ -52,4 +67,5 @@ class Explorenews extends AdminBase{
       public function setSort(){
           $this->jump($this->logiAdminBase->setSort('ExploreNews'),$this->param);
       }
+
 }

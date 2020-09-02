@@ -282,6 +282,31 @@ function list_to_tree($list, $pk='id', $pid = 'pid', $child = '_child', $root = 
     return $tree;
 }
 
+
+/**
+ * 对象装数组
+ */
+function objectToArray($obj) {
+
+    //首先判断是否是对象
+
+    $arr = is_object($obj) ? get_object_vars($obj) : $obj;
+
+    if(is_array($arr)) {
+
+        //这里相当于递归了一下，如果子元素还是对象的话继续向下转换
+
+        return array_map(__FUNCTION__, $arr);
+
+    }else {
+
+        return $arr;
+
+    }
+
+}
+
+
 /**
  * 分析数组及枚举类型配置值 格式 a:名称1,b:名称2
  * @return array
