@@ -12,6 +12,7 @@ class ExploreCates extends AdminBase{
     protected $rule =   [
         'imgs'      => 'require',
         'title'     => 'require',
+        'content'   => 'require',
         'create_time'=>'require',
     ];
 
@@ -20,11 +21,13 @@ class ExploreCates extends AdminBase{
         'imgs.require'          => '请上传图片',
         'title.require'         => '请输入分类名称',
         'create_time.require'   => '请输入创建时间',
+        'content.require'       => '请输入分类简介',
     ];
 
     // 应用场景
     protected $scene = [
-        'add'       => ['imgs','title','create_time'],
-        'edit'      => ['imgs','title',],
+        'add'       => ['imgs','title','create_time','content'],
+        'edit'      => ['imgs','title','content'],
     ];
+
 }
