@@ -77,4 +77,21 @@ class Deeds extends  AdminBase{
           return $this->fetch();
       }
 
+      /**
+       * 下级分类
+       */
+      public function pindex(){
+
+          return $this->fetch();
+      }
+
+      /**
+       * 添加下级
+       */
+      public function  addcates(){
+
+          return $this->fetch();
+      }
+
+
 }
