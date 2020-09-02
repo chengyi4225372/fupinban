@@ -16,7 +16,7 @@
                         <input type="text" name="search_data" style="width: 200px;" class="form-control pull-right" value="{:input('search_data')}" placeholder="请输入新闻标题搜索..">
 
                         <div class="input-group-btn">
-                            <button type="button" id="search"  url="{:url('cates')}" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
+                            <button type="button" id="search"  url="{:url('index')}" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
                         </div>
 
                     </div>
@@ -32,23 +32,19 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>排序</th>
-                <th>分类名称</th>
-                <th>分类图</th>
+                <th>标题</th>
                 <th>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>
 
             <tbody>
+            {empty name='list'}
+            {else /}
+            {volist name='list' id='vo'}
             <tr>
-                {volist name='list' id='vo'}
                 <td>{$vo.id}</td>
-                <td><input type="text" class="sort-th sort-text" href="{:url('setSort')}" id="{$vo.id}" value="{$vo.sort}" /></td>
-                <td>{$vo.title}</td>
-                <td>
-                    <img class="img-circle" style="width: 80px; height: 80px;" src="/upload/picture/{$vo.path}"/>
-                </td>
+                <td>{$vo.title|default=''}</td>
                 <td>{$vo.create_time}</td>
                 <td class="text-center">
                     <ob_link><a href="{:url('edit',['id'=>$vo.id])}"><span class='badge bg-green'>编 辑</span></a></ob_link>
@@ -58,6 +54,7 @@
                 </td>
             </tr>
             {/volist}
+            {/empty}
         </table>
     </div>
 

@@ -40,4 +40,17 @@ class Widget extends ControllerBase
         
         return throw_response_exception($data);
     }
+
+    /**
+     * 编辑器文件上传
+     */
+     public function  editorFileUpload(){
+         $result = (new LogicFile())->fileUpload('file');
+
+         $data  = false === $result ? [RESULT_ERROR => DATA_NORMAL, RESULT_MESSAGE => '文件上传失败'] : [RESULT_ERROR => DATA_DISABLE, RESULT_URL => get_picture_url($result['id'])];
+
+         return throw_response_exception($data);
+     }
+
+
 }

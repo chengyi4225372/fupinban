@@ -68,7 +68,7 @@ class Deeds extends AdminBase{
         $type = isset($params['id'])?'编辑':'添加';
         $ret  = $this->modelDeedsCates->setInfo($params);
         $ret && action_log($type,'model deedscates where id='.$params['id']);
-        return $ret ?[RESULT_ERROR,'操作成功',$urls]:[RESULT_ERROR,$this->modelDeedsCates->getError()];
+        return $ret ?[RESULT_SUCCESS,'操作成功',$urls]:[RESULT_ERROR,$this->modelDeedsCates->getError()];
     }
 
     /**

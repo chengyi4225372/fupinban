@@ -34,7 +34,7 @@ class File extends LogicBase
         
         if (!empty($picture_info)) { return $picture_info; }
         
-        $object = $object_info->validate(['ext'=>'jpg,png,gif'])->move(PATH_PICTURE);
+        $object = $object_info->validate(['ext'=>'jpg,png,gif,mp4'])->move(PATH_PICTURE);
         
         if (!$object)  die('图片后缀验证不通过');
         

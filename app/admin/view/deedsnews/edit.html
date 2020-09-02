@@ -1,0 +1,50 @@
+<form action="{:url('edit')}" method="post" class="form_single">
+    <div class="box">
+        <div class="box-body">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>文章展示图</label>
+                        <br/>
+                        {assign name="imgs" value="$info.imgs|default=''" /}
+                        {:widget('file/index', ['name' => 'imgs', 'value' =>$info.imgs, 'type' => 'img'])}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>标题</label>
+                        <span>（新闻文章标题）</span>
+                        <input class="form-control" name="title" placeholder="请输入新闻文章标题" value="{$info.title|default=''}" type="text">
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>文章简介</label>
+                        <textarea class="form-control textarea_editor" name="introduce" placeholder="请输入文章简介">
+                            {$info.introduce|default=''}
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>文章内容</label>
+                        <textarea class="form-control textarea_editor" name="content" placeholder="请输入文章内容">
+                        {$info.content|default=''}
+                        </textarea>
+                        {:widget('editor/index', array('name'=> 'content','value'=> '0'))}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="box-footer">
+            <input type="hidden" name="id" value="{$info.id|default=''}" />
+            {include file="layout/edit_btn_group"/}
+        </div>
+    </div>
+</form>
