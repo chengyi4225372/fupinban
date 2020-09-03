@@ -1,0 +1,33 @@
+<form action="{:url('edit')}" method="post" class="form_single">
+    <div class="box">
+        <div class="box-body">
+            <div class="row">
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>标题名称</label>
+                        <input class="form-control" name="title" value="{$info.title|default=''}"  type="text">
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>上传图片</label>
+                        <br/>
+                        {assign name="imgs" value="$info.imgs|default=''" /}
+                        {:widget('file/index', ['name' => 'imgs', 'value' =>$info.imgs, 'type' => 'img'])}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="box-footer">
+            <input type="hidden" name="id" value="{$info.id|default='0'}">
+
+            {include file="layout/edit_btn_group"/}
+        </div>
+    </div>
+</form>

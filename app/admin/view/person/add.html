@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label>上传图片</label>
                         <br/>
-                        {assign name="user_img" value="$info.resources|default=''" /}
+                        {assign name="user_img" value="$info.user_img|default=''" /}
                         {:widget('file/index', ['name' => 'user_img', 'value' =>'', 'type' => 'img'])}
                     </div>
                 </div>
