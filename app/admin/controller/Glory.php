@@ -31,7 +31,7 @@ class Glory extends AdminBase{
            return false;
         }
 
-        $info = $this->logicGloryContent->getThisVal($this->param['id']);
+        $info = $this->logicGloryContent->getThisVal();
         $this->assign('info',$info);
         return $this->fetch();
     }
