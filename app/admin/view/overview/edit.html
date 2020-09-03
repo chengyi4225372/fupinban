@@ -20,8 +20,8 @@
             </div>
         </div>
         <div class="box-footer">
-
-            {include file="layout/edit_btn_group"/}
+              <input type="hidden" name="id" value="{$info.id|default=''}" />
+               {include file="layout/edit_btn_group"/}
         </div>
     </div>
 </form>
