@@ -62,7 +62,7 @@ class Works extends AdminBase{
      * 排序
      */
      public function setsort(){
-         $this->jump($this->logicAdminBase->setSort('DeedsWorks'),$this->param);
+         $this->jump($this->logicAdminBase->setSort('DeedsWorks', $this->param));
      }
 
 

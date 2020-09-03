@@ -5,15 +5,19 @@
         <div class="row">
             <div class="col-sm-5">
                 <ob_link><a class="btn" href="{:url('add')}"><i class="fa fa-plus"></i> 新 增</a></ob_link>
-                &nbsp;
-                <!--<ob_link><a class="btn export" url="{:url('exportMemberList')}"><i class="fa fa-download"></i> 导 出</a></ob_link>-->
             </div>
 
             <div class="col-sm-7">
                 <div class="box-tools search-form pull-right">
                     <div class="input-group input-group-sm">
-
                         <input type="text" name="search_data" style="width: 200px;" class="form-control pull-right" value="{:input('search_data')}" placeholder="请输入新闻标题搜索..">
+
+                        <select name="cates_id" style="width: 200px;" class="form-control pull-right">
+                            <option value="">请选择分类...</option>
+                            {volist name='cates' id='vo'}
+                            <option value="{$key}">{$vo}</option>
+                            {/volist}
+                        </select>
 
                         <div class="input-group-btn">
                             <button type="button" id="search"  url="{:url('index')}" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
@@ -49,9 +53,9 @@
                 <td>{$vo.id}</td>
                 <td><input type="text" class="sort-th sort-text" href="{:url('setsort')}" id="{$vo.id}" value="{$vo.sort}" /></td>
                 <td>{$vo.title|default=''}</td>
-                <td>{$vo.title|default=''}</td>
+                <td>{$cates[$vo.cates_id]}</td>
                 <td>
-                    <a href=""></a>
+                    <a href="/upload/file/{$vo.path}">{$vo.path}</a>
                 </td>
                 <td>{$vo.create_time}</td>
                 <td class="text-center">

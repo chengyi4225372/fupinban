@@ -63,7 +63,7 @@ class Works extends AdminBase{
       * 编辑
       */
       public function updateThisVal($params=[]){
-          $result = $this->validateDeedsWorks->scene('add')->check($params);
+          $result = $this->validateDeedsWorks->scene('edit')->check($params);
 
           if(!$result){
               return [RESULT_ERROR,$this->validateDeedsWorks->getError()];

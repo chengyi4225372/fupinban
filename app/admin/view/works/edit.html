@@ -1,4 +1,4 @@
-<form action="{:url()}" method="post" class="form_single">
+<form action="{:url('edit')}" method="post" class="form_single">
     <div class="box">
         <div class="box-body">
             <div class="row">
@@ -8,7 +8,7 @@
                         <label>扶贫作品分类</label>
                         <select name="cates_id" class="form-control">
                             {volist name='cates' id='vo'}
-                            <option value="{$key}">{$vo}</option>
+                            <option value="{$key}" {eq name="$info.cates_id" value="$key"} selected="" {/eq}>{$vo}</option>
                             {/volist}
                         </select>
                     </div>
@@ -18,7 +18,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>标题名称</label>
-                        <input class="form-control" name="title" placeholder="请输入标题" type="text">
+                        <input class="form-control" name="title"  value="{$info.title|default=''}" type="text">
                     </div>
                 </div>
 
@@ -27,7 +27,8 @@
                     <div class="form-group">
                         <label>上传文件</label>
                         <br/>
-                        {:widget('file/index', ['name' => 'resources', 'value' => 0, 'type' => 'file'])}
+                        {assign name="resources" value="$info.resources|default='0'" /}
+                        {:widget('file/index', ['name' => 'resources', 'value' =>$info.resources, 'type' => 'file'])}
                     </div>
                 </div>
 
@@ -36,6 +37,7 @@
         </div>
         <div class="box-footer">
 
+            <input type="hidden" name="id" value="{$info.id|default=''}" />
             {include file="layout/edit_btn_group"/}
         </div>
     </div>
