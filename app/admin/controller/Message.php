@@ -45,7 +45,7 @@ class Message extends  AdminBase{
      /**
       * 留言列表
       */
-      public function getmsglist(){
+     public function getmsglist(){
            $list = $this->logicMessage->getMsgList();
            $this->assign('list',$list);
            return $this->fetch();
@@ -55,7 +55,7 @@ class Message extends  AdminBase{
       /**
        * 查看留言列表
        */
-       public function seemsg(){
+      public function seemsg(){
            $info = $this->logicMessage->getThisInfo($this->param['id']);
            $this->assign('info',$info);
            return $this->fetch();
@@ -64,7 +64,7 @@ class Message extends  AdminBase{
        /**
         * 删除留言
         */
-       public function  del(){
+      public function  del(){
          IS_GET && $this->jump($this->logicMessage->delThisMsg($this->param['id']));
        }
 }
