@@ -1,0 +1,43 @@
+<form action="{:url('edit')}" method="post" class="form_single">
+    <div class="box">
+        <div class="box-body">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>用户名：</label>
+                         {$info.user|default=''}
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>点赞数量：</label>
+                        {$info.num|default='0'}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>留言时间：</label>
+                        {$info.create_time}
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>留言</label>
+                        <textarea class="form-control textarea_editor" name="content" >
+                            {$info.content|default=''}
+                        </textarea>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="box-footer">
+            <a class="btn" onclick="javascript:history.back(-1);return false;"><i class="fa fa-history"></i> 返 回</a>
+        </div>
+    </div>
+</form>

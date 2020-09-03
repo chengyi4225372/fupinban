@@ -9,6 +9,7 @@
                 <!--<ob_link><a class="btn export" url="{:url('exportMemberList')}"><i class="fa fa-download"></i> 导 出</a></ob_link>-->
             </div>
 
+            <!--
             <div class="col-sm-7">
                 <div class="box-tools search-form pull-right">
                     <div class="input-group input-group-sm">
@@ -22,6 +23,7 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
 
     </div>
@@ -32,30 +34,27 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>分类名称</th>
-                <th>分类图</th>
-                <th>创建时间</th>
+                <th>用户名称</th>
+                <th>点赞数</th>
+                <th>留言时间</th>
                 <th>操作</th>
             </tr>
             </thead>
-
             <tbody>
+            {volist name='list' id='vo' }
             <tr>
-
-                <td></td>
-                <td></td>
-                <td>
-                    <img class="img-circle" style="width: 30px; height: 30px;" src=""/>
-                </td>
-                <td></td>
+                <td>{$vo.id}</td>
+                <td>{$vo.user}</td>
+                <td>{$vo.num}</td>
+                <td>{$vo.create_time}</td>
                 <td class="text-center">
-                    <ob_link><a href=""><span class='badge bg-green'>编 辑</span></a></ob_link>
+                    <ob_link><a href="{:url('seemsg',['id'=>$vo.id])}"><span class='badge bg-green'>查 看</span></a></ob_link>
                     &nbsp;
                     &nbsp;
-                    <ob_link><a class="confirm ajax-get"  href=""><span class='badge bg-green'>删 除</span></a></ob_link>
+                    <ob_link><a class="confirm ajax-get"  href="{:url('del',['id'=>$vo.id])}"><span class='badge bg-green'>删 除</span></a></ob_link>
                 </td>
             </tr>
-
+           {/volist}
         </table>
     </div>
 
