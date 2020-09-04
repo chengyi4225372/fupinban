@@ -69,8 +69,7 @@ class OverviewCates extends  AdminBase{
 
         $urls = url('cates');
         $types= isset($params['id'])?'编辑':'添加';
-        //todo 未知
-        $ret  =  $this->modelOverviewCates->updateInfo($params);
+        $ret  =  $this->modelOverviewCates->setInfo($params);
         $ret && action_log($types,'model overviewCates 更新数据 where id ='.$params['id']);
 
         return $ret ?[RESULT_SUCCESS,'操作成功',$urls]:[RESULT_ERROR,$this->modelOverviewCates->getError()];

@@ -15,6 +15,13 @@
 
                         <input type="text" name="search_data" style="width: 200px;" class="form-control pull-right" value="{:input('search_data')}" placeholder="请输入新闻标题搜索..">
 
+                        <select name="type_id"  style="width: 200px;" class="form-control pull-right" >
+                            <option value="0">请选择....</option>
+                            {volist name='type' id='vo'}
+                            <option value="{$key}" {eq name="$Think.get.type_id" value="$key"} selected {/eq}>{$vo}</option>
+                            {/volist}
+                        </select>
+                        
                         <div class="input-group-btn">
                             <button type="button" id="search"  url="{:url('index')}" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
                         </div>
@@ -32,7 +39,7 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>所属分类</th>
+                <th>排序</th>
                 <th>板块分类</th>
                 <th>标题</th>
                 <th>创建时间</th>
@@ -46,7 +53,7 @@
             {volist name='list' id='vo'}
             <tr>
                 <td>{$vo.id}</td>
-                <td>{$vo['cate_id']}</td>
+                <td><input type="text" class="sort-th sort-text" href="{:url('setsort')}" id="{$vo.id}" value="{$vo.sort}" /></td>
                 <td>{$type[$vo.type_id]}</td>
                 <td>{$vo.title|default=''}</td>
                 <td>{$vo.create_time}</td>

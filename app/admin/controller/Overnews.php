@@ -23,8 +23,6 @@ class Overnews extends  AdminBase{
     public function index(){
         $where = $this->logicOvernews->getWhere($this->param);
         $list  = $this->logicOvernews->getThisList($where);
-        $cates = $this->logicOverviewCates->getThisList('');
-        $this->assign('cates',$cates);
         $this->assign('list',$list);
         $this->assign('type',$this->type);
         return $this->fetch();
@@ -36,8 +34,6 @@ class Overnews extends  AdminBase{
     public function add(){
         IS_POST && $this->jump($this->logicOvernews->setThisArr($this->param));
 
-        $cates = $this->logicOverviewCates->getThisList('');
-        $this->assign('cates',$cates);
         return $this->fetch();
     }
 
@@ -48,8 +44,6 @@ class Overnews extends  AdminBase{
         IS_POST && $this->jump($this->logicOvernews->editThisArr($this->param));
 
         $info = $this->logicOvernews->getIdInfo($this->param['id']);
-        $cates = $this->logicOverviewCates->getThisList('');
-        $this->assign('cates',$cates);
         $this->assign('info',$info);
         return $this->fetch();
     }
@@ -64,7 +58,7 @@ class Overnews extends  AdminBase{
     /**
      * 排序
      */
-    public function setSort(){
+    public function setsort(){
         $this->jump($this->logicAdminBase->setSort('Overnews', $this->param));
     }
 

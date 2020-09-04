@@ -16,6 +16,7 @@ class Overnews extends  AdminBase{
     public function getWhere($param=[]){
          $data = [];
          isset($param['title']) && $data['title'] =['like','%'.$param['search_data'].'%'];
+         isset($param['type_id']) && $data['type_id']= $param['type_id'] == 0 ? ['neq',0]:$param['type_id'] ;
          return $data;
     }
 
@@ -25,7 +26,8 @@ class Overnews extends  AdminBase{
      */
     public function getThisList($where=[]){
         $where['status'] = 1;
-        return $this->modelOvernews->getlist($where,false,['create_time'=>'desc'],15);
+        $order =['sort'=>'desc','create_time'=>'desc'];
+        return $this->modelOvernews->getlist($where,false,$order,15);
     }
 
     /**

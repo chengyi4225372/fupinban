@@ -5,17 +5,6 @@
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>综述管理分类</label>
-                        <select name="cate_id" class="form-control">
-                            {volist name='cates' id='vo'}
-                            <option value="{$vo.id}" {eq name="$info.cate_id" value="$vo.id"} aria-checked="" {/eq}>{$vo.title}</option>
-                            {/volist}
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
                         <label>文章分类</label>
                         <select name="type_id" class="form-control">
                             <option value="1" {eq name="$info.type_id" value="1"} aria-checked="" {/eq}>殷殷嘱咐</option>
