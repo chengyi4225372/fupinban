@@ -42,8 +42,11 @@ class Explore extends ApiBase{
           if(IS_POST){
             $info_list = $this->logicExploreNews->getThisList($this->param['cate_id']);
 
-            return isset($info_list) ?$this->apiReturn(['code'=>RESULT_SUCCESS, 'data'=>$info_list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+            if($info_list == false){
+                return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'无法获取cate_id']);
+            }
 
+            return $this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info_list?$info_list:'']);
           }
 
           return  $this->apiReturn(['code'=>RESULT_ERROR, 'msg'=>'请求方式不合法']);
