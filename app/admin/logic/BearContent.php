@@ -14,6 +14,8 @@ class BearContent extends  AdminBase{
      * 添加
      */
     public function setContentVal($params=[]){
+          $params['create_time'] =time();
+
           if(!isset($params['content']) || empty($params['content'])){
               return [RESULT_ERROR,'请输入简介内容'];
           }

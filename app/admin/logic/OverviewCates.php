@@ -31,9 +31,9 @@ class OverviewCates extends  AdminBase{
             [SYS_DB_PREFIX . 'picture p','a.imgs = p.id','LEFT'],
         ];
         $where['a.status'] =1;
-
+        $order = ['sort'=>'desc','create_time'=>'desc'];
         $this->modelOverviewCates->join=$join;
-        return $this->modelOverviewCates->getList($where,$field,['sort'=>'desc'],15);
+        return $this->modelOverviewCates->getList($where,$field,$order,15);
     }
 
 
