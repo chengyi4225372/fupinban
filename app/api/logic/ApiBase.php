@@ -33,17 +33,24 @@ class ApiBase extends LogicBase
             $result = $code_data;
             
         } else {
-            
+
             $result = CodeBase::$success;
             
             $result['data'] = $code_data;
         }
-        
+
+        /* todo 注释
         $return_result = $this->checkDataSign($result);
-        
+
         $return_result['exe_time'] = debug('api_begin', 'api_end');
-        
+
         return $return_type == 'json' ? json($return_result) : $return_result;
+        */
+
+        $result['exe_time'] = debug('api_begin', 'api_end');
+
+        return $return_type == 'json' ? json($result) : $result;
+
     }
 
     /**

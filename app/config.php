@@ -60,7 +60,7 @@ return [
     // +----------------------------------------------------------------------
 
     // 默认模块名
-    'default_module'         => 'index',
+    'default_module'         => 'admin',
     // 禁止访问模块
     'deny_module_list'       => ['common'],
     // 默认控制器名
@@ -272,15 +272,15 @@ return [
         // 'connector' => 'Sync',
 
            //Redis驱动
-//         'connector' => 'redis',
-//         "expire"=>60,//任务过期时间默认为秒，禁用为null
-//         "default"=>"default",//默认队列名称
-//         "host"=>Env::get("redis.host", "127.0.0.1"),//Redis主机IP地址
-//         "port"=>Env::get("redis.port", 6379),//Redis端口
-//         "password"=>Env::get("redis.password", "123456"),//Redis密码
-//         "select"=>5,//Redis数据库索引
-//         "timeout"=>0,//Redis连接超时时间
-//         "persistent"=>false,//是否长连接
+         'connector' => 'redis',
+         "expire"=>60,//任务过期时间默认为秒，禁用为null
+         "default"=>"default",//默认队列名称
+         "host"=> "127.0.0.1",//Redis主机IP地址
+         "port"=>637,//Redis端口
+         "password"=>'',//Redis密码
+         "select"=>5,//Redis数据库索引
+         "timeout"=>0,//Redis连接超时时间
+         "persistent"=>false,//是否长连接
 
         // Database驱动
         "type"=>"Database",//数据库驱动
