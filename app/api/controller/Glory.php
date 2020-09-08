@@ -55,5 +55,22 @@ class Glory extends ApiBase{
             return isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
         }
 
+        /**
+         * 先进个人详情
+         */
+         public function personInfo(){
+             if(IS_POST){
+
+                $info = $this->logicGloryPerson->getApiPersonInfo($this->param['id']);
+
+                if($info == false){
+                    return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'无法获取查询参数']);
+                }
+
+                return  isset($info) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> null]);
+             }
+
+             return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
+         }
 
 }

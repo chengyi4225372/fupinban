@@ -25,4 +25,17 @@ class GloryPerson extends LogicBase{
          $this->modelGloryPerson->join=$join;
          return $this->modelGloryPerson->getList($where,'a.*,p.path',$order,false);
      }
+
+     /**
+      * 先进个人详情接口
+      */
+     public function getApiPersonInfo($id = null){
+
+         if(empty($id)|| is_null($id) || $id <=0){
+             return false;
+         }
+
+         return $this->modelGloryPerson->getInfo(['id'=>$id]);
+     }
+
 }

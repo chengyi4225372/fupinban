@@ -38,10 +38,32 @@ class Deeds extends ApiBase{
 
       /**
        * 扶贫作品设置
+       * 音乐列表
        */
-       public function getWorksList(){
+       public function getWorksMusicList($cid = 1){
+          $list = $this->logicDeedsWorks->getWorkList($cid);
 
+          if($list == false){
+              return $this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>'无法获取查询参数']);
+          }
+
+          return  isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
        }
+
+
+     /**
+      * 扶贫作品设置
+      * 视频列表
+      */
+      public function getWorksVideoList($cid = 2){
+          $list = $this->logicDeedsWorks->getWorkList($cid);
+
+          if($list == false){
+              return $this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>'无法获取查询参数']);
+          }
+
+          return  isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+      }
 
 
        /**
@@ -53,6 +75,8 @@ class Deeds extends ApiBase{
 
             return  !empty($list) && isset($list) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> null]);
         }
+
+
 
         /**
          * 获取日志详情
