@@ -53,5 +53,11 @@ class Deedslog extends AdminBase{
          IS_GET && $this->jump( $this->logicDeedsLog->delThisInfo($this->param['id']));
      }
 
+     /**
+      * 排序
+      */
+     public function setSort(){
+         $this->jump($this->logicAdminBase->setSort('DeedsLog',$this->param));
+     }
 
 }
