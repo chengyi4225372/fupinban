@@ -15,21 +15,34 @@ class Product extends LogicBase{
      */
     public function getProductList(){
 
-        $where['status']=1;
-        $order =['sort'=>'desc','create_time'=>'desc'];
-        return $this->modelProduct->getList($where,false,$order,false);
+        $this->modelProduct->alias('a');
+
+
+        $join =[
+
+            [SYS_DB_PREFIX . 'picture p','a.p_imgs = p.id','LEFT'],
+        ];
+
+
+        $where['a.status']=1;
+        $order =['a.sort'=>'desc','a.create_time'=>'desc'];
+        $field = 'a.id,a.area,a.sort,p.path';
+
+        $this->modelProduct->join=$join;
+
+        return $this->modelProduct->getList($where,$field,$order,false);
     }
 
 
     /**
      * 获取项目详情
      */
-    public function seeThisContent($id = null){
+    public function getThisApiVal($id = null){
         if(empty($id) || $id <=0 || is_null($id)){
             return false;
         }
 
-        return $this->modelProduct->getInfo(['id'=>$id,'status'=>1]);
+        return $this->modelProduct->getColumn(['id'=>$id,'status'=>1],'id,title,content');
 
     }
 }

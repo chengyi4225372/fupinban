@@ -15,7 +15,16 @@ class ExploreHistory extends  LogicBase{
       */
      public function getThisinfo(){
 
-         return $this->modelExploreHistory->getInfo();
+         $this->modelExploreHistory->alias('a');
+
+         $join=[
+             [SYS_DB_PREFIX . 'picture p','a.imgs = p.id','LEFT'],
+         ];
+
+         $this->modelExploreHistory->join =$join;
+         $field = 'a.id,a.title,a.content,p.path';
+
+         return $this->modelExploreHistory->getInfo(null,$field);
      }
 
 

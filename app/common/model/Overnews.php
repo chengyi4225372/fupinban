@@ -8,7 +8,7 @@
 
 namespace app\common\model;
 
-class OverNews extends ModelBase{
+class Overnews extends ModelBase{
 
 
 }

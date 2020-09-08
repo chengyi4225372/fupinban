@@ -22,11 +22,13 @@ class OverviewCates  extends  LogicBase{
          ];
 
          $where['a.status'] =1;
-         $order = ['sort'=>'desc','create_time'=>'desc'];
+         $order = ['a.sort'=>'desc',];
+         $field = 'a.id,a.title,a.sort,p.path';
 
          $this->modelOverviewCates->join=$join;
 
-         return $this->modelOverviewCates->getList($where,'a.*,p.path',$order,false);
+
+         return $this->modelOverviewCates->getList($where,$field,$order,false);
      }
 
 
@@ -35,8 +37,8 @@ class OverviewCates  extends  LogicBase{
       */
       public function getNewsList(){
             $where['status'] =1;
-
-            return  $this->modelOverNews->getlist($where,false,['sort'=> 'desc'],false);
+            $field='id,type_id,title,sort,content';
+            return  $this->modelOvernews->getlist($where,$field,['sort'=> 'desc'],false);
       }
 
       /**
@@ -44,7 +46,8 @@ class OverviewCates  extends  LogicBase{
        */
       public function  getHistoryInfo(){
 
-          return $this->modelBearContent->getInfo();
+          $field ='id,content';
+          return $this->modelBearContent->getInfo(null,$field);
       }
 
 

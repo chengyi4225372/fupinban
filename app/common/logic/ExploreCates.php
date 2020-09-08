@@ -24,8 +24,11 @@ class ExploreCates extends LogicBase{
          ];
 
          $this->modelExploreCates->join = $join;
+         $field = 'a.id,a.sort,a.title,a.content,p.path';
+         $order = ['sort'=>'desc'];
 
-         return $this->modelExploreCates->getList($where,'a.*,p.path',['sort'=>'desc'],false);
+         return $this->modelExploreCates->getList($where,$field,$order,false);
      }
+
 
 }

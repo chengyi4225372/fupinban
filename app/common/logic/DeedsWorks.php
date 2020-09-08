@@ -22,7 +22,7 @@ class DeedsWorks extends LogicBase{
          }
 
          $order = ['sort'=>'desc','id'=>'desc'];
-         
+
          return $this->modelDeedsWork->getList(['cates_id'=>$cid],false,$order,false);
      }
 

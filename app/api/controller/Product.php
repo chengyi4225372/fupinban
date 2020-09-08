@@ -26,11 +26,11 @@ class Product extends ApiBase{
      }
 
      /**
-      * 项目精选介绍 接口
+      * 项目精选简介 接口
       */
       public function getProductContent(){
 
-          $info =  $this->logicProcudtContent->getApiContent();
+          $info =  $this->logicProductContent->getApiContent();
 
           return !empty($info) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
       }
@@ -42,7 +42,11 @@ class Product extends ApiBase{
       public function  seeThisContent(){
          if(IS_POST){
 
-             $info = $this->logicProduct->getThisApi($this->param['id']);
+             if(empty($this->param['id']) || !isset($this->param['id']) || is_null($this->param['id'])){
+                 return $this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>'无法获取查询id']);
+             }
+
+             $info = $this->logicProduct->getThisApiVal($this->param['id']);
 
              if($info == false){
                  return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'无法获取查询id']);

@@ -22,10 +22,11 @@ class  DeedsCates extends LogicBase{
             [SYS_DB_PREFIX . 'picture p','a.imgs = p.id','LEFT'],
         ];
         $where['a.status'] =1;
-
-        $this->modelDeedsCates->join=$join;
         $order = ['a.sort'=>'desc','a.id'=>'desc'];
-        return $this->modelDeedsCates->getList($where,'a.*,p.path',$order,false);
+        $field = 'a.id,a.title,a.sort,p.path';
+        $this->modelDeedsCates->join=$join;
+
+        return $this->modelDeedsCates->getList($where,$field,$order,false);
     }
 
 

@@ -20,14 +20,18 @@ class Deeds extends ApiBase{
      * 事迹风采分类设置接口
      */
      public function getCatesList(){
+         if(IS_GET){
+             $list = $this->logicDeedsCates->getThisList();
 
-         $list = $this->logicDeedsCates->getThisList();
+             return  isset($list) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+         }
 
-         return !empty($list) && isset($list) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+         return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式不对！']);
      }
 
      /**
       * 事迹风采简介
+      * todo 接口测试到这里
       */
       public function getDeedsContent(){
           $info = $this->logicDeedsContent->getThisApiVal();
