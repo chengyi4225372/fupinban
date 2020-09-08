@@ -17,6 +17,7 @@ class GloryPerson extends AdminBase{
         'content'       => 'require',
         'create_time'   => 'require',
         'address'       => 'require',
+        'desc'          => 'require',
     ];
 
     // 验证提示
@@ -26,12 +27,13 @@ class GloryPerson extends AdminBase{
         'content.require'       => '请输入个人简介',
         'user_img.require'      => '请上传个人介绍图',
         'address.require'       => '请输入个人住址',
+        'desc.require'          => '请输入个人简介',
     ];
 
     // 应用场景
     protected $scene = [
-        'add'       => ['user_img','users','create_time','content','address'],
-        'edit'      => ['user_img','users','content','address'],
+        'add'       => ['user_img','users','create_time','content','address','desc'],
+        'edit'      => ['user_img','users','content','address','desc'],
     ];
 
 

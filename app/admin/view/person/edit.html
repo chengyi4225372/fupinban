@@ -31,12 +31,20 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>个人简介</label>
-                        <textarea class="form-control textarea_editor" name="content" placeholder="请输入个人简介">
+                        <textarea class="form-control textarea_editor" name="desc" placeholder="请输入个人简介" >{$info.desc|default=''}</textarea>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>个人详情</label>
+                        <textarea class="form-control textarea_editor" name="content" placeholder="请输入个人详情">
                             {$info.content|default=''}
                         </textarea>
                         {:widget('editor/index', array('name'=> 'content',))}
                     </div>
                 </div>
+
 
 
             </div>

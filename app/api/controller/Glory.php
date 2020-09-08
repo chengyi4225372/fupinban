@@ -1,0 +1,59 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2020/9/8
+ * Time: 10:40
+ */
+namespace app\api\controller;
+
+/**
+ * Class Glory
+ * @package app\api\controller
+ * 事迹风采 荣耀控制器
+ */
+
+class Glory extends ApiBase{
+
+     /**
+      * 扶贫荣耀简介 接口
+      */
+      public function getGlotyContent(){
+
+          $info = $this->logiGloryContent->getApiVal();
+
+          return !empty($info) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> null]);
+      }
+
+      /**
+       * 扶贫荣耀分类设置
+       */
+       public function  getGloryCates(){
+           $list = $this->logicGloryCates->getApiList();
+
+           return isset($list) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> null]);
+       }
+
+
+       /**
+        * 先进单位简介
+        */
+        public function getCompanyDesc(){
+
+            $info = $this->logicGloryCompany->getApiContent();
+
+            return isset($info)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+        }
+
+        /**
+         * 先进个人
+         */
+        public function getGloryPersonList(){
+
+            $list = $this->logicGloryPerson->getApiList();
+
+            return isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+        }
+
+
+}
