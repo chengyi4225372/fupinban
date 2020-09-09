@@ -20,19 +20,26 @@ class Product extends ApiBase{
      * 获取列表展示 接口
      */
      public function getProductList(){
-         $list = $this->logicProduct->getProductList();
+         if(IS_GET) {
+             $list = $this->logicProduct->getProductList();
 
-         return !empty($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
-     }
+             return !empty($list) ? $this->apiReturn(['code' => RESULT_SUCCESS, 'data' => $list]) : $this->apiReturn(['code' => RESULT_ERROR, 'data' => null]);
+           }
+
+           return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
+         }
 
      /**
       * 项目精选简介 接口
       */
       public function getProductContent(){
+         if(IS_GET){
+             $info =  $this->logicProductContent->getApiContent();
 
-          $info =  $this->logicProductContent->getApiContent();
+             return !empty($info) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+          }
 
-          return !empty($info) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+          return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
       }
 
       /**

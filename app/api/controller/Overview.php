@@ -19,28 +19,38 @@ class Overview extends ApiBase{
      * 综述管理分类图片 标题 接口
      */
     public function getOverCates(){
-         $list = $this->logicOverviewCates->getCatesList();
+        if(IS_GET) {
 
-         return isset($list) && !empty($list) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
-    }
+            $list = $this->logicOverviewCates->getCatesList();
+
+            return isset($list) && !empty($list) ? $this->apiReturn(['code' => RESULT_SUCCESS, 'data' => $list]) : $this->apiReturn(['code' => RESULT_ERROR, 'data' => null]);
+         }
+          return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
+        }
 
     /**
      * 深圳当担新闻列表接口
      */
      public function getNews(){
-         $list = $this->logicOverviewCates->getNewsList();
+         if(IS_GET) {
+             $list = $this->logicOverviewCates->getNewsList();
 
-         return isset($list) && !empty($list) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
-     }
+             return isset($list) && !empty($list) ? $this->apiReturn(['code' => RESULT_SUCCESS, 'data' => $list]) : $this->apiReturn(['code' => RESULT_ERROR, 'data' => null]);
+          }
+            return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
+         }
 
 
      /**
       * 深圳扶贫简史接口
       */
       public function getHistoryNews(){
-          $info = $this->logicOverviewCates->getHistoryInfo();
+          if(IS_GET) {
+              $info = $this->logicOverviewCates->getHistoryInfo();
 
-          return isset($info) && !empty($info['content']) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+              return isset($info) && !empty($info['content']) ? $this->apiReturn(['code' => RESULT_SUCCESS, 'data' => $info]) : $this->apiReturn(['code' => RESULT_ERROR, 'data' => null]);
+          }
+              return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
       }
 
 }

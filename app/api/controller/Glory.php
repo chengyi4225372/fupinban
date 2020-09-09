@@ -29,9 +29,12 @@ class Glory extends ApiBase{
        * 扶贫荣耀分类设置
        */
        public function  getGloryCates(){
-           $list = $this->logicGloryCates->getApiList();
+           if(IS_GET) {
+               $list = $this->logicGloryCates->getApiList();
 
-           return isset($list) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> null]);
+               return isset($list) ? $this->apiReturn(['code' => RESULT_SUCCESS, 'data' => $list]) : $this->apiReturn(['code' => RESULT_ERROR, 'data' => null]);
+           }
+           return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
        }
 
 
@@ -39,20 +42,25 @@ class Glory extends ApiBase{
         * 先进单位简介
         */
         public function getCompanyDesc(){
+           if(IS_GET) {
+               $info = $this->logicGloryCompany->getApiContent();
 
-            $info = $this->logicGloryCompany->getApiContent();
-
-            return isset($info)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+               return isset($info) ? $this->apiReturn(['code' => RESULT_SUCCESS, 'data' => $info]) : $this->apiReturn(['code' => RESULT_ERROR, 'data' => null]);
+           }
+            return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
         }
 
         /**
          * 先进个人
          */
         public function getGloryPersonList(){
+           if(IS_GET) {
+               $list = $this->logicGloryPerson->getApiList();
 
-            $list = $this->logicGloryPerson->getApiList();
+               return isset($list) ? $this->apiReturn(['code' => RESULT_SUCCESS, 'data' => $list]) : $this->apiReturn(['code' => RESULT_ERROR, 'data' => null]);
+           }
 
-            return isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+            return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
         }
 
         /**

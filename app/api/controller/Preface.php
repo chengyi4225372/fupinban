@@ -13,8 +13,12 @@ class Preface extends ApiBase{
      * 前言图片接口
      */
     public function getPrefaceImg(){
-        $info = $this->logicPrefaceImg->getPrefaceImgOne();
-        return  isset($info['path']) ? $this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+        if(IS_GET){
+            $info = $this->logicPrefaceImg->getPrefaceImgOne();
+            return  isset($info['path']) ? $this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+        }
+
+         return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
     }
 
 
@@ -23,8 +27,12 @@ class Preface extends ApiBase{
      *获取前言内容接口
      */
      public function getPrefaceContent(){
-         $info = $this->logicPrefaceContent->getApiContent();
-         return  isset($info['content']) ? $this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+         if(IS_GET){
+             $info = $this->logicPrefaceContent->getApiContent();
+             return  isset($info['content']) ? $this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+         }
+
+         return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
      }
 
 

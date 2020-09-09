@@ -20,18 +20,24 @@ class Explore extends ApiBase{
      * 探索分类 接口
      */
     public function getExploreCates(){
-          $list = $this->logicExploreCates->getCateslist();
+         if(IS_GET) {
+             $list = $this->logicExploreCates->getCateslist();
 
-          return isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> null]);
+             return isset($list) ? $this->apiReturn(['code' => RESULT_SUCCESS, 'data' => $list]) : $this->apiReturn(['code' => RESULT_ERROR, 'data' => null]);
+         }
+        return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
     }
 
     /**
      * 历史回望管理设置
      */
     public  function  getHistoryApi(){
-        $info = $this->logicExploreHistory->getThisinfo();
+        if(IS_GET) {
+            $info = $this->logicExploreHistory->getThisinfo();
 
-        return  isset($info) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> null]);
+            return isset($info) ? $this->apiReturn(['code' => RESULT_SUCCESS, 'data' => $info]) : $this->apiReturn(['code' => RESULT_ERROR, 'data' => null]);
+        }
+        return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
     }
 
 
