@@ -15,6 +15,7 @@ class Message extends LogicBase{
      */
      public function  messageApiList($order =''){
          $where=['status'=>1];
+
          if(empty($order) || !isset($order) || is_null($order)){
              return false;
          }
@@ -26,7 +27,7 @@ class Message extends LogicBase{
          if($order == 2){
              $orderBy = ['create_time'=>'desc'];
          }
-         
+
          $field='id,user,u_id,num,content,create_time';
 
          return $this->modelMessage->getList($where,$field,$orderBy,false);

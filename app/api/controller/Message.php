@@ -44,7 +44,7 @@ class Message extends ApiBase{
                   return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'接口参数不合法']);
               }
 
-              return isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+                  return isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
           }
 
              return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误！']);
