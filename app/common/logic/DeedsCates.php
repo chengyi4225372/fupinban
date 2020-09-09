@@ -24,10 +24,12 @@ class  DeedsCates extends LogicBase{
         $where['a.status'] =1;
         $order = ['a.sort'=>'desc','a.id'=>'desc'];
         $field = 'a.id,a.title,a.sort,p.path';
+
         $this->modelDeedsCates->join=$join;
 
         return $this->modelDeedsCates->getList($where,$field,$order,false);
     }
+
 
 
 

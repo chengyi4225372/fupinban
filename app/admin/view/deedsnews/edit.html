@@ -23,18 +23,14 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>文章简介</label>
-                        <textarea class="form-control textarea_editor" name="introduce" placeholder="请输入文章简介">
-                            {$info.introduce|default=''}
-                        </textarea>
+                        <textarea class="form-control textarea_editor" name="introduce" placeholder="请输入文章简介">{$info.introduce|default=''}</textarea>
                     </div>
                 </div>
 
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>文章内容</label>
-                        <textarea class="form-control textarea_editor" name="content" placeholder="请输入文章内容">
-                        {$info.content|default=''}
-                        </textarea>
+                        <textarea class="form-control textarea_editor" name="content" placeholder="请输入文章内容">{$info.content|default=''}</textarea>
                         {:widget('editor/index', array('name'=> 'content','value'=> '0'))}
                     </div>
                 </div>

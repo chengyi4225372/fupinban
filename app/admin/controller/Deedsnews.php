@@ -66,4 +66,23 @@ class Deedsnews extends  AdminBase
           IS_GET && $this->jump($this->logicDeedsNews->delThisVal($this->param['id']));
       }
 
+
+      /**
+       * 扶贫报道描述
+       */
+      public function describe(){
+          if(IS_POST){
+              $params = $this->param;
+              if(isset($params['id']) || !is_null($params['id'])){
+                  $this->jump($this->logicDeedsDescribe->updateThisVal($params));
+              }else {
+                  $this->jump($this->logicDeedsDescribe->setThisVal($params));
+              }
+          }
+
+          $info = $this->logicDeedsDescribe->getThisVal();
+          $this->assign('info',$info);
+          return $this->fetch();
+      }
+
 }

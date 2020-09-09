@@ -16,7 +16,8 @@ class DeedsLog extends LogicBase{
      public function getLogList(){
          $where['status']=1;
          $order=['sort'=>'desc','create_time'=>'desc'];
-         return $this->modelDeedsLog->getList($where,false,$order,false);
+         $field= 'id,title,introduce';
+         return $this->modelDeedsLog->getList($where,$field,$order,false);
      }
 
 
@@ -29,7 +30,8 @@ class DeedsLog extends LogicBase{
               return false;
           }
 
-          return $this->modelDeedsLog->getInfo(['id'=>$id,'status'=>1]);
+          $field = 'id,title,content';
+          return $this->modelDeedsLog->getInfo(['id'=>$id,'status'=>1],$field);
       }
 
 

@@ -25,7 +25,7 @@ class DeedsContent extends  AdminBase{
         $type= isset($params['id'])?'编辑':'添加';
         $ret = $this->modelDeedsContent->setInfo($params);
         $ret && action_log($type,'model ProductContent where id='.$ret);
-        return $ret ?[RESULT_SUCCESS,'操作成功',$url]:[RESULT_SUCCESS,$this->modelDeedsContent->getError()];
+        return $ret ?[RESULT_SUCCESS,'操作成功',$url]:[RESULT_ERROR,$this->modelDeedsContent->getError()];
 
     }
 
@@ -45,7 +45,7 @@ class DeedsContent extends  AdminBase{
         $type= isset($params['id'])?'编辑':'添加';
         $ret = $this->modelDeedsContent->setInfo($params);
         $ret && action_log($type,'model ProductContent where id='.$params['id']);
-        return $ret ?[RESULT_SUCCESS,'操作成功',$url]:[RESULT_SUCCESS,$this->modelDeedsContent->getError()];
+        return $ret ?[RESULT_SUCCESS,'操作成功',$url]:[RESULT_ERROR,$this->modelDeedsContent->getError()];
     }
 
     /**

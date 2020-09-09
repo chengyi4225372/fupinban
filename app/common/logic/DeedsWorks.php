@@ -21,9 +21,19 @@ class DeedsWorks extends LogicBase{
              return false;
          }
 
-         $order = ['sort'=>'desc','id'=>'desc'];
+         $where =['a.cates_id'=>$cid,'a.status'=>1];
+         $order = ['a.sort'=>'desc','a.id'=>'desc'];
+         $field = 'a.id,a.title,a.sort,f.path';
 
-         return $this->modelDeedsWork->getList(['cates_id'=>$cid],false,$order,false);
+         $this->modelDeedsWorks->alias('a');
+
+         $join=[
+             [SYS_DB_PREFIX . 'file f','a.resources = f.id','LEFT'],
+         ];
+
+         $this->modelDeedsWorks->join=$join;
+
+         return $this->modelDeedsWorks->getList($where,$field,$order,false);
      }
 
 
