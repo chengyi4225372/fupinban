@@ -1,0 +1,19 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2020/9/9
+ * Time: 10:10
+ */
+namespace app\common\logic;
+
+class MessageContent extends LogicBase{
+
+    /**
+     * 获取新闻结语
+     */
+     public function getApiContent(){
+
+         return $this->modelMessageContent->getInfo();
+     }
+}
