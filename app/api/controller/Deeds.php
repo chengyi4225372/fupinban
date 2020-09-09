@@ -129,6 +129,7 @@ class Deeds extends ApiBase{
 
         /**
          * 扶贫报道描述 接口
+         * todo 明天接口测试从这开始，然后测试留言模块
          */
         public function deedsDescribe(){
            if(IS_GET){
