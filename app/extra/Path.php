@@ -8,7 +8,6 @@
  */
 
 return [
-    'img'=>'/upload/picture/',
-    'file'=>'/upload/file/',
-
+     'img'=>'http://local.onebase.com/upload/picture/',
+     'file'=>'http://local.onebase.com/upload/file/',
 ];

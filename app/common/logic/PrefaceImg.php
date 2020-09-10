@@ -26,6 +26,10 @@ class PrefaceImg extends  LogicBase{
 
         $this->modelPrefaceImg->join=$join;
 
-        return  $this->modelPrefaceImg->getInfo($where,$field='a.id,p.path');
+        $info = $this->modelPrefaceImg->getInfo($where,$field='a.id,p.path');
+
+        $info['path'] =config('Path.img').$info['path'];
+
+        return $info;
     }
 }
