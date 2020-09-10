@@ -31,4 +31,19 @@ class Editor extends WidgetBase
         
         return $this->fetch('admin@widget/editor/index');
     }
+
+    /**
+     * 编辑器上传视频文件
+     */
+    public function file($name = '', $value = '')
+    {
+
+        $widget_config['editor_height'] = '300px';
+        $widget_config['editor_resize_type'] = 1;
+
+        $this->assign('widget_config', $widget_config);
+        $this->assign('widget_data', compact('name', 'value'));
+
+        return $this->fetch('admin@widget/editor/file');
+    }
 }

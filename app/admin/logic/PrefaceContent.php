@@ -25,11 +25,15 @@ class PrefaceContent extends AdminBase{
       */
       public function setContent($params=[]){
 
-          $result = $this->validatePrefaceContent->scene('add')->check($params);
 
-          if(!$result){
-              return  [RESULT_ERROR,$this->validatePrefaceContent->getError()];
+          if(empty($params['content']) || !isset($params['content'])){
+              return [RESULT_ERROR,'前言描述不能为空'];
           }
+
+          if(empty($params['id']) || !isset($params['id'])){
+              return [RESULT_ERROR,'主键不存在'];
+          }
+
 
           $url = url('getcontent');
           $types = isset($params['id'])? '编辑':'添加';
@@ -44,10 +48,12 @@ class PrefaceContent extends AdminBase{
        */
       public function setThisContent($params =[]){
 
-          $result = $this->validatePrefaceContent->scene('edit')->check($params);
+          if(empty($params['content']) || !isset($params['content'])){
+              return [RESULT_ERROR,'前言描述不能为空'];
+          }
 
-          if(!$result){
-              return  [RESULT_ERROR,$this->validatePrefaceContent->getError()];
+          if(empty($params['id']) || !isset($params['id'])){
+              return [RESULT_ERROR,'主键不存在'];
           }
 
           $url = url('getcontent');

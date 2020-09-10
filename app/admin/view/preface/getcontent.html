@@ -9,7 +9,7 @@
                         <textarea class="form-control textarea_editor" name="content" placeholder="请输入文章内容">
                             {$info['content']|default='0'}
                         </textarea>
-                        {:widget('editor/index', array('name'=> 'content','value'=> '0'))}
+                        {:widget('editor/file', array('name'=> 'content','value'=>$info.content))}
                     </div>
                 </div>
 

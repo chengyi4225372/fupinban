@@ -36,7 +36,7 @@ class Widget extends ControllerBase
         
         $result = (new LogicFile())->pictureUpload('imgFile');
         
-        $data  = false === $result ? [RESULT_ERROR => DATA_NORMAL, RESULT_MESSAGE => '文件上传失败'] : [RESULT_ERROR => DATA_DISABLE, RESULT_URL => get_picture_url($result['id'])];
+        $data   = false === $result ? [RESULT_ERROR => DATA_NORMAL, RESULT_MESSAGE => '文件上传失败'] : [RESULT_ERROR => DATA_DISABLE, RESULT_URL => get_picture_url($result['id'])];
         
         return throw_response_exception($data);
     }
@@ -45,9 +45,9 @@ class Widget extends ControllerBase
      * 编辑器文件上传
      */
      public function  editorFileUpload(){
-         $result = (new LogicFile())->fileUpload('file');
+         $result = (new LogicFile())->fileUpload('imgFile');
 
-         $data  = false === $result ? [RESULT_ERROR => DATA_NORMAL, RESULT_MESSAGE => '文件上传失败'] : [RESULT_ERROR => DATA_DISABLE, RESULT_URL => get_picture_url($result['id'])];
+         $data  = false === $result ? [RESULT_ERROR => DATA_NORMAL, RESULT_MESSAGE => '文件上传失败'] : [RESULT_ERROR => DATA_DISABLE, RESULT_URL => get_file_url($result['id'])];
 
          return throw_response_exception($data);
      }

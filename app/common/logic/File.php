@@ -74,7 +74,8 @@ class File extends LogicBase
     {
         
         $object_info = request()->file($name);
-        
+
+
         $sha1  = $object_info->hash();
         
         $file_info = $this->modelFile->getInfo(['sha1' => $sha1], 'id,name,path,sha1');
@@ -84,7 +85,7 @@ class File extends LogicBase
             return $file_info;
         }
         
-        $object = $object_info->validate(['ext'=>'jpg,png,gif,zip,rar,tar,gz,7z,doc,docx,txt,xml,xlsx,xls,mp4'])->move(PATH_FILE);
+        $object = $object_info->validate(['ext'=>'jpg,png,gif,zip,rar,tar,gz,7z,doc,docx,txt,xml,xlsx,xls,mp4,avi'])->move(PATH_FILE);
         
         if (!$object)  die('文件后缀验证不通过');
 
