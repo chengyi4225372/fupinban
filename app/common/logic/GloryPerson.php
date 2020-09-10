@@ -23,7 +23,12 @@ class GloryPerson extends LogicBase{
          $order =['a.sort'=>'desc','a.create_time'=>'desc'];
          $where['a.status'] =1;
          $this->modelGloryPerson->join=$join;
-         return $this->modelGloryPerson->getList($where,'a.*,p.path',$order,false);
+         $list = $this->modelGloryPerson->getList($where,'a.*,p.path',$order,false);
+
+         foreach ($list as $k =>$val){
+           $list[$k]['path'] = config('Path.img').$list[$k]['path'];
+         }
+         return $list;
      }
 
      /**

@@ -24,7 +24,13 @@ class GloryCates extends LogicBase{
 
          $this->modelGloryCates->join=$join;
 
-         return   $this->modelGloryCates->getList($where,'a.*,p.path',$order,false);
+         $list = $this->modelGloryCates->getList($where,'a.*,p.path',$order,false);
+
+         foreach ($list as $k=>$val){
+             $list[$k]['path'] = config('Path.img').$list[$k]['path'];
+         }
+
+         return $list;
      }
 
 

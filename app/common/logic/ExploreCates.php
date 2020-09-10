@@ -27,7 +27,13 @@ class ExploreCates extends LogicBase{
          $field = 'a.id,a.sort,a.title,a.content,p.path';
          $order = ['sort'=>'desc'];
 
-         return $this->modelExploreCates->getList($where,$field,$order,false);
+         $list = $this->modelExploreCates->getList($where,$field,$order,false);
+
+         foreach ($list as $k =>$val){
+             $list[$k]['path'] = config('Path.img').$list[$k]['path'];
+         }
+
+         return $list;
      }
 
 

@@ -27,7 +27,13 @@ class  DeedsCates extends LogicBase{
 
         $this->modelDeedsCates->join=$join;
 
-        return $this->modelDeedsCates->getList($where,$field,$order,false);
+        $list = $this->modelDeedsCates->getList($where,$field,$order,false);
+
+        foreach ($list as $k =>$val){
+            $list[$k]['path'] =config('Path.img').$list[$k]['path'];
+        }
+
+        return $list;
     }
 
 
