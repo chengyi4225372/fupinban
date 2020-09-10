@@ -857,3 +857,17 @@ function get_order_sn()
     
     return $order_sn;
 }
+
+/**
+ * 替换富文本中图片路径
+ */
+  function imageUrl($content) {
+      if (preg_match('/(http:\/\/)|(https:\/\/)/i', $content)) {
+          $url = "";
+      }else{
+          $url = config('Path.img');
+      }
+      $pregRule = "/<[img|IMG].*?src=[\'|\"](.*?(?:[\.jpg|\.jpeg|\.png|\.gif|\.bmp]))[\'|\"].*?[\/]?>/";
+      $list = preg_replace($pregRule, '<img src="' . $url . '${1}" style="max-width:100%">', $content);
+      return $list;
+  }

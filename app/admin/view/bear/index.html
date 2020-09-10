@@ -3,12 +3,17 @@
         <div class="box-body">
             <div class="row">
 
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>标题名称</label>
+                        <input class="form-control" name="title" placeholder="请输入标题名称" type="text" value="{$info.title|default=''}">
+                    </div>
+                </div>
+
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>深圳帮扶简史设置</label>
-                        <textarea class="form-control textarea_editor" name="content" placeholder="请输入简介内容...">
-                        {$info.content|default=''}
-                        </textarea>
+                        <textarea class="form-control textarea_editor" name="content" placeholder="请输入简介内容...">{$info.content|default=''}</textarea>
                         {:widget('editor/index', array('name'=> 'content','value'=> '0'))}
                     </div>
                 </div>

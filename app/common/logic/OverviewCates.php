@@ -23,12 +23,17 @@ class OverviewCates  extends  LogicBase{
 
          $where['a.status'] =1;
          $order = ['a.sort'=>'desc',];
-         $field = 'a.id,a.title,a.sort,p.path';
+         $field = 'a.id,a.title,p.path';
 
          $this->modelOverviewCates->join=$join;
 
+         $list = $this->modelOverviewCates->getList($where,$field,$order,false);
 
-         return $this->modelOverviewCates->getList($where,$field,$order,false);
+         foreach ($list as $k=>$val){
+             $list[$k]['path'] = config('Path.img'). $list[$k]['path'];
+         }
+
+         return $list;
      }
 
 
@@ -37,7 +42,7 @@ class OverviewCates  extends  LogicBase{
       */
       public function getNewsList(){
             $where['status'] =1;
-            $field='id,type_id,title,sort,content';
+            $field='id,type_id,title,content';
             return  $this->modelOvernews->getlist($where,$field,['sort'=> 'desc'],false);
       }
 
@@ -46,8 +51,10 @@ class OverviewCates  extends  LogicBase{
        */
       public function  getHistoryInfo(){
 
-          $field ='id,content';
-          return $this->modelBearContent->getInfo(null,$field);
+          $field ='id,title,content';
+          $info  = $this->modelBearContent->getInfo(null,$field);
+          $info['content'] = html_entity_decode(imageUrl($info['content']));
+          return $info;
       }
 
 

@@ -32,4 +32,6 @@ class PrefaceImg extends  LogicBase{
 
         return $info;
     }
+
+
 }

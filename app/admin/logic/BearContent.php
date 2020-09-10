@@ -20,6 +20,10 @@ class BearContent extends  AdminBase{
               return [RESULT_ERROR,'请输入简介内容'];
           }
 
+         if(!isset($params['title']) || empty($params['title'])){
+            return [RESULT_ERROR,'请输入标题'];
+         }
+
           $url = url('index');
           $ret = $this->modelBearContent->setinfo($params);
           $ret && action_log('添加','model bearcontent add where id = '.$ret);
@@ -32,6 +36,10 @@ class BearContent extends  AdminBase{
      public function updateContentVal($params=[]){
          if(!isset($params['content']) || empty($params['content'])){
              return [RESULT_ERROR,'请输入简介内容'];
+         }
+
+         if(!isset($params['title']) || empty($params['title'])){
+             return [RESULT_ERROR,'请输入标题'];
          }
 
          if($params['id'] <=0 || empty($params['id'])){
