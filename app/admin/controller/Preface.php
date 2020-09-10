@@ -31,10 +31,10 @@ class Preface extends AdminBase{
      public function setimg(){
           if(IS_POST){
               $params = $this->param;
-              if(!empty($params['id']) || isset($params['id'])){
-                  $this->jump($this->logicPrefaceImg->setImgsInfo($params));
-              }else{
+              if(!empty($params['id']) || isset($params['id']) || $params['id'] <=0){
                   $this->jump($this->logicPrefaceImg->setEditInfo($params));
+              }else{
+                  $this->jump($this->logicPrefaceImg->setImgsInfo($params));
               }
           }
 
@@ -57,7 +57,7 @@ class Preface extends AdminBase{
      public function editcontent(){
          if(IS_POST){
              $params = $this->param;
-             if(empty($params['id']) || is_null($params['id'])){
+             if(empty($params['id']) || is_null($params['id']) || $params['id'] <=0){
                  $this->jump($this->logicPrefaceContent->setContent($params));
              }else{
                  $this->jump($this->logicPrefaceContent->setThisContent($params));

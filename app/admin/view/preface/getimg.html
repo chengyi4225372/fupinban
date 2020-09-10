@@ -8,7 +8,7 @@
                         <label>首页展示图</label>
                         <br/>
                         {assign name="imgs" value="$info.imgs|default=''" /}
-                        {:widget('file/index', ['name' => 'imgs', 'value' => '', 'type' => 'img'])}
+                        {:widget('file/index', ['name' => 'imgs', 'value' =>$info.imgs, 'type' => 'img'])}
                     </div>
                 </div>
 
