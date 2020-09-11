@@ -23,7 +23,7 @@ class DeedsWorks extends LogicBase{
 
          $where =['a.cates_id'=>$cid,'a.status'=>1];
          $order = ['a.sort'=>'desc','a.id'=>'desc'];
-         $field = 'a.id,a.title,a.sort,f.path';
+         $field = 'a.id,a.title,f.path';
 
          $this->modelDeedsWorks->alias('a');
 
@@ -33,7 +33,13 @@ class DeedsWorks extends LogicBase{
 
          $this->modelDeedsWorks->join=$join;
 
-         return $this->modelDeedsWorks->getList($where,$field,$order,false);
+         $list = $this->modelDeedsWorks->getList($where,$field,$order,false);
+
+         foreach ($list as $key =>$val){
+             $list[$key]['path'] =config('Path.file').$list[$key]['path'];
+         }
+
+         return $list;
      }
 
 

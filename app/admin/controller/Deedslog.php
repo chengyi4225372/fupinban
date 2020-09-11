@@ -60,4 +60,24 @@ class Deedslog extends AdminBase{
          $this->jump($this->logicAdminBase->setSort('DeedsLog',$this->param));
      }
 
+
+     /**
+      * 日记描述
+      */
+     public function content(){
+         if(IS_POST){
+           $params = $this->param;
+
+           if(!isset($params['id']) || $params['id'] <= 0 || empty($params['id'])){
+               $this->jump($this->logiclogContent->setThisinfo($params));
+           }else {
+               $this->jump($this->logiclogContent->updateThisinfo($params));
+           }
+           return false;
+         }
+
+
+         $info = $this->logicLogContent->getThisInfo();
+         return $this->fetch('',['info'=>$info]);
+     }
 }

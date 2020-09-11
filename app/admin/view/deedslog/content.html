@@ -1,0 +1,34 @@
+<form action="{:url('content')}" method="post" class="form_single">
+    <div class="box">
+        <div class="box-body">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>标题</label>
+                        <span>（描述标题）</span>
+                        <input class="form-control" name="title" placeholder="请输入描述标题" value="{$info.title|default=''}" type="text">
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>描述内容</label>
+                        <textarea class="form-control textarea_editor" name="content" placeholder="请输入描述内容">
+                        {$info.content|default=''}
+                        </textarea>
+                        {:widget('editor/index', array('name'=> 'content','value'=> '0'))}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="box-footer">
+            <input type="hidden" name="id" value="{$info.id|default='0'}">
+
+            {include file="layout/edit_btn_group"/}
+        </div>
+    </div>
+</form>

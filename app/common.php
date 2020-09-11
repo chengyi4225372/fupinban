@@ -858,16 +858,13 @@ function get_order_sn()
     return $order_sn;
 }
 
+/**    富文本中转换 函数 **/
+
 /**
- * 替换富文本中图片路径
+ * @param $content
+ * @return string
+ * 得到富文本中干净的文本内容
  */
-  function imageUrl($content) {
-      if (preg_match('/(http:\/\/)|(https:\/\/)/i', $content)) {
-          $url = "";
-      }else{
-          $url = config('Path.img');
-      }
-      $pregRule = "/<[img|IMG].*?src=[\'|\"](.*?(?:[\.jpg|\.jpeg|\.png|\.gif|\.bmp]))[\'|\"].*?[\/]?>/";
-      $list = preg_replace($pregRule, '<img src="' . $url . '${1}" style="max-width:100%">', $content);
-      return $list;
-  }
+function  geteditorcontent($content){
+    return  strip_tags(htmlspecialchars_decode($content));
+}

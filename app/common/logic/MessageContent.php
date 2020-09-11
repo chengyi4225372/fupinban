@@ -14,6 +14,9 @@ class MessageContent extends LogicBase{
      */
      public function getApiContent(){
 
-         return $this->modelMessageContent->getInfo();
+         $field = 'id content';
+         $info = $this->modelMessageContent->getInfo(null,$field);
+         $info['content'] = geteditorcontent($info['content']);
+         return $info;
      }
 }

@@ -30,7 +30,13 @@ class Product extends LogicBase{
 
         $this->modelProduct->join=$join;
 
-        return $this->modelProduct->getList($where,$field,$order,false);
+        $list = $this->modelProduct->getList($where,$field,$order,false);
+
+        foreach($list as $k=>$val){
+            $list[$k]['path'] =config('Path.img').$list[$k]['path'];
+        }
+
+        return $list;
     }
 
 

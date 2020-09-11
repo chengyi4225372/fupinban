@@ -13,8 +13,12 @@ class DeedsContent extends LogicBase{
      * 风采简介
      */
      public function getThisApiVal(){
+         $field = 'id,content';
+         $info  = $this->modelDeedsContent->getInfo(null,$field);
 
-         return $this->modelDeedsContent->getInfo();
+         $info['content'] =geteditorcontent($info['content']);
+
+         return $info;
      }
 
 

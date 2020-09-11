@@ -127,9 +127,21 @@ class Deeds extends ApiBase{
          }
 
 
+
+        /**
+        * 扶贫报道新闻列表 接口
+        */
+        public function getNewsList(){
+        if(IS_GET){
+            $list = $this->logicDeedsNews->getNewsList();
+
+            return  isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> NULL]);
+        }
+            return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误！']);
+        }
+
         /**
          * 扶贫报道描述 接口
-         * todo 明天接口测试从这开始，然后测试留言模块
          */
         public function deedsDescribe(){
            if(IS_GET){
@@ -140,20 +152,6 @@ class Deeds extends ApiBase{
            }
                return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误！']);
         }
-
-
-        /**
-         * 扶贫报道新闻列表 接口
-         */
-        public function getNewsList(){
-          if(IS_GET){
-              $list = $this->logicDeedsNews->getNewsList();
-
-              return  isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> NULL]);
-          }
-              return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误！']);
-        }
-
 
         /**
          * 扶贫报道详情 接口
