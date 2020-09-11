@@ -20,10 +20,12 @@ class GloryPerson extends LogicBase{
              [SYS_DB_PREFIX . 'picture p','a.user_img = p.id','LEFT'],
          ];
 
-         $order =['a.sort'=>'desc','a.create_time'=>'desc'];
+
          $where['a.status'] =1;
+         $order =['a.sort'=>'desc','a.create_time'=>'desc'];
+         $field = 'a.id,a.users,a.address,a.desc,p.path';
          $this->modelGloryPerson->join=$join;
-         $list = $this->modelGloryPerson->getList($where,'a.*,p.path',$order,false);
+         $list = $this->modelGloryPerson->getList($where,$field,$order,false);
 
          foreach ($list as $k =>$val){
            $list[$k]['path'] = config('Path.img').$list[$k]['path'];

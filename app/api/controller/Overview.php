@@ -46,6 +46,7 @@ class Overview extends ApiBase{
       */
       public function getHistoryNews(){
           if(IS_GET) {
+
               $info = $this->logicOverviewCates->getHistoryInfo();
 
               return isset($info) && !empty($info['content']) ? $this->apiReturn(['code' => RESULT_SUCCESS, 'data' => $info]) : $this->apiReturn(['code' => RESULT_ERROR, 'data' => null]);

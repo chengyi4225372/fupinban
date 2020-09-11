@@ -53,7 +53,7 @@ class OverviewCates  extends  LogicBase{
 
           $field ='id,title,content';
           $info  = $this->modelBearContent->getInfo(null,$field);
-          $info['content'] = html_entity_decode(imageUrl($info['content']));
+          $info['content'] = geteditorcontent($info['content']);
           return $info;
       }
 
