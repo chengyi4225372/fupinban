@@ -13,19 +13,13 @@ class DeedsNews extends  LogicBase{
     /**
      * 扶贫报道列表接口
      */
-    public function getNewsList(){
-        $this->modelDeedsNews->alias('a');
+    public function getApiNewsList(){
 
-        $join = [
-            [SYS_DB_PREFIX . 'picture p','a.imgs = p.id','LEFT'],
-        ];
-
-        $where =['a.status'=>1];
-        $field = 'a.title.a.id,a.introduce,p.path';
-        $order = ['a.sort'=>'desc','a.create_time'=>'desc'];
-        $this->modelDeedsNews->join =$join;
-
-        return  $this->modelDeedsNews->getList($where,$field,$order,false);
+        $where =['status'=>1];
+        $field = 'id,title,introduce';
+        $order = ['sort'=>'desc','create_time'=>'desc'];
+        $list  = $this->modelDeedsNews->getList($where,$field,$order,false);
+        return $list;
     }
 
     /**

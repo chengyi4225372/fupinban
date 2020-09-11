@@ -14,8 +14,11 @@ class GloryContent extends LogicBase{
      * 扶贫荣耀简介
      */
      public function getApiVal(){
+         $field = 'id,content';
+         $info = $this->modelGloryContent->getInfo(null,$field);
+         $info['content'] =geteditorcontent($info['content']);
 
-         return $this->modelGloryContent->getInfo();
+         return $info;
      }
 
 

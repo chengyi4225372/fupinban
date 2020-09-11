@@ -7,6 +7,6 @@
  */
 namespace app\common\model;
 
-class GlotyContent extends ModelBase{
+class GloryContent extends ModelBase{
 
 }

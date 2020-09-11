@@ -19,12 +19,13 @@ class GloryCates extends LogicBase{
          $join=[
              [SYS_DB_PREFIX . 'picture p','a.imgs = p.id','LEFT'],
          ];
-         $where =['a.status'=>1];
-         $order=['a.sort'=>'desc','create_time'=>'desc'];
+
+         $order =['a.sort'=>'desc','a.create_time'=>'desc'];
+         $field = 'a.id,a.title,p.path';
 
          $this->modelGloryCates->join=$join;
 
-         $list = $this->modelGloryCates->getList($where,'a.*,p.path',$order,false);
+         $list = $this->modelGloryCates->getList(null,$field,$order,false);
 
          foreach ($list as $k=>$val){
              $list[$k]['path'] = config('Path.img').$list[$k]['path'];

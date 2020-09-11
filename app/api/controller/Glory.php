@@ -18,9 +18,9 @@ class Glory extends ApiBase{
      /**
       * 扶贫荣耀简介 接口
       */
-      public function getGlotyContent(){
+      public function getGloryContent(){
 
-          $info = $this->logiGloryContent->getApiVal();
+          $info = $this->logicGloryContent->getApiVal();
 
           return !empty($info) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> null]);
       }
@@ -43,6 +43,7 @@ class Glory extends ApiBase{
         */
         public function getCompanyDesc(){
            if(IS_GET) {
+
                $info = $this->logicGloryCompany->getApiContent();
 
                return isset($info) ? $this->apiReturn(['code' => RESULT_SUCCESS, 'data' => $info]) : $this->apiReturn(['code' => RESULT_ERROR, 'data' => null]);

@@ -17,7 +17,7 @@ class Message extends ApiBase{
 
              $info  = $this->logicMessageContent->getApiContent();
 
-             return  isset($info['content'])?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERRRO,'data'=> null]);
+             return  isset($info)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERRRO,'data'=> null]);
          }
 
          return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误!']);

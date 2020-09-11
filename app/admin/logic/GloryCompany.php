@@ -20,6 +20,10 @@ class GloryCompany extends AdminBase{
             return [RESULT_ERROR,'简介不能为空'];
         }
 
+        if(empty($params['title'])){
+            return [RESULT_ERROR,'标题不能为空'];
+        }
+
         $urls = url('index');
         $ret  = $this->modelGloryCompany->setInfo($params);
         $ret && action_log('添加','model glorycompany add where id='.$ret);
@@ -33,6 +37,10 @@ class GloryCompany extends AdminBase{
 
         if(empty($params['id']) || $params['id'] == 0){
             return [RESULT_ERROR,'缺少查询条件'];
+        }
+
+        if(empty($params['title'])){
+            return [RESULT_ERROR,'标题不能为空'];
         }
 
         if(empty($params['content'])){

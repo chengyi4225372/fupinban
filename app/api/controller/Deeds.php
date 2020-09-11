@@ -143,9 +143,10 @@ class Deeds extends ApiBase{
         */
       public function getNewsList(){
         if(IS_GET){
-            $list = $this->logicDeedsNews->getNewsList();
 
-            return  isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> NULL]);
+            $list = $this->logicDeedsNews->getApiNewsList();
+
+            return  isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> null]);
         }
             return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误！']);
         }

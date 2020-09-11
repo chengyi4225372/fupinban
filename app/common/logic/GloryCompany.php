@@ -15,7 +15,11 @@ class GloryCompany extends LogicBase{
     */
     public function getApiContent(){
 
-        return $this->modelGloryContent->getInfo();
+       $field ='id,title,content';
+       $info = $this->modelGloryCompany->getInfo(null,$field);
+       $info['content'] = geteditorcontent($info['content']);
+
+       return $info;
 
     }
 }

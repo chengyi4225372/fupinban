@@ -14,10 +14,25 @@ class DeedsLog extends LogicBase{
      * 事迹风采日志列表
      */
      public function getLogList(){
-         $where['status']=1;
-         $order=['sort'=>'desc','create_time'=>'desc'];
-         $field= 'id,title,introduce';
-         return $this->modelDeedsLog->getList($where,$field,$order,false);
+         $this->modelDeedsLog->alias('a');
+
+         $join = [
+
+             [SYS_DB_PREFIX . 'picture p','a.imgs = p.id','LEFT'],
+
+         ];
+         $this->modelDeedsLog->join = $join;
+
+         $where['a.status']=1;
+         $order=['a.sort'=>'desc','a.create_time'=>'desc'];
+         $field= 'a.id,a.title,a.introduce,p.path';
+         $list  = $this->modelDeedsLog->getList($where,$field,$order,false);
+
+         foreach ($list as $key =>$val){
+             $list[$key]['path'] =config('Path.img').$list[$key]['path'];
+         }
+
+         return $list;
      }
 
 
