@@ -90,10 +90,22 @@ class Deeds extends ApiBase{
       }
 
 
+    /**
+     * 扶贫日记 描述
+     */
+      public function getLogContent(){
+         if(IS_GET){
+           $info = $this->logicLogContent->getApiInfo();
+
+           return isset($info) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+         }
+         return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误！']);
+     }
+
        /**
         * 扶贫日记列表
         */
-        public function getDeedsLog(){
+     public function getDeedsLog(){
 
             if(IS_GET) {
                 $list = $this->logicDeedsLog->getLogList();
@@ -107,7 +119,7 @@ class Deeds extends ApiBase{
         /**
          * 获取日志详情
          */
-         public function deesLogInfo(){
+     public function deesLogInfo(){
               if(IS_POST){
 
                   if(!isset($this->param['id']) || empty($this->param['id']) ||is_null($this->param['id'])){
@@ -126,12 +138,10 @@ class Deeds extends ApiBase{
               return $this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>'请求方式错误']);
          }
 
-
-
         /**
         * 扶贫报道新闻列表 接口
         */
-        public function getNewsList(){
+      public function getNewsList(){
         if(IS_GET){
             $list = $this->logicDeedsNews->getNewsList();
 
@@ -143,7 +153,7 @@ class Deeds extends ApiBase{
         /**
          * 扶贫报道描述 接口
          */
-        public function deedsDescribe(){
+      public function deedsDescribe(){
            if(IS_GET){
                $info = $this->logicDeedsDescribe->getDescribeInfo();
 
@@ -156,7 +166,7 @@ class Deeds extends ApiBase{
         /**
          * 扶贫报道详情 接口
          */
-        public function getNewsInfo(){
+      public function getNewsInfo(){
             if(IS_POST){
 
               if(!isset($this->param['id']) || empty($this->param['id']) || is_null($this->param['id'])){

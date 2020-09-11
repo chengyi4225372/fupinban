@@ -5,15 +5,6 @@
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>文章展示图</label>
-                        <br/>
-                        {assign name="imgs" value="$info.imgs|default=''" /}
-                        {:widget('file/index', ['name' => 'imgs', 'value' =>$info.imgs, 'type' => 'img'])}
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
                         <label>标题</label>
                         <span>（新闻文章标题）</span>
                         <input class="form-control" name="title" placeholder="请输入新闻文章标题" value="{$info.title|default=''}" type="text">

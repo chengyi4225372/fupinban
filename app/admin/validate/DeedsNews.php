@@ -15,7 +15,6 @@ class DeedsNews extends  AdminBase{
         'content'         => 'require',
         'introduce'       => 'require',
         'create_time'     => 'require',
-        'imgs'            => 'require',
     ];
 
     // 验证提示
@@ -29,7 +28,7 @@ class DeedsNews extends  AdminBase{
 
     // 应用场景
     protected $scene = [
-        'add'       =>  ['title','introduce','content','create_time','imgs'],
-        'edit'      =>  ['title','introduce','content','imgs'],
+        'add'       =>  ['title','introduce','content','create_time',],
+        'edit'      =>  ['title','introduce','content',],
     ];
 }

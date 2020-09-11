@@ -11,6 +11,15 @@
                     </div>
                 </div>
 
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>文章展示图</label>
+                        <br/>
+                        {assign name="imgs" value="$info.imgs|default=''" /}
+                        {:widget('file/index', ['name' => 'imgs', 'value' =>$info.imgs, 'type' => 'img'])}
+                    </div>
+                </div>
+
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>文章简介</label>
