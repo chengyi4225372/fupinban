@@ -29,7 +29,7 @@ class Preface extends ApiBase{
      public function getPrefaceContent(){
          if(IS_GET){
              $info = $this->logicPrefaceContent->getApiContent();
-             return  isset($info['content']) ? $this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+             return  isset($info) ? $this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
          }
 
          return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);

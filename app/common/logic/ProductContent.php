@@ -17,7 +17,7 @@ class ProductContent extends LogicBase{
 
          $field ='id,content';
          $info  = $this->logicProductContent->getInfo(null,$field);
-         $info['content'] =geteditorcontent($info['content']);
+         $info['content'] = geteditorcontent($info['content']);
          return $info;
      }
 }

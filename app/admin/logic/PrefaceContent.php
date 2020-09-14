@@ -26,6 +26,14 @@ class PrefaceContent extends AdminBase{
       public function setContent($params=[]){
 
 
+          if(empty($params['title']) || !isset($params['title'])){
+              return [RESULT_ERROR,'标题不能为空'];
+          }
+
+          if(empty($params['video']) || !isset($params['video'])){
+              return [RESULT_ERROR,'请上传视频文件！'];
+          }
+
           if(empty($params['content']) || !isset($params['content'])){
               return [RESULT_ERROR,'前言描述不能为空'];
           }
@@ -48,6 +56,14 @@ class PrefaceContent extends AdminBase{
        */
       public function setThisContent($params =[]){
 
+          if(empty($params['title']) || !isset($params['title'])){
+              return [RESULT_ERROR,'标题不能为空'];
+          }
+
+          if(empty($params['video']) || !isset($params['video'])){
+              return [RESULT_ERROR,'请上传视频文件！'];
+          }
+
           if(empty($params['content']) || !isset($params['content'])){
               return [RESULT_ERROR,'前言描述不能为空'];
           }
@@ -58,7 +74,7 @@ class PrefaceContent extends AdminBase{
 
           $url = url('getcontent');
           $types = isset($params['id'])? '编辑':'添加';
-          $ret = $this->modelPrefaceContent->updateInfo(['id'=>$params['id']],['content'=>$params['content']]);
+          $ret = $this->modelPrefaceContent->setInfo($params);
           $ret && action_log($types,'prefacecontent where id ='.$ret);
           return $ret ? [RESULT_SUCCESS,'操作成功',$url]:[RESULT_ERROR,$this->modelPrefaceContent->getError()];
       }

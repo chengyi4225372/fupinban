@@ -58,7 +58,6 @@ class Preface extends AdminBase{
          if(IS_POST){
              $params = $this->param;
              if(empty($params['id']) || is_null($params['id']) || $params['id'] <=0){
-
                  $this->jump($this->logicPrefaceContent->setContent($params));
              }else{
 

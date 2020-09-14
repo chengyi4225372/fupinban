@@ -22,6 +22,7 @@ class File extends LogicBase
     /**
      * 图片上传
      * small,medium,big
+     * 重新判断 增加 查询 url
      */
     public function pictureUpload($name = 'file', $thumb_config = ['small' => 100, 'medium' => 500, 'big' => 1000])
     {
@@ -30,9 +31,9 @@ class File extends LogicBase
         
         $sha1  = $object_info->hash();
         
-        $picture_info = $this->modelPicture->getInfo(['sha1' => $sha1], 'id,name,path,sha1');
+        $picture_info = $this->modelPicture->getInfo(['sha1' => $sha1], 'id,name,path,sha1,url');
         
-        if (!empty($picture_info)) { return $picture_info; }
+        if (!empty($picture_info['url'])) { return $picture_info; }
         
         $object = $object_info->validate(['ext'=>'jpg,png,gif,mp4'])->move(PATH_PICTURE);
         
@@ -54,7 +55,7 @@ class File extends LogicBase
         Image::open($save_path)->thumb($thumb_config['medium']  , $thumb_config['medium'])->save($thumb_dir_path . DS . 'medium_' . $filename);
         Image::open($save_path)->thumb($thumb_config['big']     , $thumb_config['big'])->save($thumb_dir_path    . DS . 'big_'    . $filename);
         
-        $data = ['name' => $filename, 'path' => $picture_dir_name. SYS_DS_PROS . $filename, 'sha1' => $sha1];
+        $data = ['name' => $filename, 'path' => $picture_dir_name. SYS_DS_PROS . $filename, 'sha1' => $sha1,'url'=>config('Path.img').$picture_dir_name. SYS_DS_PROS . $filename];
         
         $result = $this->modelPicture->setInfo($data);
 
@@ -69,6 +70,7 @@ class File extends LogicBase
     
     /**
      * 文件上传
+     * 重新判断 增加 查询 url
      */
     public function fileUpload($name = 'file')
     {
@@ -78,10 +80,11 @@ class File extends LogicBase
 
         $sha1  = $object_info->hash();
         
-        $file_info = $this->modelFile->getInfo(['sha1' => $sha1], 'id,name,path,sha1');
-        
-        if (!empty($file_info)) {
-         
+        $file_info = $this->modelFile->getInfo(['sha1' => $sha1], 'id,name,path,sha1,url');
+
+
+        if (!empty($file_info['url'])) {
+
             return $file_info;
         }
         
@@ -92,23 +95,21 @@ class File extends LogicBase
         $save_name = $object->getSaveName();
         
         $file_dir_name = substr($save_name, 0, strrpos($save_name, DS));
-        
+
+
         $filename = $object->getFilename();
         
-        $data = ['name' => $filename, 'path' => $file_dir_name. SYS_DS_PROS . $filename, 'sha1' => $sha1];
-        
+        $data = ['name' => $filename, 'path' => $file_dir_name. SYS_DS_PROS . $filename, 'sha1' => $sha1,'url'=>config('Path.file').$file_dir_name. SYS_DS_PROS . $filename,];
+
         $result = $this->modelFile->setInfo($data);
 
         unset($object);
-        
-        $url = $this->checkStorage($result, 'uploadFile');
-        
-        if ($result) {
-            
-            $data['id'] = $result;
 
+        $url = $this->checkStorage($result, 'uploadFile');
+
+        if ($result) {
+            $data['id'] = $result;
             $url && $data['url'] = $url;
-            
             return $data;
         }
         
@@ -151,6 +152,7 @@ class File extends LogicBase
             }
             return config('static_domain') . SYS_DS_PROS . $info['url'];
         }
+
 
         $root_url = get_file_root_path();
         if (!empty($info['path'])) {

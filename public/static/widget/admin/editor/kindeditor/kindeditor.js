@@ -376,21 +376,21 @@
      * @param b
      * @returns {*}
      */
-    function ob(a, b ) {
+    function ob(a, b) {
         var c = b.width,
             d = b.height,
             e = b.type || mb(b.src),
             g = Ia(b),
             h = "";
 
+        c > 0 && (h += "width:" + c + "px;");
+        d > 0 && (h += "height:" + d + "px;");
 
         if (b.src.indexOf(".mp4")!=-1) {
-            var c = '<video controls="" width="+width+" height="+height+" class="' + e + '" >';
-            c += '<source src="' + b.src + '" data-ke-src="'+b.src+'" >'
+            var c = '<video controls="" width=" '+ c + '" height=" '+ d + '" class="' + e + '" >';
+            c += '<source src="' + a.src + '" data-ke-src="'+a.src+'" >'
             c += '</video>';
         }else {
-            c > 0 && (h += "width:" + c + "px;");
-            d > 0 && (h += "height:" + d + "px;");
             c = /realaudio/i.test(e) ? "ke-rm" : /flash/i.test(e) ? "ke-flash" : "ke-media";
             var c = '<img class="' + c + '" src="' + a + '" ';
             h !== "" && (c += 'style="' + h + '" ');
