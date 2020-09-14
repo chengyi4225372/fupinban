@@ -7,8 +7,8 @@
                     <div class="form-group">
                         <label>文章分类</label>
                         <select name="type_id" class="form-control">
-                            <option value="1" {eq name="$info.type_id" value="1"} aria-checked="" {/eq}>殷殷嘱咐</option>
-                            <option value="2" {eq name="$info.type_id" value="2"} aria-checked="" {/eq}>领导关怀</option>
+                            <option value="1" {eq name="$info.type_id" value="1"} selected="" {/eq}>殷殷嘱咐</option>
+                            <option value="2" {eq name="$info.type_id" value="2"} selected="" {/eq}>领导关怀</option>
                         </select>
                     </div>
                 </div>
@@ -24,9 +24,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>文章内容</label>
-                        <textarea class="form-control textarea_editor" name="content" placeholder="请输入文章内容">
-                        {$info.content|default=''}
-                        </textarea>
+                        <textarea class="form-control textarea_editor" name="content" placeholder="请输入文章内容">{$info.content|default=''}</textarea>
                         {:widget('editor/index', array('name'=> 'content','value'=> '0'))}
                     </div>
                 </div>

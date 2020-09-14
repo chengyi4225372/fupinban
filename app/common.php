@@ -866,23 +866,28 @@ function get_order_sn()
  * 得到富文本中纯文本内容
  */
 function  geteditorcontent($content){
-    return  strip_tags(htmlspecialchars_decode($content));
+    return  strip_tags(html_entity_decode($content));
 }
+
 
 /**
  * 提取富文本中 图片 路径
  */
- function imageUrl($path,$content){
-    $pregRule = "/<[img|IMG].*?src=[\‘|\"](.*?(?:[\.jpg|\.jpeg|\.png|\.gif|\.bmp]))[\‘|\"].*?[\/]?>/";
-    $list = preg_replace($pregRule, '<img src=" '.$path.'${1}" style="max-width:100%">', $content);
-    return $list;
+ function imageUrl($content){
+     $content =html_entity_decode($content);
+     $url = "http://" . $_SERVER['SERVER_NAME'];
+     $pregRule = "/<[img|IMG].*?src=[\'|\"](.*?(?:[\.jpg|\.jpeg|\.png|\.gif|\.bmp]))[\'|\"].*?[\/]?>/";
+     $list = preg_replace($pregRule, '<img src="' . $url . '${1}" style="max-width:100%">', $content);
+     return $list;
 }
 
 /**
  * 提取富文本中 视频 路径
  */
-function videoUrl($path,$content) {
+function videoUrl($content) {
+    $content =html_entity_decode($content);
+    $url = "http://" . $_SERVER['SERVER_NAME'];
     $pregRule = "/<[video|source ].*?src=[\‘|\"](.*?(?:[\.mp4|\.avi]))[\‘|\"].*?[\/]?>/";
-    $list = preg_replace($pregRule, '<img src=" '.$path.'${1}" style="max-width:100%">', $content);
+    $list = preg_replace($pregRule, '<img src=" '.$url.'${1}" style="max-width:100%">', $content);
     return $list;
 }

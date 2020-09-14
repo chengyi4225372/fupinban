@@ -19,7 +19,6 @@ class Overnews extends AdminBase{
 
     // 验证提示
     protected $message  =   [
-        'title.require'         => '请输入名称',
         'content.require'       => '请输入文章详情',
         'type_id.require'       => '请选择文章分类',
         'create_time.require'   => '请输入创建时间',
@@ -27,8 +26,8 @@ class Overnews extends AdminBase{
 
     // 应用场景
     protected $scene = [
-        'add'       => ['type_id', 'title','content','create_time'],
-        'edit'      => ['type_id','area','title','content',],
+        'add'       => ['type_id', 'content','create_time'],
+        'edit'      => ['type_id','content',],
     ];
 
 }
