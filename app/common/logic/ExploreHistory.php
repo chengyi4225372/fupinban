@@ -22,7 +22,7 @@ class ExploreHistory extends  LogicBase{
          ];
 
          $this->modelExploreHistory->join =$join;
-         $field = 'a.id,a.title,a.content,p.path';
+         $field = 'a.id,a.title,p.path';
 
          $info = $this->modelExploreHistory->getInfo(null,$field);
          $info['path'] =config('Path.img').$info['path'];

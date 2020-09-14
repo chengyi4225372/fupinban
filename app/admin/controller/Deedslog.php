@@ -10,7 +10,7 @@ namespace app\admin\controller;
 /**
  * Class Deedslog
  * @package app\admin\controller
- * 扶贫日子 控制器
+ * 扶贫报道 控制器
  */
 class Deedslog extends AdminBase{
 

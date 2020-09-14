@@ -15,6 +15,9 @@ class DeedsNews extends  AdminBase{
         'content'         => 'require',
         'introduce'       => 'require',
         'create_time'     => 'require',
+        'music_title'     => 'require',
+        'imgs'            => 'require',
+        'music'            => 'require',
     ];
 
     // 验证提示
@@ -24,11 +27,13 @@ class DeedsNews extends  AdminBase{
         'introduce.require'        => '请输入文章简介',
         'create_time.require'      => '无法获取创建时间',
         'imgs.require'             => '请上传文章展示图',
+        'music.require'            => '请上传音乐文件',
+        'music_title.require'      => '请输入音乐标题',
     ];
 
     // 应用场景
     protected $scene = [
-        'add'       =>  ['title','introduce','content','create_time',],
-        'edit'      =>  ['title','introduce','content',],
+        'add'       =>  ['title','introduce','content','create_time','music','imgs','music_title'],
+        'edit'      =>  ['title','introduce','content','music','imgs','music_title'],
     ];
 }

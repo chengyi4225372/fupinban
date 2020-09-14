@@ -40,6 +40,19 @@ class Explore extends ApiBase{
         return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
     }
 
+
+    /**
+     * 历史回望新闻接口
+     */
+     public function getHistoryNews(){
+         if(IS_GET){
+             $list = $this->logicHistory->getThislist();
+
+             return isset($list) ? $this->apiReturn(['code' => RESULT_SUCCESS, 'data' => $list]) : $this->apiReturn(['code' => RESULT_ERROR, 'data' => null]);
+         }
+         return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
+     }
+
     /**
      * 探索实践简介接口
      */

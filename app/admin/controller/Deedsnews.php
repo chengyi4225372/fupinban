@@ -11,7 +11,7 @@ namespace app\admin\controller;
 /**
  * Class DeedsNews
  * @package app\admin\controller
- * 扶贫报倒控制器
+ * 扶贫日记控制器
  */
 
 class Deedsnews extends  AdminBase

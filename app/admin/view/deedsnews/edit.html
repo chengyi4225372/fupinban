@@ -11,7 +11,37 @@
                     </div>
                 </div>
 
-                <div class="col-md-12">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>顶部展示图片</label>
+                        <br/>
+                        {assign name="imgs" value="$info.imgs|default='0'" /}
+                        {:widget('file/index', ['name' => 'imgs', 'value' =>$info.imgs, 'type' => 'img'])}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>音乐标题</label>
+                    <input class="form-control" name="music_title" placeholder="请输入音乐标题" value="{$info.music_title}" type="text">
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>上传音乐文件</label>
+                    <br/>
+                    {assign name="music" value="$info.music|default='0'" /}
+                    {:widget('file/index', ['name' => 'music', 'value' =>$info.music, 'type' => 'file'])}
+                </div>
+            </div>
+
+
+
+            <div class="col-md-12">
                     <div class="form-group">
                         <label>文章简介</label>
                         <textarea class="form-control textarea_editor" name="introduce" placeholder="请输入文章简介">{$info.introduce|default=''}</textarea>

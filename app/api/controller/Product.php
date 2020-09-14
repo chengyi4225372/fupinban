@@ -48,7 +48,6 @@ class Product extends ApiBase{
        */
       public function  seeThisContent(){
          if(IS_POST){
-
              if(empty($this->param['id']) || !isset($this->param['id']) || is_null($this->param['id'])){
                  return $this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>'无法获取查询id']);
              }
