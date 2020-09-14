@@ -19,9 +19,6 @@ class ExploreHistory extends  AdminBase{
               return [RESULT_ERROR,'标题不能为空'];
           }
 
-          if($params['content']==''){
-              return [RESULT_ERROR,'简介不能为空'];
-          }
 
           if($params['imgs']==''){
               return [RESULT_ERROR,'请上传图片'];
@@ -42,10 +39,6 @@ class ExploreHistory extends  AdminBase{
 
           if(empty($params['title'])){
               return [RESULT_ERROR,'标题不能为空'];
-          }
-
-          if($params['content']==''){
-              return [RESULT_ERROR,'简介不能为空'];
           }
 
           if($params['imgs']==''){

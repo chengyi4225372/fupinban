@@ -40,10 +40,16 @@ class OverviewCates  extends  LogicBase{
      /**
       * 深圳当担新闻列表接口
       */
-      public function getNewsList(){
+      public function getNewsList($tid =''){
             $where['status'] =1;
+            $where['type_id'] =$tid;
             $field='id,type_id,title,content';
-            return  $this->modelOvernews->getlist($where,$field,['sort'=> 'desc'],false);
+            $list = $this->modelOvernews->getlist($where,$field,['sort'=> 'desc'],false);
+
+            foreach ($list as $key =>$val){
+                $list[$key]['content'] = imageUrl($list[$key]['content']);
+            }
+            return $list;
       }
 
       /**

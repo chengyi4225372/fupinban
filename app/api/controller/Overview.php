@@ -28,12 +28,19 @@ class Overview extends ApiBase{
           return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
         }
 
+
     /**
      * 深圳当担新闻列表接口
      */
      public function getNews(){
          if(IS_GET) {
-             $list = $this->logicOverviewCates->getNewsList();
+             $tid = $this->param['cid'];
+
+             if(empty($tid) || !isset($tid) || $tid <=0){
+                 return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求参数不能为空!']);
+             }
+
+             $list = $this->logicOverviewCates->getNewsList($tid);
 
              return isset($list) && !empty($list) ? $this->apiReturn(['code' => RESULT_SUCCESS, 'data' => $list]) : $this->apiReturn(['code' => RESULT_ERROR, 'data' => null]);
           }
