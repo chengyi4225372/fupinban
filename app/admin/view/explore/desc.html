@@ -1,0 +1,24 @@
+<form action="{:url('desc')}" method="post" class="form_single">
+    <div class="box">
+        <div class="box-body">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>探索实践简介</label>
+                        <textarea class="form-control textarea_editor" name="content" placeholder="请输入探索实践简介">
+                        {$info.content|default=''}
+                        </textarea>
+                        {:widget('editor/index', array('name'=> 'content','value'=> '0'))}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="box-footer">
+            <input type="hidden" name="id" value="{$info.id|default=''}" />
+            {include file="layout/edit_btn_group"/}
+        </div>
+    </div>
+</form>

@@ -351,7 +351,7 @@
     function mb(a) {
         if (/\.(rm|rmvb)(\?|$)/i.test(a)) return "audio/x-pn-realaudio-plugin";
         if (/\.(swf|flv)(\?|$)/i.test(a)) return "application/x-shockwave-flash";
-        if (/\.(mp4)(\?|$)/i.test(a)) return 'video/mp4';
+        if (/\.(mp4)(\?|$)/i.test(a)) return "video/mp4";
         return "video/x-ms-asf-plugin"
     }
 
@@ -360,7 +360,8 @@
     }
 
     function Ia(a) {
-        var b = "<embed ";
+
+        var b = "<video ";
         m(a, function (a, d) {
             b += a + '="' + d + '" '
         });
@@ -384,8 +385,8 @@
 
 
         if (b.src.indexOf(".mp4")!=-1) {
-            var c = '<video controls="" width="+width+" height="+height+" class="' + e + '" ';
-            c += '><source src="' + b.src + '" data-ke-src="'+b.src+'" >'
+            var c = '<video controls="" width="+width+" height="+height+" class="' + e + '" >';
+            c += '<source src="' + b.src + '" data-ke-src="'+b.src+'" >'
             c += '</video>';
         }else {
             c > 0 && (h += "width:" + c + "px;");
@@ -1331,6 +1332,7 @@
             fontSizeTable: ["9px", "10px", "12px", "14px", "16px", "18px", "24px", "32px"],
             htmlTags: {
                 font: ["id", "class", "color", "size", "face", ".background-color"],
+                video : ['id', 'class', 'src', 'width', 'height', 'type', 'loop', 'autostart', 'quality', '.width', '.height', 'align', 'allowscriptaccess','controls'],
                 span: ["id", "class", ".color", ".background-color", ".font-size", ".font-family", ".background", ".font-weight", ".font-style", ".text-decoration", ".vertical-align", ".line-height"],
                 div: ["id", "class", "align", ".border", ".margin", ".padding", ".text-align", ".color", ".background-color", ".font-size", ".font-family",
                     ".font-weight", ".background", ".font-style", ".text-decoration", ".vertical-align", ".margin-left"],
@@ -1345,7 +1347,8 @@
                 pre: ["id", "class"],
                 hr: ["id", "class", ".page-break-after"],
                 "br,tbody,tr,strong,b,sub,sup,em,i,u,strike,s,del": ["id", "class"],
-                iframe: ["id", "class", "src", "frameborder", "width", "height", ".width", ".height"]
+                iframe: ["id", "class", "src", "frameborder", "width", "height", ".width", ".height"],
+
             },
             layout: '<div class="container"><div class="toolbar"></div><div class="edit"></div><div class="statusbar"></div></div>'
         };

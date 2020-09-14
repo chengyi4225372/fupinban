@@ -60,4 +60,25 @@ class Explore extends AdminBase{
        public function  setSort(){
            $this->jump($this->logicAdminBase->setSort('ExploreCates', $this->param));
        }
+
+       /**
+        * 探索实践简介
+        */
+        public function desc(){
+            if(IS_POST){
+                $params =  $this->param;
+
+                if($params['id'] <=0){
+                    $this->jump($this->logicExploreContent->setThisVal($params));
+                }else {
+                    $this->jump($this->logicExploreContent->updateThisVal($params));
+                }
+
+                return false;
+            }
+
+            $info = $this->logicExploreContent->getThisVal();
+            $this->assign('info',$info);
+            return $this->fetch();
+        }
 }

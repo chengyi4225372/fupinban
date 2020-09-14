@@ -863,8 +863,26 @@ function get_order_sn()
 /**
  * @param $content
  * @return string
- * 得到富文本中干净的文本内容
+ * 得到富文本中纯文本内容
  */
 function  geteditorcontent($content){
     return  strip_tags(htmlspecialchars_decode($content));
+}
+
+/**
+ * 提取富文本中 图片 路径
+ */
+ function imageUrl($path,$content){
+    $pregRule = "/<[img|IMG].*?src=[\‘|\"](.*?(?:[\.jpg|\.jpeg|\.png|\.gif|\.bmp]))[\‘|\"].*?[\/]?>/";
+    $list = preg_replace($pregRule, '<img src=" '.$path.'${1}" style="max-width:100%">', $content);
+    return $list;
+}
+
+/**
+ * 提取富文本中 视频 路径
+ */
+function videoUrl($path,$content) {
+    $pregRule = "/<[video|source ].*?src=[\‘|\"](.*?(?:[\.mp4|\.avi]))[\‘|\"].*?[\/]?>/";
+    $list = preg_replace($pregRule, '<img src=" '.$path.'${1}" style="max-width:100%">', $content);
+    return $list;
 }

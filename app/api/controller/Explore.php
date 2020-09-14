@@ -40,6 +40,18 @@ class Explore extends ApiBase{
         return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
     }
 
+    /**
+     * 探索实践简介接口
+     */
+     public function getExploreDesc(){
+         if(IS_GET){
+             $info = $this->logicExploreContent->getThisVal();
+
+             return isset($info) ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> null]);
+         }
+         return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
+     }
+
 
     /**
      * 探索新闻类型新闻列表 接口

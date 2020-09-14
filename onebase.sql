@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50728
 File Encoding         : 65001
 
-Date: 2020-09-10 14:06:56
+Date: 2020-09-11 17:50:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `ob_action_log` (
   `update_time` int(11) unsigned NOT NULL DEFAULT '0',
   `create_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '执行行为的时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1564 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=1609 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of ob_action_log
@@ -289,6 +289,51 @@ INSERT INTO `ob_action_log` VALUES ('1560', '1', 'admin', '127.0.0.1', '新增',
 INSERT INTO `ob_action_log` VALUES ('1561', '1', 'admin', '127.0.0.1', '编辑', 'prefacecontent where id =1', '/admin/preface/editcontent.html', '1', '0', '1599706428');
 INSERT INTO `ob_action_log` VALUES ('1562', '1', 'admin', '127.0.0.1', '编辑', 'prefacecontent where id =1', '/admin/preface/editcontent.html', '1', '0', '1599706528');
 INSERT INTO `ob_action_log` VALUES ('1563', '1', 'admin', '127.0.0.1', '编辑', 'prefacecontent where id =1', '/admin/preface/editcontent.html', '1', '0', '1599716018');
+INSERT INTO `ob_action_log` VALUES ('1564', '1', 'admin', '127.0.0.1', '编辑', 'model overviewCates 更新数据 where id =1', '/admin/overview/edit.html', '1', '0', '1599727143');
+INSERT INTO `ob_action_log` VALUES ('1565', '1', 'admin', '127.0.0.1', '编辑', 'model overviewCates 更新数据 where id =2', '/admin/overview/edit.html', '1', '0', '1599727160');
+INSERT INTO `ob_action_log` VALUES ('1566', '1', 'admin', '127.0.0.1', '编辑', 'model bearcontent edit where id = 1', '/admin/bear/index.html', '1', '0', '1599728812');
+INSERT INTO `ob_action_log` VALUES ('1567', '1', 'admin', '127.0.0.1', '编辑', 'model bearcontent edit where id = 1', '/admin/bear/index.html', '1', '0', '1599728850');
+INSERT INTO `ob_action_log` VALUES ('1568', '1', 'admin', '127.0.0.1', '编辑', 'model bearcontent edit where id = 1', '/admin/bear/index.html', '1', '0', '1599728920');
+INSERT INTO `ob_action_log` VALUES ('1569', '1', 'admin', '127.0.0.1', '编辑', 'model bearcontent edit where id = 1', '/admin/bear/index.html', '1', '0', '1599729580');
+INSERT INTO `ob_action_log` VALUES ('1570', '1', 'admin', '127.0.0.1', '编辑', 'model exploreCates 编辑where id=2', '/admin/explore/edit.html', '1', '0', '1599733420');
+INSERT INTO `ob_action_log` VALUES ('1571', '1', 'admin', '127.0.0.1', '编辑', 'model exploreCates 编辑where id=1', '/admin/explore/edit.html', '1', '0', '1599733454');
+INSERT INTO `ob_action_log` VALUES ('1572', '1', 'admin', '127.0.0.1', '编辑', 'model exploreCates 编辑where id=3', '/admin/explore/edit.html', '1', '0', '1599733473');
+INSERT INTO `ob_action_log` VALUES ('1573', '1', 'admin', '127.0.0.1', '编辑', 'model explorehistory where id= 2', '/admin/explorehistory/index.html', '1', '0', '1599733489');
+INSERT INTO `ob_action_log` VALUES ('1574', '1', 'admin', '127.0.0.1', '登录', '登录操作，username：admin', '/admin/login/loginhandle.html', '1', '0', '1599785892');
+INSERT INTO `ob_action_log` VALUES ('1575', '1', 'admin', '127.0.0.1', '数据排序', '数据排序调整，model：Product，id：1，value：10', '/admin/product/setsort.html', '1', '0', '1599786701');
+INSERT INTO `ob_action_log` VALUES ('1576', '1', 'admin', '127.0.0.1', '添加', 'model product where id=5', '/admin/product/add.html', '1', '0', '1599786735');
+INSERT INTO `ob_action_log` VALUES ('1577', '1', 'admin', '127.0.0.1', '编辑', 'model ProductContent where id=2', '/admin/product/content.html', '1', '0', '1599787137');
+INSERT INTO `ob_action_log` VALUES ('1578', '1', 'admin', '127.0.0.1', '编辑', 'model deedscates where id=1', '/admin/deeds/edit.html', '1', '0', '1599788177');
+INSERT INTO `ob_action_log` VALUES ('1579', '1', 'admin', '127.0.0.1', '编辑', 'model deedscates where id=4', '/admin/deeds/edit.html', '1', '0', '1599788187');
+INSERT INTO `ob_action_log` VALUES ('1580', '1', 'admin', '127.0.0.1', '编辑', 'model deedscates where id=3', '/admin/deeds/edit.html', '1', '0', '1599788198');
+INSERT INTO `ob_action_log` VALUES ('1581', '1', 'admin', '127.0.0.1', '编辑', 'model deedscates where id=5', '/admin/deeds/edit.html', '1', '0', '1599788208');
+INSERT INTO `ob_action_log` VALUES ('1582', '1', 'admin', '127.0.0.1', '编辑', 'model ProductContent where id=2', '/admin/deeds/content.html', '1', '0', '1599789693');
+INSERT INTO `ob_action_log` VALUES ('1583', '1', 'admin', '127.0.0.1', '编辑', 'model messagecontent where id= 1', '/admin/message/updatecontent.html', '1', '0', '1599789751');
+INSERT INTO `ob_action_log` VALUES ('1584', '1', 'admin', '127.0.0.1', '登录', '登录操作，username：admin', '/admin/login/loginhandle.html', '1', '0', '1599792996');
+INSERT INTO `ob_action_log` VALUES ('1585', '1', 'admin', '127.0.0.1', '编辑', '编辑菜单，name：扶贫日记', '/admin/menu/menuedit.html', '1', '0', '1599794495');
+INSERT INTO `ob_action_log` VALUES ('1586', '1', 'admin', '127.0.0.1', '新增', '新增菜单，name：扶贫日记描述', '/admin/menu/menuadd.html', '1', '0', '1599794533');
+INSERT INTO `ob_action_log` VALUES ('1587', '1', 'admin', '127.0.0.1', '新增', '新增菜单，name：扶贫日记列表', '/admin/menu/menuadd.html', '1', '0', '1599794551');
+INSERT INTO `ob_action_log` VALUES ('1588', '1', 'admin', '127.0.0.1', '编辑', 'model logContent add where id=1', '/admin/deedslog/content.html', '1', '0', '1599795630');
+INSERT INTO `ob_action_log` VALUES ('1589', '1', 'admin', '127.0.0.1', '编辑', 'model deedsLog编辑where id = 1', '/admin/deedslog/add.html', '1', '0', '1599803736');
+INSERT INTO `ob_action_log` VALUES ('1590', '1', 'admin', '127.0.0.1', '编辑', 'model deedsLog编辑where id = 1', '/admin/deedslog/add.html', '1', '0', '1599803743');
+INSERT INTO `ob_action_log` VALUES ('1591', '1', 'admin', '127.0.0.1', '编辑', 'model deedsLog编辑where id = 1', '/admin/deedslog/add.html', '1', '0', '1599803750');
+INSERT INTO `ob_action_log` VALUES ('1592', '1', 'admin', '127.0.0.1', '编辑', '编辑菜单，name：扶贫报道描述', '/admin/menu/menuedit.html', '1', '0', '1599804428');
+INSERT INTO `ob_action_log` VALUES ('1593', '1', 'admin', '127.0.0.1', '编辑', 'model glorycontent edit where id=1', '/admin/glory/content.html', '1', '0', '1599806831');
+INSERT INTO `ob_action_log` VALUES ('1594', '1', 'admin', '127.0.0.1', '编辑', 'model glorycates edit where id=1', '/admin/glory/edit.html', '1', '0', '1599806866');
+INSERT INTO `ob_action_log` VALUES ('1595', '1', 'admin', '127.0.0.1', '编辑', 'model glorycates edit where id=2', '/admin/glory/edit.html', '1', '0', '1599806875');
+INSERT INTO `ob_action_log` VALUES ('1596', '1', 'admin', '127.0.0.1', '编辑', 'model glorycompany edit where id=1', '/admin/company/index.html', '1', '0', '1599808433');
+INSERT INTO `ob_action_log` VALUES ('1597', '1', 'admin', '127.0.0.1', '编辑', 'model messagecontent where id= 1', '/admin/message/updatecontent.html', '1', '0', '1599809744');
+INSERT INTO `ob_action_log` VALUES ('1598', '1', 'admin', '127.0.0.1', '编辑', 'model messagecontent where id= 1', '/admin/message/updatecontent.html', '1', '0', '1599809780');
+INSERT INTO `ob_action_log` VALUES ('1599', '1', 'admin', '127.0.0.1', '编辑', 'model gloryperson edit where id =2', '/admin/person/edit.html', '1', '0', '1599810780');
+INSERT INTO `ob_action_log` VALUES ('1600', '1', 'admin', '127.0.0.1', '新增', '新增菜单，name：探索实践简介', '/admin/menu/menuadd.html', '1', '0', '1599812542');
+INSERT INTO `ob_action_log` VALUES ('1601', '1', 'admin', '127.0.0.1', '添加', 'model explorecontent add where id=1', '/admin/explore/desc.html', '1', '0', '1599813409');
+INSERT INTO `ob_action_log` VALUES ('1602', '1', 'admin', '127.0.0.1', '编辑', 'model explodecontent edit where id=1', '/admin/explore/desc.html', '1', '0', '1599813432');
+INSERT INTO `ob_action_log` VALUES ('1603', '1', 'admin', '127.0.0.1', '编辑', 'prefacecontent where id =1', '/admin/preface/editcontent.html', '1', '0', '1599815289');
+INSERT INTO `ob_action_log` VALUES ('1604', '1', 'admin', '127.0.0.1', '编辑', 'prefacecontent where id =1', '/admin/preface/editcontent.html', '1', '0', '1599815639');
+INSERT INTO `ob_action_log` VALUES ('1605', '1', 'admin', '127.0.0.1', '编辑', 'prefacecontent where id =1', '/admin/preface/editcontent.html', '1', '0', '1599815817');
+INSERT INTO `ob_action_log` VALUES ('1606', '1', 'admin', '127.0.0.1', '编辑', 'prefacecontent where id =1', '/admin/preface/editcontent.html', '1', '0', '1599816308');
+INSERT INTO `ob_action_log` VALUES ('1607', '1', 'admin', '127.0.0.1', '编辑', 'prefacecontent where id =1', '/admin/preface/editcontent.html', '1', '0', '1599816873');
+INSERT INTO `ob_action_log` VALUES ('1608', '1', 'admin', '127.0.0.1', '编辑', 'prefacecontent where id =1', '/admin/preface/editcontent.html', '1', '0', '1599816896');
 
 -- ----------------------------
 -- Table structure for ob_addon
@@ -483,6 +528,7 @@ CREATE TABLE `ob_auth_group_access` (
 DROP TABLE IF EXISTS `ob_bear_content`;
 CREATE TABLE `ob_bear_content` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL COMMENT '标题',
   `content` text COMMENT '内容',
   `create_time` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -491,7 +537,7 @@ CREATE TABLE `ob_bear_content` (
 -- ----------------------------
 -- Records of ob_bear_content
 -- ----------------------------
-INSERT INTO `ob_bear_content` VALUES ('2', '不择客服部举而不坚比较急就比较', null);
+INSERT INTO `ob_bear_content` VALUES ('2', '扶贫地图', '&lt;p&gt;\r\n	&lt;img src=&quot;/upload/picture/20200910/71fbaa1630fc5532c768b15f7d836fdf.png&quot; alt=&quot;&quot; /&gt;&amp;nbsp;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;div&gt;\r\n	1990-2012年间深圳完成梅州市2区5县、清远市3县、茂名电白等4县、韶关市4县、肇庆市2县，新疆哈密市，贵州毕节黔南州2市10县，四川阿坝州、汶川县，湖北巴东县、红安县，重庆万州区、江西井冈山市、湖南韶山市，陕西延安市，甘肃环县，安徽霍山县，青海玉树县，宁夏固原市2县1区等地对口工作。据不完全统计。\r\n&lt;/div&gt;\r\n&lt;p&gt;\r\n	截至2012年9月份，全市安排各类帮扶资金物资累计达140.27亿元，其中财政性帮扶资金98.16亿元，援建民生项目13059个。\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;/upload/picture/20200910/495215dcdac6ecacd9a1af1f2ef188c3.png&quot; alt=&quot;&quot; /&gt;\r\n&lt;/p&gt;', null);
 
 -- ----------------------------
 -- Table structure for ob_blogroll
@@ -583,11 +629,11 @@ CREATE TABLE `ob_deeds_cates` (
 -- ----------------------------
 -- Records of ob_deeds_cates
 -- ----------------------------
-INSERT INTO `ob_deeds_cates` VALUES ('1', '25', '扶贫文艺作品', '50', '1', '1598926169');
+INSERT INTO `ob_deeds_cates` VALUES ('1', '36', '扶贫文艺作品', '50', '1', '1598926169');
 INSERT INTO `ob_deeds_cates` VALUES ('2', '9', '八百', '1', '0', '1598926199');
-INSERT INTO `ob_deeds_cates` VALUES ('3', '14', '扶贫报到精选', '15', '1', '1598955958');
-INSERT INTO `ob_deeds_cates` VALUES ('4', '9', '扶贫日记', '20', '1', '1599032129');
-INSERT INTO `ob_deeds_cates` VALUES ('5', '8', '扶贫荣耀', '1', '1', '1599032358');
+INSERT INTO `ob_deeds_cates` VALUES ('3', '38', '扶贫报到精选', '15', '1', '1598955958');
+INSERT INTO `ob_deeds_cates` VALUES ('4', '37', '扶贫日记', '20', '1', '1599032129');
+INSERT INTO `ob_deeds_cates` VALUES ('5', '39', '扶贫荣耀', '1', '1', '1599032358');
 INSERT INTO `ob_deeds_cates` VALUES ('6', '26', '测试', '1', '0', '1599185762');
 
 -- ----------------------------
@@ -603,7 +649,7 @@ CREATE TABLE `ob_deeds_content` (
 -- ----------------------------
 -- Records of ob_deeds_content
 -- ----------------------------
-INSERT INTO `ob_deeds_content` VALUES ('2', '五星111111111');
+INSERT INTO `ob_deeds_content` VALUES ('2', '&lt;div style=&quot;background-color:#FFFFFE;font-family:Consolas;font-size:14px;&quot;&gt;\r\n	1990-2012年间深圳完成梅州市2区5县、清远市3县、茂名电白等4县、韶关市4县、肇庆市2县，新疆哈密市，贵州毕节黔南州2市10县，四川阿坝州、汶川县，湖北巴东县、红安县，重庆万州区、江西井冈山市、湖南韶山市，陕西延安市，甘肃环县，安徽霍山县，青海玉树县，宁夏固原市2县1区等地对口工作。据不完全统计。\r\n&lt;/div&gt;');
 
 -- ----------------------------
 -- Table structure for ob_deeds_describe
@@ -632,16 +678,17 @@ CREATE TABLE `ob_deeds_log` (
   `content` text COMMENT '新闻详情',
   `status` tinyint(1) DEFAULT '1' COMMENT '1=ok 0=delete',
   `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+  `imgs` varchar(255) DEFAULT NULL COMMENT '日志展示图',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='事迹风采 扶贫日记表';
 
 -- ----------------------------
 -- Records of ob_deeds_log
 -- ----------------------------
-INSERT INTO `ob_deeds_log` VALUES ('1', '测试', '1', '                            ceshiob                        ', '分公司个体', '0', '1599038879');
-INSERT INTO `ob_deeds_log` VALUES ('2', '就改好发给', '1', '她估计灰灰给', '和顶顶顶顶顶的的', '1', '1599038931');
-INSERT INTO `ob_deeds_log` VALUES ('3', '刚刚凤冠福股份', '1', '跟单还是多或所所过或或或或或或或或或或或或或或', '更合适不V型北大法宝发广告', '1', '1599038945');
-INSERT INTO `ob_deeds_log` VALUES ('4', '1111', '10', '222222222222', '3333333333', '1', '1599038955');
+INSERT INTO `ob_deeds_log` VALUES ('1', '测试', '1', '                            ceshiob                        ', '分公司个体', '0', '1599038879', null);
+INSERT INTO `ob_deeds_log` VALUES ('2', '就改好发给', '1', '                            她估计灰灰给                        ', '                        和顶顶顶顶顶的的                        ', '1', '1599803750', '20');
+INSERT INTO `ob_deeds_log` VALUES ('3', '刚刚凤冠福股份', '1', '                            跟单还是多或所所过或或或或或或或或或或或或或或                        ', '                        更合适不V型北大法宝发广告                        ', '1', '1599803743', '20');
+INSERT INTO `ob_deeds_log` VALUES ('4', '1111', '10', '                            222222222222                        ', '                        3333333333                        ', '1', '1599803736', '20');
 
 -- ----------------------------
 -- Table structure for ob_deeds_news
@@ -649,7 +696,6 @@ INSERT INTO `ob_deeds_log` VALUES ('4', '1111', '10', '222222222222', '333333333
 DROP TABLE IF EXISTS `ob_deeds_news`;
 CREATE TABLE `ob_deeds_news` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `imgs` int(10) DEFAULT NULL,
   `sort` int(10) unsigned DEFAULT '1' COMMENT '排序',
   `title` varchar(50) DEFAULT NULL,
   `introduce` varchar(255) DEFAULT NULL,
@@ -662,9 +708,9 @@ CREATE TABLE `ob_deeds_news` (
 -- ----------------------------
 -- Records of ob_deeds_news
 -- ----------------------------
-INSERT INTO `ob_deeds_news` VALUES ('1', '20', '10', '汽车配件2222', '   465465465 546654654654564564564                                                ', '                                                788797877/654654654654645645                                                ', '1', '1599042975');
-INSERT INTO `ob_deeds_news` VALUES ('2', '16', '1', '测试', '4546645645', '8787878778', '0', '1599042991');
-INSERT INTO `ob_deeds_news` VALUES ('3', '14', '1', '测试1111', '65+5464545', '5645645464545', '1', '1599043007');
+INSERT INTO `ob_deeds_news` VALUES ('1', '10', '汽车配件2222', '   465465465 546654654654564564564                                                ', '                                                788797877/654654654654645645                                                ', '1', '1599042975');
+INSERT INTO `ob_deeds_news` VALUES ('2', '1', '测试', '4546645645', '8787878778', '1', '1599042991');
+INSERT INTO `ob_deeds_news` VALUES ('3', '1', '测试1111', '65+5464545', '5645645464545', '1', '1599043007');
 
 -- ----------------------------
 -- Table structure for ob_deeds_works
@@ -725,9 +771,24 @@ CREATE TABLE `ob_explore_cates` (
 -- ----------------------------
 -- Records of ob_explore_cates
 -- ----------------------------
-INSERT INTO `ob_explore_cates` VALUES ('1', '20', '深圳担当', '20', '                                                            7788787887                                                ', '1', '1598922682');
-INSERT INTO `ob_explore_cates` VALUES ('2', '5', '探索管理', '30', '45455454', '1', '1598922724');
-INSERT INTO `ob_explore_cates` VALUES ('3', '19', '勇于担当', '1', '5645664664565456', '1', '1599030433');
+INSERT INTO `ob_explore_cates` VALUES ('1', '32', '探索撷音', '20', '                                                                                          7788787887                                                                        ', '1', '1598922682');
+INSERT INTO `ob_explore_cates` VALUES ('2', '31', '精准施策', '30', '                              45455454                        ', '1', '1598922724');
+INSERT INTO `ob_explore_cates` VALUES ('3', '33', '勇于担当', '1', '                              5645664664565456                        ', '1', '1599030433');
+
+-- ----------------------------
+-- Table structure for ob_explore_content
+-- ----------------------------
+DROP TABLE IF EXISTS `ob_explore_content`;
+CREATE TABLE `ob_explore_content` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `content` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='探索实践简介';
+
+-- ----------------------------
+-- Records of ob_explore_content
+-- ----------------------------
+INSERT INTO `ob_explore_content` VALUES ('1', '&lt;div style=&quot;background-color:#FFFFFE;font-family:Consolas;font-size:14px;&quot;&gt;\r\n	1990-2012年间深圳完成梅州市2区5县、清远市3县、茂名电白等4县、韶关市4县、肇庆市2县，新疆哈密市，贵州毕节黔南州2市10县，四川阿坝州、汶川县，湖北巴东县、红安县，重庆万州区、江西井冈山市、湖南韶山市，陕西延安市，甘肃环县，安徽霍山县，青海玉树县，宁夏固原市2县1区等地对口工作。据不完全统计。。\r\n&lt;/div&gt;');
 
 -- ----------------------------
 -- Table structure for ob_explore_history
@@ -745,7 +806,7 @@ CREATE TABLE `ob_explore_history` (
 -- ----------------------------
 -- Records of ob_explore_history
 -- ----------------------------
-INSERT INTO `ob_explore_history` VALUES ('2', '   历史回望', '16', '5644646446545465645645', '1599016995');
+INSERT INTO `ob_explore_history` VALUES ('2', '    历史回望', '34', '5644646446545465645645', '1599016995');
 
 -- ----------------------------
 -- Table structure for ob_explore_news
@@ -783,7 +844,7 @@ CREATE TABLE `ob_file` (
   `update_time` int(11) unsigned NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='文件表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='文件表';
 
 -- ----------------------------
 -- Records of ob_file
@@ -792,6 +853,7 @@ INSERT INTO `ob_file` VALUES ('1', 'b2e6be75b2e963ee998b405e148cf9ad.png', '2020
 INSERT INTO `ob_file` VALUES ('2', '0a75d0cbca875c01618cd6d2241a6ef3.png', '20200821/0a75d0cbca875c01618cd6d2241a6ef3.png', '', 'a43bc128d4ea84f9a96c7099cbc03d6fa182d62a', '1597991216', '0', '1');
 INSERT INTO `ob_file` VALUES ('3', '32064efb9de612416143f5b4b31abe79.mp4', '20200903/32064efb9de612416143f5b4b31abe79.mp4', '', 'a0386e90c8278c07be68b4b84164106f17511d57', '1599103282', '0', '1');
 INSERT INTO `ob_file` VALUES ('4', '88672c78405c2d520e6bba62303a5694.jpg', '20200910/88672c78405c2d520e6bba62303a5694.jpg', '', '51ddb1ca69b825053752ebea8eee7ba068f06a94', '1599716006', '0', '1');
+INSERT INTO `ob_file` VALUES ('5', 'ae42b86e31ef80c6fd9c495d12b1191f.png', '20200911/ae42b86e31ef80c6fd9c495d12b1191f.png', '', '78c583c71043cd24d84d4678fde26412322f1ce1', '1599816872', '0', '1');
 
 -- ----------------------------
 -- Table structure for ob_glory_cates
@@ -809,8 +871,8 @@ CREATE TABLE `ob_glory_cates` (
 -- ----------------------------
 -- Records of ob_glory_cates
 -- ----------------------------
-INSERT INTO `ob_glory_cates` VALUES ('1', '10', '先进单位', '23', '1599122960');
-INSERT INTO `ob_glory_cates` VALUES ('2', '1', '先进个人', '14', '1599123058');
+INSERT INTO `ob_glory_cates` VALUES ('1', '10', '先进单位', '40', '1599122960');
+INSERT INTO `ob_glory_cates` VALUES ('2', '1', '先进个人', '41', '1599123058');
 
 -- ----------------------------
 -- Table structure for ob_glory_company
@@ -818,6 +880,7 @@ INSERT INTO `ob_glory_cates` VALUES ('2', '1', '先进个人', '14', '1599123058
 DROP TABLE IF EXISTS `ob_glory_company`;
 CREATE TABLE `ob_glory_company` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL COMMENT '标题',
   `content` text,
   `create_time` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -826,7 +889,7 @@ CREATE TABLE `ob_glory_company` (
 -- ----------------------------
 -- Records of ob_glory_company
 -- ----------------------------
-INSERT INTO `ob_glory_company` VALUES ('1', '佳都科技扩扩扩扩但是都懂是的撒的', '1599124879');
+INSERT INTO `ob_glory_company` VALUES ('1', '深圳扶贫工作', '&lt;p style=&quot;text-align:center;&quot;&gt;\r\n	&amp;nbsp;&lt;img src=&quot;/upload/picture/20200911/3bd5762b4f89e64cbb36ca3529caa8a1.png&quot; alt=&quot;&quot; /&gt;\r\n&lt;/p&gt;\r\n&lt;p style=&quot;text-align:center;&quot;&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;p style=&quot;text-align:center;&quot;&gt;\r\n	反馈了上公交了看是不是快递费不好看说白癜风的好舒服是发是啥的防守打法v&amp;nbsp;\r\n&lt;/p&gt;\r\n&lt;p style=&quot;text-align:center;&quot;&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;p style=&quot;text-align:center;&quot;&gt;\r\n	&lt;img src=&quot;/upload/picture/20200910/71fbaa1630fc5532c768b15f7d836fdf.png&quot; alt=&quot;&quot; /&gt;\r\n&lt;/p&gt;', '1599124879');
 
 -- ----------------------------
 -- Table structure for ob_glory_content
@@ -842,7 +905,7 @@ CREATE TABLE `ob_glory_content` (
 -- ----------------------------
 -- Records of ob_glory_content
 -- ----------------------------
-INSERT INTO `ob_glory_content` VALUES ('1', '                        规划局很尴尬会更好规划局好久好久好久好久                        ', '1599124340');
+INSERT INTO `ob_glory_content` VALUES ('1', '&lt;div style=&quot;background-color:#FFFFFE;font-family:Consolas;font-size:14px;&quot;&gt;\r\n	1990-2012年间深圳完成梅州市2区5县、清远市3县、茂名电白等4县、韶关市4县、肇庆市2县，新疆哈密市，贵州毕节黔南州2市10县，四川阿坝州、汶川县，湖北巴东县、红安县，重庆万州区、江西井冈山市、湖南韶山市，陕西延安市，甘肃环县，安徽霍山县，青海玉树县，宁夏固原市2县1区等地对口工作。据不完全统计。\r\n&lt;/div&gt;', '1599124340');
 
 -- ----------------------------
 -- Table structure for ob_glory_person
@@ -865,7 +928,7 @@ CREATE TABLE `ob_glory_person` (
 -- Records of ob_glory_person
 -- ----------------------------
 INSERT INTO `ob_glory_person` VALUES ('1', '1', '张无忌', '光明顶235号', '18', '更丰富付付付付付付付', '0', '1599117901', null);
-INSERT INTO `ob_glory_person` VALUES ('2', '1', '张三丰', '武当山', '20', '金晶科技看看借记卡健康健康', '1', '1599117981', null);
+INSERT INTO `ob_glory_person` VALUES ('2', '1', '张三丰', '武当山', '20', '                            金晶科技看看借记卡健康健康                        ', '1', '1599117981', '我会以已已已已UIUI任务已UI互为符合 ');
 INSERT INTO `ob_glory_person` VALUES ('3', '20', '呜呜呜呜呜呜呜', '呃呃呃呃呃呃', '16', '                            鹅鹅鹅饿鹅鹅鹅饿                        ', '1', '1599118303', '到门口毛孔里面力缆狂澜');
 INSERT INTO `ob_glory_person` VALUES ('4', '1', '张翠山', '武当山', '21', '                                                        顶顶顶顶顶顶顶顶顶                                                ', '1', '1599118339', '反反复复');
 
@@ -912,6 +975,22 @@ CREATE TABLE `ob_jobs` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for ob_log_content
+-- ----------------------------
+DROP TABLE IF EXISTS `ob_log_content`;
+CREATE TABLE `ob_log_content` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  `content` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='事迹风采 扶贫日记描述';
+
+-- ----------------------------
+-- Records of ob_log_content
+-- ----------------------------
+INSERT INTO `ob_log_content` VALUES ('1', '扶贫报道', '&lt;div style=&quot;background-color:#FFFFFE;font-family:Consolas;font-size:14px;&quot;&gt;\r\n	1990-2012年间深圳完成梅州市2区5县、清远市3县、茂名电白等4县、韶关市4县、肇庆市2县，新疆哈密市，贵州毕节黔南州2市10县，四川阿坝州、汶川县，湖北巴东县、红安县，重庆万州区、江西井冈山市、湖南韶山市，陕西延安市，甘肃环县，安徽霍山县，青海玉树县，宁夏固原市2县1区等地对口工作。据不完全统计。\r\n&lt;/div&gt;');
+
+-- ----------------------------
 -- Table structure for ob_member
 -- ----------------------------
 DROP TABLE IF EXISTS `ob_member`;
@@ -936,7 +1015,7 @@ CREATE TABLE `ob_member` (
 -- ----------------------------
 -- Records of ob_member
 -- ----------------------------
-INSERT INTO `ob_member` VALUES ('1', '1', 'admin', 'admin', '2dfc60226828374ae6efa854b28b93bc', '46985699@qq.com', 'a6jf7j2gbqujje3nusgh3759h0', '18555550710', '1599699974', '1597978893', '1', '0', '0', '1');
+INSERT INTO `ob_member` VALUES ('1', '1', 'admin', 'admin', '2dfc60226828374ae6efa854b28b93bc', '46985699@qq.com', 'i1c0qcfr749gr1e9hf7isk8q77', '18555550710', '1599792996', '1597978893', '1', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for ob_menu
@@ -956,7 +1035,7 @@ CREATE TABLE `ob_menu` (
   `update_time` int(11) unsigned NOT NULL DEFAULT '0',
   `create_time` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=241 DEFAULT CHARSET=utf8 COMMENT='菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=244 DEFAULT CHARSET=utf8 COMMENT='菜单表';
 
 -- ----------------------------
 -- Records of ob_menu
@@ -1046,15 +1125,18 @@ INSERT INTO `ob_menu` VALUES ('228', '历史回望管理', '215', '2', 'admin', 
 INSERT INTO `ob_menu` VALUES ('229', '探索新闻管理', '215', '3', 'admin', 'explorenews/index', '0', '0', 'fa-maxcdn', '1', '1599026604', '1599018425');
 INSERT INTO `ob_menu` VALUES ('230', '扶贫作品设置', '217', '3', 'admin', 'works/index', '0', '0', 'fa-book', '1', '0', '1599032520');
 INSERT INTO `ob_menu` VALUES ('231', '扶贫报道', '217', '4', 'admin', 'deedsnews', '0', '0', 'fa-align-right', '1', '1599644173', '1599032565');
-INSERT INTO `ob_menu` VALUES ('232', '扶贫日记', '217', '5', 'admin', 'deedslog/index', '0', '0', 'fa-list', '1', '0', '1599032602');
+INSERT INTO `ob_menu` VALUES ('232', '扶贫日记', '217', '5', 'admin', 'deedslog', '0', '0', 'fa-list', '1', '1599794495', '1599032602');
 INSERT INTO `ob_menu` VALUES ('233', '扶贫荣耀', '217', '6', 'admin', 'glory', '0', '0', 'fa-barcode', '1', '1599112646', '1599032651');
 INSERT INTO `ob_menu` VALUES ('234', '扶贫荣耀简介', '233', '0', 'admin', 'glory/content', '0', '0', 'fa-bar-chart', '1', '0', '1599112523');
 INSERT INTO `ob_menu` VALUES ('235', '扶贫荣耀分类设置', '233', '2', 'admin', 'glory/cates', '0', '0', 'fa-institution', '1', '1599119127', '1599112564');
 INSERT INTO `ob_menu` VALUES ('236', '先进单位简介', '233', '4', 'admin', 'company/index', '0', '0', 'fa-desktop', '1', '1599124967', '1599112943');
 INSERT INTO `ob_menu` VALUES ('237', '先进个人', '233', '5', 'admin', 'person/index', '0', '0', 'fa-check-square', '1', '1599114354', '1599112972');
 INSERT INTO `ob_menu` VALUES ('238', '深圳帮扶简史', '214', '3', 'admin', 'bear/index', '0', '0', 'fa-gear', '1', '0', '1599182576');
-INSERT INTO `ob_menu` VALUES ('239', '扶贫报道描述', '231', '1', 'admin', 'deedsnews/describe', '0', '0', 'fa-photo', '1', '0', '1599644207');
+INSERT INTO `ob_menu` VALUES ('239', '扶贫报道描述', '231', '1', 'admin', 'deedsnews/describe', '1', '0', 'fa-photo', '1', '1599804428', '1599644207');
 INSERT INTO `ob_menu` VALUES ('240', '扶贫报道新闻列表', '231', '2', 'admin', 'deedsnews/index', '0', '0', 'fa-eject', '1', '0', '1599644228');
+INSERT INTO `ob_menu` VALUES ('241', '扶贫日记描述', '232', '1', 'admin', 'deedslog/content', '0', '0', 'fa-align-justify', '1', '0', '1599794533');
+INSERT INTO `ob_menu` VALUES ('242', '扶贫日记列表', '232', '2', 'admin', 'deedslog/index', '0', '0', 'fa-arrow-circle-up', '1', '0', '1599794551');
+INSERT INTO `ob_menu` VALUES ('243', '探索实践简介', '215', '0', 'admin', 'explore/desc', '0', '0', 'fa-photo', '1', '0', '1599812541');
 
 -- ----------------------------
 -- Table structure for ob_message
@@ -1089,7 +1171,7 @@ CREATE TABLE `ob_message_content` (
 -- ----------------------------
 -- Records of ob_message_content
 -- ----------------------------
-INSERT INTO `ob_message_content` VALUES ('1', '&lt;p&gt;\r\n	&lt;img src=&quot;http://api.map.baidu.com/staticimage?center=121.920988%2C31.170099&amp;zoom=9&amp;width=558&amp;height=360&amp;markers=121.920988%2C31.170099&amp;markerStyles=l%2CA&quot; alt=&quot;&quot; /&gt;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	44dsdfsd8f898989\r\n&lt;/p&gt;', '1598863504');
+INSERT INTO `ob_message_content` VALUES ('1', '&lt;div style=&quot;background-color:#FFFFFE;font-family:Consolas;font-size:14px;&quot;&gt;\r\n	1990-2012年间深圳完成梅州市2区5县、清远市3县、茂名电白等4县、韶关市4县、肇庆市2县，新疆哈密市，贵州毕节黔南州2市10县，四川阿坝州、汶川县，湖北巴东县、红安县，重庆万州区、江西井冈山市、湖南韶山市，陕西延安市，甘肃环县，安徽霍山县，青海玉树县，宁夏固原市2县1区等地对口工作。据不完全统计\r\n&lt;/div&gt;', '1598863504');
 
 -- ----------------------------
 -- Table structure for ob_overnews
@@ -1130,8 +1212,8 @@ CREATE TABLE `ob_overview_cates` (
 -- ----------------------------
 -- Records of ob_overview_cates
 -- ----------------------------
-INSERT INTO `ob_overview_cates` VALUES ('1', '8', '深圳担当', '20', '1', '1598926169');
-INSERT INTO `ob_overview_cates` VALUES ('2', '9', '深帮扶简史', '1', '1', '1598926199');
+INSERT INTO `ob_overview_cates` VALUES ('1', '5', '深圳担当', '20', '1', '1598926169');
+INSERT INTO `ob_overview_cates` VALUES ('2', '28', '深圳帮扶简史', '1', '1', '1598926199');
 
 -- ----------------------------
 -- Table structure for ob_picture
@@ -1147,7 +1229,7 @@ CREATE TABLE `ob_picture` (
   `update_time` int(11) unsigned NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='图片表';
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='图片表';
 
 -- ----------------------------
 -- Records of ob_picture
@@ -1179,6 +1261,21 @@ INSERT INTO `ob_picture` VALUES ('24', '327aebea9b3405d3671c8574736c3f04.png', '
 INSERT INTO `ob_picture` VALUES ('25', 'ea0aa731e1e1bbe2909bdf6b9e8a7b18.png', '20200904/ea0aa731e1e1bbe2909bdf6b9e8a7b18.png', '', '58a105d48d2822f45b2b8ea531898597f8f0e7e1', '1599185506', '0', '1');
 INSERT INTO `ob_picture` VALUES ('26', 'b48213e08002ee5443aed39709330e86.png', '20200904/b48213e08002ee5443aed39709330e86.png', '', '389b861dbe120605e7af36326f6c99c54ebe70c8', '1599185761', '0', '1');
 INSERT INTO `ob_picture` VALUES ('27', '06859088e3dc6adb230991545e33fe5e.jpg', '20200910/06859088e3dc6adb230991545e33fe5e.jpg', '', '65f4a61dec505841aa854f64a6aae219ba72a090', '1599700544', '0', '1');
+INSERT INTO `ob_picture` VALUES ('28', '489fff3a91a57b041b433fd0bd71c5c3.png', '20200910/489fff3a91a57b041b433fd0bd71c5c3.png', '', 'dcde67ba14286d528dc7bd2230778c65f66c45ac', '1599727158', '0', '1');
+INSERT INTO `ob_picture` VALUES ('29', '71fbaa1630fc5532c768b15f7d836fdf.png', '20200910/71fbaa1630fc5532c768b15f7d836fdf.png', '', '78c583c71043cd24d84d4678fde26412322f1ce1', '1599728810', '0', '1');
+INSERT INTO `ob_picture` VALUES ('30', '495215dcdac6ecacd9a1af1f2ef188c3.png', '20200910/495215dcdac6ecacd9a1af1f2ef188c3.png', '', '7ffcf2448d1fd74ca09b4eb17c7f4198901196d7', '1599728918', '0', '1');
+INSERT INTO `ob_picture` VALUES ('31', '010ed4f524244ff1531bf3084f5b91cb.png', '20200910/010ed4f524244ff1531bf3084f5b91cb.png', '', 'e25024b6ccb7da1f8ce126aab6f00ddf78359d28', '1599733418', '0', '1');
+INSERT INTO `ob_picture` VALUES ('32', 'fa9cfe1e585dced3a859b1cfdfd5f6ba.png', '20200910/fa9cfe1e585dced3a859b1cfdfd5f6ba.png', '', 'bf578d783e8bb9c24c17e7a1e23e801c74213f12', '1599733453', '0', '1');
+INSERT INTO `ob_picture` VALUES ('33', '2605de685040db6c0e3c050d6f9170e7.png', '20200910/2605de685040db6c0e3c050d6f9170e7.png', '', '2deda1888741879ba9850b23d843d15aa0a31af9', '1599733471', '0', '1');
+INSERT INTO `ob_picture` VALUES ('34', '9b570a533dd17db74582162a4bdb76fc.png', '20200910/9b570a533dd17db74582162a4bdb76fc.png', '', 'c958839671b666279c8c638a0c848a1f9633dc99', '1599733487', '0', '1');
+INSERT INTO `ob_picture` VALUES ('35', '0a1ad73515f5c96dc755271d6b08422f.png', '20200911/0a1ad73515f5c96dc755271d6b08422f.png', '', 'bd156fe0f839932d716296d2c723ab8a4c431ad3', '1599786732', '0', '1');
+INSERT INTO `ob_picture` VALUES ('36', 'b246810a7992ab5201e2118d62925834.png', '20200911/b246810a7992ab5201e2118d62925834.png', '', 'b287fe1054ebe9085fb8e8824c370a41ba480659', '1599788175', '0', '1');
+INSERT INTO `ob_picture` VALUES ('37', '86500903df31cb5dd9f2a22bf3d9048a.png', '20200911/86500903df31cb5dd9f2a22bf3d9048a.png', '', 'eaf6b6a497ef886d67c01569372bc99e566c638e', '1599788186', '0', '1');
+INSERT INTO `ob_picture` VALUES ('38', '0da0f7ac85f60eb2e482abae1b5f9ee4.png', '20200911/0da0f7ac85f60eb2e482abae1b5f9ee4.png', '', 'e5aa02442c6a2c6cea559aab717c08f8f552a9d8', '1599788197', '0', '1');
+INSERT INTO `ob_picture` VALUES ('39', 'a32f4d13d7c45e7eaae3d1c6aef31a34.png', '20200911/a32f4d13d7c45e7eaae3d1c6aef31a34.png', '', '0219a137696e85c147afe14a6fe9e33df24024ee', '1599788205', '0', '1');
+INSERT INTO `ob_picture` VALUES ('40', '9908227e94920f1c919c308418073d6b.png', '20200911/9908227e94920f1c919c308418073d6b.png', '', '730d88f18a09dc589c6e0c8451f7f49a1bf26cd0', '1599806865', '0', '1');
+INSERT INTO `ob_picture` VALUES ('41', '38de8c430bf6f6653e71541499da2565.png', '20200911/38de8c430bf6f6653e71541499da2565.png', '', '212c36ae522692e5b78c7bde4d63d4bbf21e5c1a', '1599806873', '0', '1');
+INSERT INTO `ob_picture` VALUES ('42', '3bd5762b4f89e64cbb36ca3529caa8a1.png', '20200911/3bd5762b4f89e64cbb36ca3529caa8a1.png', '', '67d61ccb97021fe98d955c289bcda5a14c473448', '1599808400', '0', '1');
 
 -- ----------------------------
 -- Table structure for ob_preface_content
@@ -1193,7 +1290,7 @@ CREATE TABLE `ob_preface_content` (
 -- ----------------------------
 -- Records of ob_preface_content
 -- ----------------------------
-INSERT INTO `ob_preface_content` VALUES ('6', '&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;/upload/file/20200910/88672c78405c2d520e6bba62303a5694.jpg&quot; alt=&quot;&quot; /&gt;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	哈哈哈哈沙发上芙蓉区分为法人。哈哈哈哈嗯嗯嗯5555\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;');
+INSERT INTO `ob_preface_content` VALUES ('6', '&lt;video controls=&quot;&quot; width=&quot;+width+&quot; height=&quot;+height+&quot; class=&quot;video/mp4&quot;&gt;&lt;/video&gt;');
 
 -- ----------------------------
 -- Table structure for ob_preface_img
@@ -1205,7 +1302,7 @@ CREATE TABLE `ob_preface_img` (
   `create_time` int(10) DEFAULT NULL,
   `status` tinyint(1) unsigned DEFAULT '1' COMMENT '1=ok 0=delete',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='前言首页图';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='前言首页图';
 
 -- ----------------------------
 -- Records of ob_preface_img
@@ -1226,15 +1323,16 @@ CREATE TABLE `ob_product` (
   `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
   `status` tinyint(1) DEFAULT '1' COMMENT '1=ok 0=delete',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='项目精选新闻表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='项目精选新闻表';
 
 -- ----------------------------
 -- Records of ob_product
 -- ----------------------------
-INSERT INTO `ob_product` VALUES ('1', '深圳', '11', '1', '汽车配件', '                                                惹我夫人夫人人人                                                ', '1598947508', '1');
+INSERT INTO `ob_product` VALUES ('1', '深圳', '11', '10', '汽车配件', '                                                惹我夫人夫人人人                                                ', '1598947508', '1');
 INSERT INTO `ob_product` VALUES ('2', '贵州', '12', '20', '惠州1111', '反反复复付', '1598947735', '0');
 INSERT INTO `ob_product` VALUES ('3', '江西', '13', '1', '江西是个好地方', '烦烦烦的地方大幅度的地方', '1598948060', '1');
 INSERT INTO `ob_product` VALUES ('4', '湖南', '24', '1', '这里是添加', '更丰富吧吧吧吧吧吧吧吧吧吧吧吧吧吧吧吧吧吧吧吧测', '1599184290', '1');
+INSERT INTO `ob_product` VALUES ('5', '四川', '35', '1', '四川', '尴尬不尴尬被被告人', '1599786735', '1');
 
 -- ----------------------------
 -- Table structure for ob_product_content
@@ -1249,7 +1347,7 @@ CREATE TABLE `ob_product_content` (
 -- ----------------------------
 -- Records of ob_product_content
 -- ----------------------------
-INSERT INTO `ob_product_content` VALUES ('2', '五星级军军军军军军军的表单板块维科技56465465465654654');
+INSERT INTO `ob_product_content` VALUES ('2', '&lt;div style=&quot;background-color:#FFFFFE;font-family:Consolas;font-size:14px;&quot;&gt;\r\n	1990-2012年间深圳完成梅州市2区5县、清远市3县、茂名电白等4县、韶关市4县、肇庆市2县，新疆哈密市，贵州毕节黔南州2市10县，四川阿坝州、汶川县，湖北巴东县、红安县，重庆万州区、江西井冈山市、湖南韶山市，陕西延安市，甘肃环县，安徽霍山县，青海玉树县，宁夏固原市2县1区等地对口工作。据不完全统计。截至2012年9月份，全市安排各类帮扶资金物资累计达140.27亿元，其中财政性帮扶资金98.16亿元，援建民生项目13059个。\r\n&lt;/div&gt;');
 
 -- ----------------------------
 -- Table structure for ob_region
