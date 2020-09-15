@@ -11,7 +11,7 @@ namespace app\common\logic;
 class DeedsNews extends  LogicBase{
 
     /**
-     * 扶贫报道列表接口
+     * 扶贫日志列表接口
      */
     public function getApiNewsList(){
 
@@ -23,7 +23,7 @@ class DeedsNews extends  LogicBase{
     }
 
     /**
-     * 扶贫报道详情接口
+     * 扶贫日志详情接口
      */
      public function getNewsInfo($id =''){
 
@@ -33,6 +33,8 @@ class DeedsNews extends  LogicBase{
 
          return $this->modelDeedsNews->getInfo(['id'=>$id],'id,title,content');
      }
+
+
 
 
 }

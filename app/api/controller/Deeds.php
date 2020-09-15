@@ -121,12 +121,10 @@ class Deeds extends ApiBase{
          */
      public function deesLogInfo(){
               if(IS_POST){
-
-                  echo 111;exit;
-                  
                   if(!isset($this->param['id']) || empty($this->param['id']) ||is_null($this->param['id'])){
                       return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'传递数据不合法！']);
                   }
+
 
                   $info = $this->logicDeedsLog->LogInfo($this->param['id']);
 

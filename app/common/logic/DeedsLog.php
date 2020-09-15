@@ -11,7 +11,7 @@ namespace app\common\logic;
 class DeedsLog extends LogicBase{
 
     /**
-     * 事迹风采日志列表
+     * 事迹风采报道新闻列表
      */
      public function getLogList(){
          $this->modelDeedsLog->alias('a');
@@ -37,7 +37,7 @@ class DeedsLog extends LogicBase{
 
 
      /**
-      * 日志详情
+      * 新闻详情
       */
       public function LogInfo($id = null){
 
@@ -52,9 +52,9 @@ class DeedsLog extends LogicBase{
                [SYS_DB_PREFIX . 'file f','a.music = f.id','LEFT'],
            ];
 
-          $where = ['id'=>$id,'status'=>1];
+          $where = ['a.id'=>$id,'a.status'=>1];
 
-          $field = 'a.id,a.title,a.content,a.music_title,f.path as fpath,p.path as ppath';
+          $field = 'a.id,a.title,a.content,a.music_title,f.path as fpath ,p.path as ppath';
           $this->modelDeedsLog->join=$join;
 
           $info  =  $this->modelDeedsLog->getInfo($where,$field);

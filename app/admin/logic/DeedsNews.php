@@ -16,7 +16,7 @@ class DeedsNews extends AdminBase{
      */
      public function getWhere($params=[]){
          $data =[];
-         isset($params['search_data']) &&  $data['title'] = ['like','%'.$params['search_data'].'%'];
+         isset($params['search_data']) &&  $data['a.title'] = ['like','%'.$params['search_data'].'%'];
          return $data;
      }
 
@@ -24,9 +24,22 @@ class DeedsNews extends AdminBase{
       * 获取列表
       */
      public function getThisList($where=[]){
-           $where['status'] =1;
-           $order = ['sort'=>'desc','create_time'=>'desc'];
-           return    $this->modelDeedsNews->getlist($where,false,$order,15);
+         $this->modelDeedsNews->alias('a');
+
+         $join = [
+             [SYS_DB_PREFIX . 'picture p','a.imgs = p.id','LEFT'],
+         ];
+         $where['a.status']=1;
+
+         $field = 'a.*,p.path';
+
+         $this->modelDeedsNews->join=$join;
+         $order = ['a.sort'=>'desc','a.create_time'=>'desc'];
+
+         $list = $this->modelDeedsNews->getList($where,$field,$order,15);
+
+         return $list;
+
      }
 
 
