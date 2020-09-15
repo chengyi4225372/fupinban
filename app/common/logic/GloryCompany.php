@@ -17,8 +17,7 @@ class GloryCompany extends LogicBase{
 
        $field ='id,title,content';
        $info = $this->modelGloryCompany->getInfo(null,$field);
-       $info['content'] = geteditorcontent($info['content']);
-
+       $info['content'] = imageUrl($info['content']);
        return $info;
 
     }

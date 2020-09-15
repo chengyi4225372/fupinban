@@ -45,8 +45,23 @@ class DeedsLog extends LogicBase{
               return false;
           }
 
-          $field = 'id,title,content';
-          return $this->modelDeedsLog->getInfo(['id'=>$id,'status'=>1],$field);
+          $this->modelDeedsLog->alias('a');
+
+           $join= [
+               [SYS_DB_PREFIX . 'picture p','a.imgs = p.id','LEFT'],
+               [SYS_DB_PREFIX . 'file f','a.music = f.id','LEFT'],
+           ];
+
+          $where = ['id'=>$id,'status'=>1];
+
+          $field = 'a.id,a.title,a.content,a.music_title,f.path as fpath,p.path as ppath';
+          $this->modelDeedsLog->join=$join;
+
+          $info  =  $this->modelDeedsLog->getInfo($where,$field);
+
+          $info['content'] = imageUrl($info['content']);
+          $info['fpath']   = config('Path.file').$info['fpath'];
+          $info['ppath']   = config('Path.imgs').$info['ppath'];
       }
 
 
