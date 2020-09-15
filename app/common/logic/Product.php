@@ -48,7 +48,11 @@ class Product extends LogicBase{
             return false;
         }
 
-        return $this->modelProduct->getColumn(['id'=>$id,'status'=>1],'id,title,content');
+        $field ='id,title,content';
+        $info = $this->modelProduct->getInfo(['id'=>$id,'status'=>1],$field);
+        $info['content'] = imageUrl($info['content']);
+
+        return $info;
 
     }
 }

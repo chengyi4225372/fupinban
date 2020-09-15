@@ -26,6 +26,7 @@ class ExploreNews extends LogicBase{
          $list = $this->modelExploreNews->getList($where,$field,$order,false);
 
          $list['content'] =  $this->modelExploreCates->getValue(['id'=>$cate_id],'content'); //分类介绍简介
+         $list['content'] =  geteditorcontent($list['content']);
 
          return  $list;
      }
