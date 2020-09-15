@@ -40,7 +40,10 @@ class ExploreNews extends LogicBase{
             return false;
         }
 
-        return $this->modelExploreCates->getColumn(['id'=>$id],'id,title,content');
+        $info = $this->modelExploreNews->getInfo(['id'=>$id],'id,title,content');
+        $info['content']  = imageUrl($info['content']);
+
+        return $info;
     }
 
 
