@@ -28,12 +28,13 @@ class DeedsLog extends  AdminBase{
          $this->modelDeedsLog->alias('a');
 
          $join =[
-             [SYS_DB_PREFIX . 'picture p','a.imgs = p.id','LEFT'],
+             [SYS_DB_PREFIX . 'picture p','a.imgs_ids = p.id','LEFT'],
          ];
          $where['a.status'] =1;
          $order=['a.sort'=>'desc','a.create_time'=>'desc'];
          $this->modelDeedsLog->join=$join;
-         return $this->modelDeedsLog->getList($where,$field,$order,15);
+         return  $this->modelDeedsLog->getList($where,$field,$order,15);
+         //dump($list);exit();
      }
 
      /**
@@ -68,6 +69,7 @@ class DeedsLog extends  AdminBase{
 
           $urls = url('index');
           $type = isset($params['id'])?'编辑':'添加';
+
           $ret  = $this->modelDeedsLog->setInfo($params);
           $ret  && action_log($type,'model deedsLog'.$type.'where id = '.$params['id']);
           return $ret?[RESULT_SUCCESS,$type.'成功',$urls]:[RESULT_ERROR,$this->modelDeedsLog->getError()];
@@ -81,7 +83,9 @@ class DeedsLog extends  AdminBase{
               return [RESULT_SUCCESS,'缺少查询条件'];
           }
 
-          return  $this->modelDeedsLog->getInfo(['id'=>$id]);
+          $info = $this->modelDeedsLog->getInfo(['id'=>$id]);
+
+          return $info;
       }
 
       /**

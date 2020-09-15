@@ -117,7 +117,7 @@ class Deeds extends ApiBase{
         }
 
         /**
-         * 获取日志详情
+         * 获取报道详情
          */
      public function deesLogInfo(){
               if(IS_POST){
@@ -166,7 +166,7 @@ class Deeds extends ApiBase{
         }
 
         /**
-         * 扶贫报道详情 接口
+         * 扶贫日志详情 接口
          */
       public function getNewsInfo(){
             if(IS_POST){

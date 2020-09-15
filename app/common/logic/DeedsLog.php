@@ -38,6 +38,8 @@ class DeedsLog extends LogicBase{
 
      /**
       * 新闻详情
+      *
+      *todo 接口错误
       */
       public function LogInfo($id = null){
 

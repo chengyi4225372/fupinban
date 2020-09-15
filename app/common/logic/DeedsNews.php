@@ -31,7 +31,24 @@ class DeedsNews extends  LogicBase{
              return false;
          }
 
-         return $this->modelDeedsNews->getInfo(['id'=>$id],'id,title,content');
+         $this->modelDeedsNews->alias('a');
+
+         $join= [
+             [SYS_DB_PREFIX . 'picture p','a.imgs = p.id','LEFT'],
+             [SYS_DB_PREFIX . 'file f','a.music = f.id','LEFT'],
+         ];
+
+         $where = ['a.id'=>$id,'a.status'=>1];
+
+         $field = 'a.id,a.title,a.content,a.music_title,f.path as fpath ,p.path as ppath';
+         $this->modelDeedsNews->join=$join;
+
+         $info  =  $this->modelDeedsNews->getInfo($where,$field);
+         $info['content'] = imageUrl($info['content']);
+         $info['fpath']   = config('Path.file').$info['fpath'];
+         $info['ppath']   = config('Path.img').$info['ppath'];
+
+         return $info;
      }
 
 

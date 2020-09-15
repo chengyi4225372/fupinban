@@ -1,22 +1,15 @@
-<form action="{:url('add')}" method="post" class="form_single">
+<form action="{:url('edit')}" method="post" class="form_single">
     <div class="box">
         <div class="box-body">
             <div class="row">
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>标题</label>
-                        <span>（新闻文章标题）</span>
-                        <input class="form-control" name="title" placeholder="请输入新闻文章标题" value="{$info.title|default=''}" type="text">
-                    </div>
-                </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>文章展示图</label>
                         <br/>
-                        {assign name="imgs" value="$info.imgs|default=''" /}
-                        {:widget('file/index', ['name' => 'imgs', 'value' =>$info.imgs, 'type' => 'img'])}
+                        {assign name="imgs_ids" value="$info.imgs_ids|default=''" /}
+                        {:widget('file/index', ['name' => 'imgs_ids', 'value' =>$imgs_ids, 'type' => 'imgs'])}
                     </div>
                 </div>
 
