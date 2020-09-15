@@ -42,6 +42,7 @@ class Message extends  AdminBase{
     }
 
 
+
      /**
       * 留言列表
       */
@@ -67,4 +68,7 @@ class Message extends  AdminBase{
       public function  del(){
          IS_GET && $this->jump($this->logicMessage->delThisMsg($this->param['id']));
        }
+
+
+
 }

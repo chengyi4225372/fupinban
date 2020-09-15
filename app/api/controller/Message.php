@@ -63,4 +63,5 @@ class Message extends ApiBase{
           return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误！']);
        }
 
+
 }
