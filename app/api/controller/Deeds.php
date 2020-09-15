@@ -103,7 +103,7 @@ class Deeds extends ApiBase{
      }
 
        /**
-        * 扶贫日记列表
+        * 扶贫报道列表
         */
      public function getDeedsLog(){
 
@@ -116,27 +116,27 @@ class Deeds extends ApiBase{
             return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式不对！']);
         }
 
-        /**
-         * 获取报道详情
-         */
-     public function deesLogInfo(){
-              if(IS_POST){
-                  if(!isset($this->param['id']) || empty($this->param['id']) ||is_null($this->param['id'])){
-                      return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'传递数据不合法！']);
-                  }
-
-
-                  $info = $this->logicDeedsLog->LogInfo($this->param['id']);
-
-                  if($info == false){
-                      return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'详情已删除或者不存在']);
-                  }
-
-                  return  isset($info)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> null]);
-              }
-
-              return $this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>'请求方式错误']);
-         }
+//        /**
+//         * 获取报道详情
+//         */
+//     public function deesLogInfo(){
+//              if(IS_POST){
+//                  if(!isset($this->param['id']) || empty($this->param['id']) ||is_null($this->param['id'])){
+//                      return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'传递数据不合法！']);
+//                  }
+//
+//
+//                  $info = $this->logicDeedsLog->LogInfo($this->param['id']);
+//
+//                  if($info == false){
+//                      return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'详情已删除或者不存在']);
+//                  }
+//
+//                  return  isset($info)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$info]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=> null]);
+//              }
+//
+//              return $this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>'请求方式错误']);
+//         }
 
 
         /**

@@ -25,12 +25,23 @@ class ExploreNews extends LogicBase{
 
          $list = $this->modelExploreNews->getList($where,$field,$order,false);
 
-         $list['content'] =  $this->modelExploreCates->getValue(['id'=>$cate_id],'content'); //分类介绍简介
-         $list['content'] =  geteditorcontent($list['content']);
+         $i = 1;
+         foreach ($list as $k =>$val){
+             $list[$k]['num'] = $i++;
+         }
 
-         return  $list;
+         return $list ;
      }
 
+
+    /**
+     * 探索新闻分类简介
+     */
+     public function getThisContent($cid = ''){
+         $content =  $this->modelExploreCates->getValue(['id'=>$cid],'content'); //分类介绍简介
+         $content =  geteditorcontent($content);
+         return $content;
+     }
 
 
     /**

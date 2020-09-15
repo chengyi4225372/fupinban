@@ -14,22 +14,23 @@ class DeedsLog extends LogicBase{
      * 事迹风采报道新闻列表
      */
      public function getLogList(){
-         $this->modelDeedsLog->alias('a');
 
-         $join = [
 
-             [SYS_DB_PREFIX . 'picture p','a.imgs = p.id','LEFT'],
-
-         ];
-         $this->modelDeedsLog->join = $join;
-
-         $where['a.status']=1;
-         $order=['a.sort'=>'desc','a.create_time'=>'desc'];
-         $field= 'a.id,a.title,a.introduce,p.path';
+         $where['status']=1;
+         $order=['sort'=>'desc','create_time'=>'desc'];
+         $field= 'id,introduce,content,imgs_ids';
          $list  = $this->modelDeedsLog->getList($where,$field,$order,false);
 
-         foreach ($list as $key =>$val){
-             $list[$key]['path'] =config('Path.img').$list[$key]['path'];
+
+         foreach ($list as $k=>$val){
+             $list[$k]['imgs_ids'] = explode(',',  $list[$k]['imgs_ids']);
+
+             foreach ($list[$k]['imgs_ids'] as $key =>$vals){
+                 $arr[] = $_SERVER['HTTP_HOST'].$this->logicFile->getPictureUrl($vals);
+                 $list[$k]['imgs_ids'] = $arr;
+                 $list[$k]['content'] = imageUrl($list[$k]['content']);
+                 $list[$k]['introduce'] = geteditorcontent( $list[$k]['introduce']);
+             }
          }
 
          return $list;
@@ -37,9 +38,8 @@ class DeedsLog extends LogicBase{
 
 
      /**
-      * 新闻详情
+      * 新闻报道详情
       *
-      *todo 接口错误
       */
       public function LogInfo($id = null){
 
@@ -47,23 +47,19 @@ class DeedsLog extends LogicBase{
               return false;
           }
 
-          $this->modelDeedsLog->alias('a');
+          $info = $this->modelDeedsLog->getInfo(['id'=>$id]);
 
-           $join= [
-               [SYS_DB_PREFIX . 'picture p','a.imgs = p.id','LEFT'],
-               [SYS_DB_PREFIX . 'file f','a.music = f.id','LEFT'],
-           ];
+          $info['imgs_ids'] = explode(',',$info['imgs_ids']);
 
-          $where = ['a.id'=>$id,'a.status'=>1];
+          foreach ($info['imgs_ids'] as $k =>$val){
+              $arr[] = $_SERVER['HTTP_HOST'].$this->logicFile->getPictureUrl($val);
+          }
 
-          $field = 'a.id,a.title,a.content,a.music_title,f.path as fpath ,p.path as ppath';
-          $this->modelDeedsLog->join=$join;
-
-          $info  =  $this->modelDeedsLog->getInfo($where,$field);
-
+          $info['imgs_ids'] =$arr;
           $info['content'] = imageUrl($info['content']);
-          $info['fpath']   = config('Path.file').$info['fpath'];
-          $info['ppath']   = config('Path.imgs').$info['ppath'];
+          $info['introduce'] = geteditorcontent($info['introduce']);
+
+          return $info;
       }
 
 

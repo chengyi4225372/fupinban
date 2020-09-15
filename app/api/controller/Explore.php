@@ -89,6 +89,24 @@ class Explore extends ApiBase{
      }
 
 
+
+     /*
+      * 探索管理新闻简介内容
+      */
+      public function newsInfo(){
+          if(IS_POST){
+
+              if(empty($this->param['cate_id']) || is_null($this->param['cate_id']) || !isset($this->param['cate_id'])){
+                  return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请传递查询条件id']);
+              }
+
+              $content = $this->logicExploreNews->getThisContent($this->param['cate_id']);
+              return  isset($content)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$content]):$this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'简介内容为空']);
+
+          }
+          return  $this->apiReturn(['code'=>RESULT_ERROR, 'msg'=>'请求方式不合法']);
+      }
+
      /**
       * 探索管理新闻 详情接口
       */
