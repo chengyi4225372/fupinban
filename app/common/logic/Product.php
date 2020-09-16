@@ -17,12 +17,10 @@ class Product extends LogicBase{
 
         $this->modelProduct->alias('a');
 
-
         $join =[
 
             [SYS_DB_PREFIX . 'picture p','a.p_imgs = p.id','LEFT'],
         ];
-
 
         $where['a.status']=1;
         $order =['a.sort'=>'desc','a.create_time'=>'desc'];
