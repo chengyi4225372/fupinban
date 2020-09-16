@@ -27,7 +27,7 @@ class File extends WidgetBase
 
         $widget_config['maxwidth'] = '150px';
 
-        $widget_config['allow_postfix'] = $type == 'img' ? '*.jpg; *.png; *.gif;' : '*.jpg; *.png; *.gif; *.zip; *.rar; *.tar; *.gz; *.7z; *.doc; *.docx; *.txt; *.xml; *.xlsx; *.xls;*.mp4;*.mp3;';
+        $widget_config['allow_postfix'] = $type == 'img' ? '*.jpg; *.png; *.gif;' : '*.jpg; *.png; *.gif; *.zip; *.rar; *.tar; *.gz; *.7z; *.doc; *.docx; *.txt; *.xml; *.xlsx; *.xls;*.mp4;*.mp3，*.MP4';
 
         $widget_config['max_size'] = 1024 * 1024;
         

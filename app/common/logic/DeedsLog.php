@@ -26,7 +26,7 @@ class DeedsLog extends LogicBase{
              $list[$k]['imgs_ids'] = explode(',',  $list[$k]['imgs_ids']);
 
              foreach ($list[$k]['imgs_ids'] as $key =>$vals){
-                 $arr[] = $_SERVER['HTTP_HOST'].$this->logicFile->getPictureUrl($vals);
+                 $arr[] ="http://".$_SERVER['HTTP_HOST'].$this->logicFile->getPictureUrl($vals);
                  $list[$k]['imgs_ids'] = $arr;
                  $list[$k]['content'] = imageUrl($list[$k]['content']);
                  $list[$k]['introduce'] = geteditorcontent( $list[$k]['introduce']);

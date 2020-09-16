@@ -75,7 +75,7 @@ class PrefaceContent extends AdminBase{
           $url = url('getcontent');
           $types = isset($params['id'])? '编辑':'添加';
           $ret = $this->modelPrefaceContent->setInfo($params);
-          $ret && action_log($types,'prefacecontent where id ='.$ret);
+          $ret && action_log($types,'prefacecontent edit where id ='.$ret);
           return $ret ? [RESULT_SUCCESS,'操作成功',$url]:[RESULT_ERROR,$this->modelPrefaceContent->getError()];
       }
 
