@@ -10,17 +10,46 @@ namespace app\api\controller;
 use think\session;
 
 class User extends ApiBase{
-    public $AppId = 'wx0f60d25f7813e9de';
-    public $AppSecret = 'b7bb29e5544dc3034728440544d35e77';
+
+
+    protected $AppId = 'wx0f60d25f7813e9de';
+
+    protected $AppSecret = 'b7bb29e5544dc3034728440544d35e77';
+
+
+    /*
+     * 微信登录提交接口
+     */
+     public function wxLogin(){
+
+         if(IS_POST) {
+             $params = $this->param;
+
+             if(isset($params['code'])){
+                 $code  = $params['code'];//小程序传来的code值
+                 $appid = $this->AppId;//小程序的appid
+                 $appSecret = $this->AppSecret;// 小程序的$appSecret
+                 $wxUrl = 'https://api.weixin.qq.com/sns/jscode2session?appid='.$appid.'&secret='.$appSecret.'&js_code='.$code.'&grant_type=authorization_code';
+
+
+             }
+
+
+           }
+          return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
+     }
+
+
+
 
     public function GetMemberInfo(){
         return $this->GetOpenid();
     }
+
     // 网页授权登录获取 OpendId
     public function GetOpenid()
     {
-        if(Session::get('openid'))
-            return ['openid'=>Session::get('openid'),'data'=>Session::get('data')];
+        if(Session::get('openid')) return ['openid'=>Session::get('openid'),'data'=>Session::get('data')];
 
         //通过code获得openid
         if (!isset($_GET['code'])){
@@ -38,10 +67,8 @@ class User extends ApiBase{
             $data['nickname'] = $data2['nickname'];
             $data['user_sex'] = $data2['sex'];
             $data['headimgurl'] = $data2['headimgurl'];
-            //$data['subscribe'] = $data2['subscribe'];
             Session::set('openid',$data['openid']);
             Session::set('data',$data);
-            //dump($data);die;
             return array('openid'=>$data['openid'],'data' => $data);
         }
     }

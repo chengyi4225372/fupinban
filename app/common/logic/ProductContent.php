@@ -17,7 +17,7 @@ class ProductContent extends LogicBase{
 
          $field ='id,content';
          $info  = $this->logicProductContent->getInfo(null,$field);
-         $info['content'] = html_entity_decode($info['content']);
+         $info  = html_entity_decode($info['content']);
          return $info;
      }
 }

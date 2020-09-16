@@ -1,66 +1,22 @@
-<div class="box">
+<form action="{:url('index')}" method="post" class="form_single">
+    <div class="box">
+        <div class="box-body">
+            <div class="row">
 
-    <div class="box-header">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>文章内容</label>
+                        <textarea class="form-control textarea_editor" name="content" placeholder="请输入文章内容">{$info.content|default=''}</textarea>
+                        {:widget('editor/index', array('name'=> 'content','value'=> '0'))}
+                    </div>
+                </div>
 
-        <div class="row">
-            <div class="col-sm-5">
-                <ob_link><a class="btn" href="{:url('add')}"><i class="fa fa-plus"></i> 新 增</a></ob_link>
-                &nbsp;
-                <br/>
-                <!--<ob_link><a class="btn export" url="{:url('exportMemberList')}"><i class="fa fa-download"></i> 导 出</a></ob_link>-->
-            </div>
-
-            <div class="col-sm-7">
 
             </div>
         </div>
-
+        <div class="box-footer">
+            <input type="hidden" name="id" value="{$info.id|default='0'}">
+            {include file="layout/edit_btn_group"/}
+        </div>
     </div>
-
-
-    <div class="box-body table-responsive">
-        <table  class="table table-bordered table-hover table-striped">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>排序</th>
-                <th>标题</th>
-                <th>创建时间</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            {empty name='list'}
-            {else /}
-            {volist name='list' id='vo'}
-            <tr>
-                <td>{$vo.id}</td>
-                <td><input type="text" class="sort-th sort-text" href="{:url('setsort')}" id="{$vo.id}" value="{$vo.sort}" /></td>
-                <td>{$vo.title|default=''}</td>
-                <td>{$vo.create_time}</td>
-                <td class="text-center">
-                    <ob_link><a href="{:url('edit',['id'=>$vo.id])}"><span class='badge bg-green'>编 辑</span></a></ob_link>
-                    &nbsp;
-                    &nbsp;
-                    <ob_link><a class="confirm ajax-get"  href="{:url('del',['id'=>$vo.id])}"><span class='badge bg-green'>删 除</span></a></ob_link>
-                </td>
-            </tr>
-            {/volist}
-            {/empty}
-        </table>
-    </div>
-
-    <div class="box-footer clearfix text-center">
-        {$list->render()}
-    </div>
-
-</div>
-
-<script>
-    //导出功能
-    $(".export").click(function(){
-
-        window.location.href = searchFormUrl($(".export"));
-    });
-</script>
+</form>

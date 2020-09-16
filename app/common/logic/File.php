@@ -35,7 +35,7 @@ class File extends LogicBase
         
         if (!empty($picture_info['url'])) { return $picture_info; }
         
-        $object = $object_info->validate(['ext'=>'jpg,png,gif,mp4.mp3'])->move(PATH_PICTURE);
+        $object = $object_info->validate(['ext'=>'jpg,png,gif,mp4,mp3'])->move(PATH_PICTURE);
         
         if (!$object)  die('图片后缀验证不通过');
         
@@ -88,8 +88,8 @@ class File extends LogicBase
             return $file_info;
         }
         
-        $object = $object_info->validate(['ext'=>'jpg,png,gif,zip,rar,tar,gz,7z,doc,docx,txt,xml,xlsx,xls,mp4,avi,mp3,ogg'])->move(PATH_FILE);
-        
+        $object = $object_info->validate(['ext'=>'jpg,png,gif,zip,rar,tar,gz,7z,doc,docx,txt,xml,xlsx,xls,mp4,avi,mp3,ogg,MP3,MP4'])->move(PATH_FILE);
+
         if (!$object)  die('文件后缀验证不通过');
 
         $save_name = $object->getSaveName();
@@ -185,7 +185,7 @@ class File extends LogicBase
     public function getFileUrl($id = 0)
     {
         
-        $info = $this->modelFile->getInfo(['id' => $id], 'path,url');
+        $info = $this->modelFile->getInfo(['id' => $id], 'path');
         
         if (!empty($info['url'])) {
             if(preg_match("/^http(s)?:\\/\\/.+/",$info['url'])){

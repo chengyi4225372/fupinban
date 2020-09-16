@@ -11,35 +11,15 @@ namespace app\admin\logic;
 class Overnews extends  AdminBase{
 
     /**
-     * 获取条件
-     */
-    public function getWhere($param=[]){
-         $data = [];
-         isset($param['title']) && $data['title'] =['like','%'.$param['search_data'].'%'];
-         isset($param['type_id']) && $data['type_id']= $param['type_id'] == 0 ? ['neq',0]:$param['type_id'] ;
-         return $data;
-    }
-
-
-    /**
-     * 列表页
-     */
-    public function getThisList($where=[]){
-        $where['status'] = 1;
-        $order =['sort'=>'desc','create_time'=>'desc'];
-        return $this->modelOvernews->getlist($where,false,$order,15);
-    }
-
-    /**
      * 添加
      */
     public function setThisArr($params =[]){
-         $params['create_time'] = time();
 
-         $result = $this->validateOvernews->scene('add')->check($params);
-         if(!$result){
-             return [RESULT_ERROR, $this->validateOvernews->getError()];
+
+         if($params['content'] == null){
+             return [RESULT_ERROR,'内容不能为空'];
          }
+
          $url = url('index');
          $type= isset($params['id'])?'编辑':'添加';
          $ret =$this->modelOvernews->setInfo($params);
@@ -52,9 +32,9 @@ class Overnews extends  AdminBase{
      */
     public function editThisArr($params =[]){
 
-        $result = $this->validateOvernews->scene('edit')->check($params);
-        if(!$result){
-            return [RESULT_ERROR, $this->validateOvernews->getError()];
+
+        if($params['content'] == null){
+            return [RESULT_ERROR,'内容不能为空'];
         }
 
         $url = url('index');
@@ -67,13 +47,10 @@ class Overnews extends  AdminBase{
     /**
      * 获取详情
      */
-    public function getIdInfo($id=''){
-          if(empty($id) || is_null($id)){
-              return [RESULT_ERROR,'无法获取查询条件'];
-          }
-
-          return $this->modelOvernews->getInfo(['id'=>$id]);
+    public function getIdInfo(){
+          return $this->modelOvernews->getInfo();
     }
+
 
     /**
      * 删除

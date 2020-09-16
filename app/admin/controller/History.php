@@ -19,46 +19,21 @@ class History extends  AdminBase{
      * 列表页
      */
     public function index(){
-        $list  = $this->logicHistory->getThisList();
-        $this->assign('list',$list);
-        return $this->fetch();
-    }
 
-    /**
-     * @return mixed
-     * 添加
-     */
-    public  function  add(){
-        IS_POST && $this->jump($this->logicHistory->setThisArr($this->param));
-        return $this->fetch();
+        if(IS_POST){
+            $params = $this->param;
 
-    }
+            if($params['id'] <=0 ||empty($params['id'])){
+                $this->jump($this->logicHistory->setThisArr($this->param));
+            }else {
+                $this->jump($this->logicHistory->updateThisArr($this->param));
+            }
 
-    /**
-     * @return mixed
-     * 编辑
-     */
-    public function edit(){
-        IS_POST && $this->jump($this->logicHistory->updateThisArr($this->param));
+        }
 
-        $info = $this->logicHistory->getThisVal($this->param['id']);
+        $info = $this->logicHistory->getThisVal();
         $this->assign('info',$info);
         return $this->fetch();
     }
-
-    /**
-     * 删除
-     */
-    public function  del(){
-        IS_GET && $this->jump($this->logicHistory->delThisVal($this->param['id']));
-    }
-
-    /**
-     * 排序
-     */
-    public function setsort(){
-        $this->jump($this->logicAdminBase->setSort('History',$this->param));
-    }
-
 
 }

@@ -13,16 +13,11 @@ class History extends  LogicBase{
      */
      public function getThislist(){
 
-         $where = ['status'=>1];
-         $order = ['sort'=>'desc','create_time'=>'desc'];
-         $field = 'id,title,content';
 
-         $list = $this->modelHistory->getlist($where,$field,$order,false);
+         $info = $this->modelHistory->getInfo(null,'content');
 
-         foreach ($list as $k=>$val){
-             $list[$k]['content'] = imageUrl($list[$k]['content']);
-         }
+         $info['content'] = imageUrl($info['content']);
 
-         return $list;
+         return $info;
      }
 }
