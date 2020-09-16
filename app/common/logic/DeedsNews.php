@@ -45,6 +45,7 @@ class DeedsNews extends  LogicBase{
 
          $info  =  $this->modelDeedsNews->getInfo($where,$field);
          $info['content'] = imageUrl($info['content']);
+         $info['title']   = html_entity_decode($info['title']);
          $info['fpath']   = config('Path.file').$info['fpath'];
          $info['ppath']   = config('Path.img').$info['ppath'];
 

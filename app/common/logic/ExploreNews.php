@@ -55,6 +55,7 @@ class ExploreNews extends LogicBase{
 
         $info = $this->modelExploreNews->getInfo(['id'=>$id],'id,title,content');
         $info['content']  = imageUrl($info['content']);
+        $info['title'] = html_entity_decode($info['title']);
 
         return $info;
     }

@@ -51,6 +51,7 @@ class Product extends LogicBase{
         $field ='id,title,content';
         $info = $this->modelProduct->getInfo(['id'=>$id,'status'=>1],$field);
         $info['content'] = imageUrl($info['content']);
+        $info['title']   = html_entity_decode($info['title']);
 
         return $info;
 

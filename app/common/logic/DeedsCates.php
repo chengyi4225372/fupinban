@@ -30,7 +30,8 @@ class  DeedsCates extends LogicBase{
         $list = $this->modelDeedsCates->getList($where,$field,$order,false);
 
         foreach ($list as $k =>$val){
-            $list[$k]['path'] =config('Path.img').$list[$k]['path'];
+            $list[$k]['path'] = config('Path.img').$list[$k]['path'];
+            $list[$k]['title']= html_entity_decode($list[$k]['title']);
         }
 
         return $list;
