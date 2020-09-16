@@ -32,4 +32,18 @@ class Message extends LogicBase{
 
          return $this->modelMessage->getList($where,$field,$orderBy,false);
      }
+
+     /**
+      * 提交留言
+      */
+      public function setParamsVal($params=[]){
+
+          $res = $this->modelMessage->setInfo($params);
+
+          if($res !== false){
+              return true;
+          }else {
+              return  false;
+          }
+      }
 }

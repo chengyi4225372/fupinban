@@ -27,7 +27,8 @@ class ExploreNews extends LogicBase{
 
          $i = 1;
          foreach ($list as $k =>$val){
-             $list[$k]['num'] = $i++;
+             $list[$k]['num']   = $i++;
+             $list[$k]['title'] = html_entity_decode($list[$k]['title']);
          }
 
          return $list ;

@@ -54,11 +54,18 @@ class Message extends ApiBase{
 
       /**
        * 提交留言 接口
-       * TODO 暂时先不写,看小程序对接之后完成
        */
        public function setMessageAPi(){
            if(IS_POST){
+              $params = $this->param;
 
+              if(empty($params)){
+                  return  $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'传递查询参数不合法！']);
+              }
+
+              $result = $this->logicMessage->setParamsVal($params);
+
+              return  $result !== false ?$this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>'提交成功']):$this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'提交失败']);
            }
           return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误！']);
        }

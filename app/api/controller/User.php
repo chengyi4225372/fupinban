@@ -11,7 +11,7 @@ use think\session;
 
 class User extends ApiBase{
     public $AppId = 'wx0f60d25f7813e9de';
-    public $AppSecret = '113a0311a773b7f696cf84eb8b4b0fbc';
+    public $AppSecret = 'b7bb29e5544dc3034728440544d35e77';
 
     public function GetMemberInfo(){
         return $this->GetOpenid();
