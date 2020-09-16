@@ -18,7 +18,7 @@ class User extends ApiBase{
     /*
      * 微信登录提交接口
      */
-     public function wxLogin(){
+     public function wx_login(){
 
          if(IS_POST) {
              $params = $this->param;
@@ -32,6 +32,9 @@ class User extends ApiBase{
 
                  $data =curl_get_https($url);
                  $data = json_decode($data,true);
+
+                 dump($data);
+                 exit;
 
                  $params['openid'] = $data['openid'];
 
