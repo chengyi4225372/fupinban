@@ -7,14 +7,12 @@
  */
 namespace app\api\controller;
 
-use think\session;
-
 class User extends ApiBase{
 
 
-    protected $AppId = 'wx0f60d25f7813e9de';
+    public  $AppId = 'wxbea12a5ad00d98fe';
 
-    protected $AppSecret = 'b7bb29e5544dc3034728440544d35e77';
+    public  $AppSecret = 'b7bb29e5544dc3034728440544d35e77';
 
 
     /*
@@ -27,17 +25,33 @@ class User extends ApiBase{
 
              if(isset($params['code'])){
                  $code  = $params['code'];//小程序传来的code值
-                 $appid = $this->AppId;//小程序的appid
-                 $appSecret = $this->AppSecret;// 小程序的$appSecret
-                 $wxUrl = 'https://api.weixin.qq.com/sns/jscode2session?appid='.$appid.'&secret='.$appSecret.'&js_code='.$code.'&grant_type=authorization_code';
+                 $appid = $this->AppId;
+                 $appsecret = $this->AppSecret;
 
+                 $url = "https://api.weixin.qq.com/sns/jscode2session?appid={$appid}&secret={$appsecret}&js_code={$code}&grant_type=authorization_code";
 
+                 $data =curl_get_https($url);
+                 $data = json_decode($data,true);
+
+                 $params['openid'] = $data['openid'];
+
+                 $ret = $this->logicWxUser->findThisVal($params['openid']);
+
+                 if(!empty($ret)){
+                     $result =  $this->logicWxUser->updateVal($ret['id'],$data['openid']);
+                 }else {
+                     $result =  $this->logicWxUser->setThisVal($params);
+                 }
+
+                 return  $result !== false ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$data]):$this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>$data['msg']]);
              }
-
-
+                 return  $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'无法获取微信code']);
            }
-          return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
+                 return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误']);
      }
+
+
+
 
 
 

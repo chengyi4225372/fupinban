@@ -15,7 +15,7 @@
                         <label>上传视频文件</label>
                         <br/>
                         {assign name="video" value="$info.video|default='0'" /}
-                        {:widget('file/index', ['name' => 'video', 'value' =>$info.video, 'type' => 'file'])}
+                        {:widget('file/index', ['name' => 'video', 'value' =>'', 'type' => 'file'])}
                     </div>
                 </div>
 

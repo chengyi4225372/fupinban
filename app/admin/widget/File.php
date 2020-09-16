@@ -27,11 +27,12 @@ class File extends WidgetBase
 
         $widget_config['maxwidth'] = '150px';
 
-        $widget_config['allow_postfix'] = $type == 'img' ? '*.jpg; *.png; *.gif;' : '*.jpg; *.png; *.gif; *.zip; *.rar; *.tar; *.gz; *.7z; *.doc; *.docx; *.txt; *.xml; *.xlsx; *.xls;*.mp4;*.mp3，*.MP4,*.MP3';
+        $widget_config['allow_postfix'] = $type == 'img' ? '*.jpg; *.png; *.gif;': '*.jpg; *.png; *.gif; *.zip; *.rar; *.tar; *.gz; *.7z; *.doc; *.docx; *.txt; *.xml; *.xlsx; *.xls;*.mp4;*.mp3;*.MP4;*.MP3;';
 
-        $widget_config['max_size'] = 1024 * 1024;
+        $widget_config['max_size'] = 102400 * 102400;
         
         $this->assign('widget_config', $widget_config);
+
 
         return $this->fetch('admin@widget/file/' . $type);
     }

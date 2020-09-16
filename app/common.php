@@ -891,3 +891,44 @@ function videoUrl($content) {
     $list = preg_replace($pregRule, '<img src=" '.$url.'${1}" style="max-width:100%">', $content);
     return $list;
 }
+
+/**
+ * @param $url
+ * @param null $data
+ * @return mixed
+ * curl 请求
+ */
+function http_request($url,$data = null){
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+    if(!empty($data)){
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+    }
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($curl);
+    curl_close($curl);
+    return $output;
+}
+
+
+/**
+ * @param $url
+ * @return mixed
+ * curl
+ */
+
+function  curl_get_https($url){
+    $curl = curl_init(); // 启动一个CURL会话
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_HEADER, 0);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); // 跳过证书检查
+    // curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, true);  // 从证书中检查SSL加密算法是否存在
+    $tmpInfo = curl_exec($curl);     //返回api的json对象
+    //关闭URL请求
+    curl_close($curl);
+    return $tmpInfo;    //返回json对象
+}
