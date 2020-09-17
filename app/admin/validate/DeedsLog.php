@@ -12,22 +12,21 @@ class DeedsLog extends  AdminBase{
     // 验证规则
     protected $rule =   [
         'content'         => 'require',
-        'introduce'       => 'require',
         'create_time'     => 'require',
     ];
 
     // 验证提示
     protected $message  =   [
         'title.require'            => '请输入文章标题',
-        'content.require'          => '请输入文章详情',
-        'introduce.require'        => '请输入文章简介',
         'create_time.require'      => '无法获取创建时间',
     ];
 
     // 应用场景
     protected $scene = [
-        'add'       =>  ['introduce','content','create_time',],
-        'edit'      =>  ['introduce','content',],
+        'add'       =>  ['content','create_time',],
+        'edit'      =>  ['content',],
     ];
+
+
 
 }

@@ -39,12 +39,9 @@ class Deedslog extends AdminBase{
       * 编辑
       */
      public function edit(){
-
-
         IS_POST && $this->jump( $this->logicDeedsLog->updateThisArr($this->param));
 
         $info =  $this->logicDeedsLog->getThisInfo($this->param['id']);
-        !empty($info) && $info['imgs_ids_array'] = str2arr($info['imgs_ids']);
         $this->assign('info',$info);
         return $this->fetch();
      }

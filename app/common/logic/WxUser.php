@@ -25,15 +25,20 @@ class WxUser extends  LogicBase{
      */
     public function updateVal($id='' ,$openid=''){
 
-        return $this->modelWxUser->setFieldValue(['id'=>$id],'openid',$openid);
+        return $this->modelWxUser->updateInfo(['id'=>$id],['openid'=>$openid]);
     }
 
      /**
       * 更新
       */
       public function findThisVal($id=''){
+          if(empty($id) || $id <=0){
+              return false;
+          }
 
-          return $this->modelWxUser->getInfo(['id'=>$id]);
+          $info = $this->modelWxUser->getInfo(['id'=>$id],'id,openid');
+
+          return $info ?$info:'';
       }
 
 

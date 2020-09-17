@@ -31,7 +31,7 @@ class Message extends ApiBase{
       * 2.最新留言
       */
       public function getMessageList(){
-          if(IS_GET){
+          if(IS_POST){
               $order = $this->param['order'];
 
               if(empty($order) || !isset($order) || is_null($order)){
@@ -55,12 +55,16 @@ class Message extends ApiBase{
       /**
        * 提交留言 接口
        */
-       public function setMessageAPi(){
+       public function setMessageApi(){
            if(IS_POST){
               $params = $this->param;
 
               if(empty($params)){
                   return  $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'传递查询参数不合法！']);
+              }
+
+              if(empty($params['content']) || !isset($params['content']) || $params['content'] <0 || is_null($params['content'])){
+                  return  $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'留言内容不能为空！']);
               }
 
               $result = $this->logicMessage->setParamsVal($params);
@@ -70,5 +74,32 @@ class Message extends ApiBase{
           return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误！']);
        }
 
+
+       /**
+     * 点赞
+     */
+    public function zan(){
+        if(IS_POST){
+          $params = $this->param;
+
+          if(empty($params)){
+              return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'传递参数不合法']);
+          }
+
+          if($params['u_id'] =='' || empty($params['u_id'])){
+              return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请传递用户u_id！']);
+          }
+
+          if($params['m_id'] =='' || empty($params['m_id'])){
+                return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请传递留言m_id！']);
+          }
+
+          $ret = $this->logicZan->setZan($params);
+
+          return $ret !== false ? $this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>'点赞成功！']):$this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'点赞失败']);
+        }
+
+        return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误！']);
+    }
 
 }

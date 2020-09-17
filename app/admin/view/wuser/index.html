@@ -8,22 +8,6 @@
                 &nbsp;
                 <!--<ob_link><a class="btn export" url="{:url('exportMemberList')}"><i class="fa fa-download"></i> 导 出</a></ob_link>-->
             </div>
-
-            <!--
-            <div class="col-sm-7">
-                <div class="box-tools search-form pull-right">
-                    <div class="input-group input-group-sm">
-
-                        <input type="text" name="search_data" style="width: 200px;" class="form-control pull-right" value="{:input('search_data')}" placeholder="支持昵称|用户名|邮箱|手机">
-
-                        <div class="input-group-btn">
-                            <button type="button" id="search"  url="{:url('memberlist')}" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            -->
         </div>
 
     </div>
@@ -34,9 +18,11 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>发表留言用户</th>
-                <th>点赞数</th>
-                <th>留言时间</th>
+                <th>用户名称</th>
+                <th>用户头像</th>
+                <th>所在地区</th>
+                <th>性别</th>
+                <th>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -45,16 +31,25 @@
             <tr>
                 <td>{$vo.id}</td>
                 <td>{$vo.nickname}</td>
-                <td>{$vo.num}</td>
+                <td>
+                    <img class="img-circle" style="width: 80px; height: 80px;" src="{$vo.avatarUrl}"/>
+                </td>
+                <td>{$vo.province}--{$vo.city}</td>
+                <td>
+                    {eq name='$vo.gender' value='1'}
+                     男
+                    {else /}
+                     女
+                    {/eq}
+                </td>
                 <td>{$vo.create_time}</td>
                 <td class="text-center">
-                    <ob_link><a href="{:url('seemsg',['id'=>$vo.id])}"><span class='badge bg-green'>查 看</span></a></ob_link>
                     &nbsp;
                     &nbsp;
                     <ob_link><a class="confirm ajax-get"  href="{:url('del',['id'=>$vo.id])}"><span class='badge bg-green'>删 除</span></a></ob_link>
                 </td>
             </tr>
-           {/volist}
+            {/volist}
         </table>
     </div>
 

@@ -33,7 +33,6 @@
             <tr>
                 <th>ID</th>
                 <th>排序</th>
-                <th>报道展示图</th>
                 <th>创建时间</th>
                 <th>操作</th>
             </tr>
@@ -46,9 +45,6 @@
             <tr>
                 <td>{$vo.id}</td>
                 <td><input type="text" class="sort-th sort-text" href="{:url('setSort')}" id="{$vo.id}" value="{$vo.sort}" /></td>
-                <td>
-                    <img class="img-circle" style="width: 80px; height: 80px;" src="/upload/picture/{$vo.path}"/>
-                </td>
                 <td>{$vo.create_time}</td>
                 <td class="text-center">
                     <ob_link><a href="{:url('edit',['id'=>$vo.id])}"><span class='badge bg-green'>编 辑</span></a></ob_link>

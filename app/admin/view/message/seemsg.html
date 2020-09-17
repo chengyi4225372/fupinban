@@ -6,7 +6,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>用户名：</label>
-                         {$info.user|default=''}
+                         {$info.nickname|default=''}
                     </div>
                 </div>
 
@@ -28,9 +28,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>留言</label>
-                        <textarea class="form-control textarea_editor" name="content" >
-                            {$info.content|default=''}
-                        </textarea>
+                        <textarea class="form-control textarea_editor" name="content" >{$info.content|default=''}</textarea>
                     </div>
                 </div>
 

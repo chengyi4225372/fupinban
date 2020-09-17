@@ -14,9 +14,20 @@ class Message extends  AdminBase{
      * 留言列表
      */
      public function getMsgList(){
-         $where['status'] =1;
-         $order =['num'=>'desc','create_time'=>'desc'];
-         return $this->modelMessage->getList($where,false,$order,20);
+         $where['a.status'] =1;
+         $where['b.status'] =1;
+         $this->modelMessage->alias('a');
+
+         $join =[
+             [SYS_DB_PREFIX . 'wx_user b','a.u_id = b.id','LEFT'],
+         ];
+
+         $order =['a.num'=>'desc','a.create_time'=>'desc'];
+         $field = 'a.id,a.u_id,a.num,a.content,a.create_time,b.nickname';
+         $this->modelMessage->join = $join;
+         $list = $this->modelMessage->getList($where,$field,$order,20);
+
+         return $list;
      }
 
 
@@ -28,7 +39,11 @@ class Message extends  AdminBase{
              return [RESULT_ERROR,'查询条件不存在'];
          }
 
-         return   $this->modelMessage->getInfo(['id'=>$id]);
+         $info = $this->modelMessage->getInfo(['id'=>$id]);
+
+         $info['nickname'] = $this->modelWxUser->getValue(['id'=>$info['u_id']],'nickname');
+
+         return $info;
      }
 
      /**

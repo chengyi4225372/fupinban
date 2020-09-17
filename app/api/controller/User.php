@@ -10,6 +10,12 @@ namespace app\api\controller;
 class User extends ApiBase{
 
 
+    /**
+     * @var string
+     * 464215661@qq.com
+         WOHAOnihao769
+     */
+
     public  $AppId = 'wxbea12a5ad00d98fe';
 
     public  $AppSecret = 'b7bb29e5544dc3034728440544d35e77';
@@ -30,23 +36,30 @@ class User extends ApiBase{
 
                  $url = "https://api.weixin.qq.com/sns/jscode2session?appid={$appid}&secret={$appsecret}&js_code={$code}&grant_type=authorization_code";
 
-                 $data =curl_get_https($url);
-                 $data = json_decode($data,true);
+                 $data = curl_get_https($url);
+                 $datas = json_decode($data,true);
 
-                 dump($data);
-                 exit;
 
-                 $params['openid'] = $data['openid'];
+                 $array['nickname']  = $params['nickname'];
+                 $array['gender']    = $params["user_sex"];
+                 $array['avatarUrl'] =$params["user_avatar"];
+                 $array["province"]  =$params["province"];
+                 $array["city"]      = $params['city'];
+                 $array['openid']    = $datas['openid'];
 
-                 $ret = $this->logicWxUser->findThisVal($params['openid']);
+                 $ret = $this->logicWxUser->findThisVal($datas['openid']);
+
 
                  if(!empty($ret)){
-                     $result =  $this->logicWxUser->updateVal($ret['id'],$data['openid']);
+                     $result =  $this->logicWxUser->updateVal($ret['id'],$datas['openid']);
                  }else {
-                     $result =  $this->logicWxUser->setThisVal($params);
+
+                     $array['create_time'] =time();
+                     $result =  $this->logicWxUser->setThisVal($array);
+                     $datas['u_id'] = $result;
                  }
 
-                 return  $result !== false ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$data]):$this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>$data['msg']]);
+                 return  $result !== false ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$datas]):$this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>$datas['msgerr']]);
              }
                  return  $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'无法获取微信code']);
            }
