@@ -48,17 +48,20 @@ class User extends ApiBase{
                  $array['openid']    = $datas['openid'];
 
 
-                 $ret = $this->logicWxUser->findThisVal($array['openid']);
+                 $ret = $this->logicWxUser->findThisVal($datas['openid']);
 
                  if(!empty($ret) || isset($ret)){
-                     $result =  $this->logicWxUser->updateVal($ret['id'],$array['openid']);
+                     $datas['u_id'] = $ret['id'];
+                     $result =  $this->logicWxUser->updateVal($ret['id'],$datas['openid']);
                  }else {
                      $array['create_time'] =time();
                      $result =  $this->logicWxUser->setThisVal($array);
                      $datas['u_id'] = $result;
                  }
 
+
                  return  $result !== false ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$datas]):$this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>$datas['msgerr']]);
+
              }
                  return  $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'无法获取微信code']);
            }

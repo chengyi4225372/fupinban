@@ -31,14 +31,16 @@ class WxUser extends  LogicBase{
      /**
       * 更新
       */
-      public function findThisVal($openid =''){
-          if( empty($openid) || $openid <=0){
+      public function findThisVal($openid = null){
+
+          if(empty($openid) || !isset($openid)){
               return false;
           }
 
-          $info = $this->modelWxUser->getInfo(['openid'=>$openid],'id,openid');
 
-          return $info ?$info:'';
+          $info = $this->modelWxUser->where(['openid'=>$openid])->find();
+
+          return $info?$info:'';
       }
 
 
