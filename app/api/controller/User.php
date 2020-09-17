@@ -42,18 +42,17 @@ class User extends ApiBase{
 
                  $array['nickname']  = $params['nickname'];
                  $array['gender']    = $params["user_sex"];
-                 $array['avatarUrl'] =$params["user_avatar"];
-                 $array["province"]  =$params["province"];
+                 $array['avatarUrl'] = $params["user_avatar"];
+                 $array["province"]  = $params["province"];
                  $array["city"]      = $params['city'];
                  $array['openid']    = $datas['openid'];
 
-                 $ret = $this->logicWxUser->findThisVal($datas['openid']);
 
+                 $ret = $this->logicWxUser->findThisVal($array['openid']);
 
-                 if(!empty($ret)){
-                     $result =  $this->logicWxUser->updateVal($ret['id'],$datas['openid']);
+                 if(!empty($ret) || isset($ret)){
+                     $result =  $this->logicWxUser->updateVal($ret['id'],$array['openid']);
                  }else {
-
                      $array['create_time'] =time();
                      $result =  $this->logicWxUser->setThisVal($array);
                      $datas['u_id'] = $result;

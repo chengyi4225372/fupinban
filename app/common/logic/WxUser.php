@@ -31,12 +31,12 @@ class WxUser extends  LogicBase{
      /**
       * 更新
       */
-      public function findThisVal($id=''){
-          if(empty($id) || $id <=0){
+      public function findThisVal($openid =''){
+          if( empty($openid) || $openid <=0){
               return false;
           }
 
-          $info = $this->modelWxUser->getInfo(['id'=>$id],'id,openid');
+          $info = $this->modelWxUser->getInfo(['openid'=>$openid],'id,openid');
 
           return $info ?$info:'';
       }

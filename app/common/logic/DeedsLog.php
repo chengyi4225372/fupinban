@@ -18,21 +18,11 @@ class DeedsLog extends LogicBase{
 
          $where['status']=1;
          $order=['sort'=>'desc','create_time'=>'desc'];
-         $field= 'id,introduce,content,imgs_ids';
+         $field= 'id,content';
          $list  = $this->modelDeedsLog->getList($where,$field,$order,false);
-
-
          foreach ($list as $k=>$val){
-             $list[$k]['imgs_ids'] = explode(',',  $list[$k]['imgs_ids']);
-
-             foreach ($list[$k]['imgs_ids'] as $key =>$vals){
-                 $arr[] ="http://".$_SERVER['HTTP_HOST'].$this->logicFile->getPictureUrl($vals);
-                 $list[$k]['imgs_ids'] = $arr;
-                 $list[$k]['content'] = imageUrl($list[$k]['content']);
-                 $list[$k]['introduce'] = geteditorcontent( $list[$k]['introduce']);
-             }
+             $list[$k]['content'] = imageUrl($list[$k]['content']);
          }
-
          return $list;
      }
 
