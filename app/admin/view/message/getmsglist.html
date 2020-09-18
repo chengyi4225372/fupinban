@@ -35,6 +35,7 @@
             <tr>
                 <th>ID</th>
                 <th>发表留言用户</th>
+                <th>留言内容</th>
                 <th>点赞数</th>
                 <th>留言时间</th>
                 <th>操作</th>
@@ -45,13 +46,20 @@
             <tr>
                 <td>{$vo.id}</td>
                 <td>{$vo.nickname}</td>
+                <td>{$vo.content|mb_substr=0,70,'utf-8'}</td>
                 <td>{$vo.num}</td>
                 <td>{$vo.create_time}</td>
                 <td class="text-center">
+                    {eq name='$vo.status' value='2'}
+                    <ob_link><a class="confirm ajax-get"  href="{:url('setOk',['id'=>$vo.id])}"><span class='badge bg-blue'>通 过</span></a></ob_link>
+                    {/eq}
+                    &nbsp;
+                    &nbsp;
                     <ob_link><a href="{:url('seemsg',['id'=>$vo.id])}"><span class='badge bg-green'>查 看</span></a></ob_link>
                     &nbsp;
                     &nbsp;
-                    <ob_link><a class="confirm ajax-get"  href="{:url('del',['id'=>$vo.id])}"><span class='badge bg-green'>删 除</span></a></ob_link>
+                    <ob_link><a class="confirm ajax-get"  href="{:url('del',['id'=>$vo.id])}"><span class='badge bg-red'>删 除</span></a></ob_link>
+
                 </td>
             </tr>
            {/volist}

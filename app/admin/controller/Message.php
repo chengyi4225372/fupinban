@@ -70,5 +70,12 @@ class Message extends  AdminBase{
        }
 
 
+       /**
+        * 通过
+        */
+         public function setOk(){
+             IS_GET && $this->jump($this->logicMessage->setThisOk($this->param['id']));
+         }
+
 
 }

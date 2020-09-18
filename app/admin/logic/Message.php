@@ -14,8 +14,8 @@ class Message extends  AdminBase{
      * 留言列表
      */
      public function getMsgList(){
-         $where['a.status'] =1;
          $where['b.status'] =1;
+         $where['a.status'] =['neq',0];
          $this->modelMessage->alias('a');
 
          $join =[
@@ -23,7 +23,7 @@ class Message extends  AdminBase{
          ];
 
          $order =['a.num'=>'desc','a.create_time'=>'desc'];
-         $field = 'a.id,a.u_id,a.num,a.content,a.create_time,b.nickname';
+         $field = 'a.id,a.u_id,a.num,a.content,a.create_time,b.nickname,a.status';
          $this->modelMessage->join = $join;
          $list = $this->modelMessage->getList($where,$field,$order,20);
 
@@ -59,6 +59,21 @@ class Message extends  AdminBase{
          $ret && action_log('删除留言列表','model message where id ='.$id);
          return $ret?[RESULT_SUCCESS,'删除成功',$url]:[RESULT_ERROR,$this->modelMessage->getError()];
 
+     }
+
+     /**
+      * 设置
+      */
+     public function setThisOk($id =''){
+         if($id == null || empty($id) || $id ==''){
+             return [RESULT_ERROR,'删除条件不存在'];
+         }
+
+
+         $url = url('getmsglist');
+         $ret = $this->modelMessage->setFieldValue(['id'=>$id],'status',1);
+         $ret && action_log('通过留言','model message where status = 1');
+         return $ret?[RESULT_SUCCESS,'设置成功',$url]:[RESULT_ERROR,$this->modelMessage->getError()];
      }
 
 

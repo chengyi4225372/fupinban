@@ -78,16 +78,16 @@ class Message extends ApiBase{
                   return  $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'留言内容不能为空！']);
               }
 
-              //检测内容文本
-              $aip =  new \aip_baidu\AipContentCensor($this->appId,$this->apiKey,$this->secretKey);
+              /*检测内容文本
+               $aip =  new \aip_baidu\AipContentCensor($this->appId,$this->apiKey,$this->secretKey);
 
-              $checkMsg  = $aip->check_text($params['content']);
+               $checkMsg  = $aip->check_text($params['content']);
 
-              //审核结果类型，可取值1.合规，2.不合规，3.疑似，4.审核失败
-              if($checkMsg['conclusionType'] != 1){
-                  return  $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'发布内容不合规']);
-              }
-
+               //审核结果类型，可取值1.合规，2.不合规，3.疑似，4.审核失败
+               if($checkMsg['conclusionType'] != 1){
+                   return  $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'发布内容不合规']);
+               }
+              */
 
               $result = $this->logicMessage->setParamsVal($params);
 

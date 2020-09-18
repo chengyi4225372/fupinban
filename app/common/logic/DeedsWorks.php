@@ -36,7 +36,8 @@ class DeedsWorks extends LogicBase{
          $list = $this->modelDeedsWorks->getList($where,$field,$order,false);
 
          foreach ($list as $key =>$val){
-             $list[$key]['path'] =config('Path.file').$list[$key]['path'];
+             $list[$key]['path'] = config('Path.file').$list[$key]['path'];
+             $list[$key]['title']= geteditorcontent($list[$key]['title']);
          }
 
          return $list;
