@@ -23,7 +23,7 @@ class PrefaceContent extends LogicBase{
        $info = $this->modelPrefaceContent->getInfo(null,$field);
 
        $info['path'] = config('Path.file').$info['path'];
-       $info['content'] = strip_tags(html_entity_decode($info['content']));
+       $info['content'] = html_entity_decode($info['content']);
 
        return $info;
     }

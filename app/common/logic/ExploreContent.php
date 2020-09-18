@@ -16,7 +16,7 @@ class ExploreContent extends LogicBase{
      public function getThisVal(){
        $field = 'id,content';
        $info = $this->modelExploreContent->getInfo(null,$field);
-       $info['content'] = geteditorcontent($info['content']);
+       $info['content'] = html_entity_decode($info['content']);
 
        return $info;
      }

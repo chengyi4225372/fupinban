@@ -16,7 +16,7 @@ class MessageContent extends LogicBase{
 
          $field = 'id,content';
          $info = $this->modelMessageContent->getInfo(null,$field);
-         $info['content'] = geteditorcontent($info['content']);
+         $info['content'] = html_entity_decode($info['content']);
          return $info;
      }
 }
