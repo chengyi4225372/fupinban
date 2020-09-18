@@ -26,7 +26,7 @@ class Wuser extends AdminBase{
       * 删除
       */
       public function del(){
-          IS_GET && $this->jump($this->logicWxUser->setDelVal($this->param));
+          IS_GET && $this->jump($this->logicWxUser->setDelVal($this->param['id']));
       }
 
 

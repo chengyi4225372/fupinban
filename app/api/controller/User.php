@@ -50,15 +50,15 @@ class User extends ApiBase{
 
                  $ret = $this->logicWxUser->findThisVal($datas['openid']);
 
-                 if(!empty($ret) || isset($ret)){
-                     $datas['u_id'] = $ret['id'];
-                     $result =  $this->logicWxUser->updateVal($ret['id'],$datas['openid']);
-                 }else {
+
+                 if(empty($ret) || !isset($ret) || $ret ==''){
                      $array['create_time'] =time();
                      $result =  $this->logicWxUser->setThisVal($array);
                      $datas['u_id'] = $result;
+                 }else {
+                     $datas['u_id'] = $ret['id'];
+                     $result =  $this->logicWxUser->updateVal($ret['id'],$datas['openid']);
                  }
-
 
                  return  $result !== false ?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$datas]):$this->apiReturn(['code'=>RESULT_SUCCESS,'msg'=>$datas['msgerr']]);
 

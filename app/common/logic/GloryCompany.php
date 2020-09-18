@@ -15,7 +15,7 @@ class GloryCompany extends LogicBase{
     */
     public function getApiContent(){
 
-       $field ='id,title,content';
+       $field ='id,content';
        $info = $this->modelGloryCompany->getInfo(null,$field);
        $info['content'] = imageUrl($info['content']);
        return $info;

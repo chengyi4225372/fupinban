@@ -14,12 +14,12 @@ class Message extends LogicBase{
      * 获取留言列表
      */
      public function  messageApiList($order =''){
-         $where=['a.status'=>1];
 
          if(empty($order) || !isset($order) || is_null($order)){
              return false;
          }
 
+         $where=['a.status'=>1];
          if($order == 1){
              $orderBy  = ['a.num'=>'desc'];
          }
@@ -33,24 +33,32 @@ class Message extends LogicBase{
 
          $join =[
              [SYS_DB_PREFIX . 'wx_user b','a.u_id = b.id','LEFT'],
-             [SYS_DB_PREFIX . 'zan z','a.id = z.m_id','LEFT'],
          ];
 
          $this->modelMessage->join =$join;
 
-         $field='a.id,a.u_id,a.num,a.content,a.create_time,b.nickname,b.avatarUrl,z.u_id as uid';
+         $field ='a.id,a.u_id,a.num,a.content,a.create_time,b.nickname,b.avatarUrl';
 
          $list  = $this->modelMessage->getList($where,$field,$orderBy,false);
 
-         foreach ($list as $k =>$val){
 
-             if($list[$k]['u_id'] == $list[$k]['uid']){
-                 $list[$k]['fabulous'] = true;
-             }else {
-                 $list[$k]['fabulous'] = false;
+         $zlist = $this->modelZan->getInfo();
+
+             foreach ($list as $k => $val) {
+                 if(!empty($zlist) || isset($zlist) || is_array($zlist)) {
+                 foreach ($zlist as $key => $vals) {
+                    if(isset($zlist[$k]['m_id'])){
+                        if ($list[$k]['id'] == $zlist[$k]['m_id']) {
+                            $list[$k]['uid'] = $zlist[$key]['u_id'];
+                            $list[$k]['fabulous'] = true;
+                        }
+                    }
+
+                 }
              }
+                 $list[$k]['uid'] = null;
+                 $list[$k]['fabulous'] = false;
          }
-
          return $list;
      }
 
@@ -60,6 +68,7 @@ class Message extends LogicBase{
       public function setParamsVal($params=[]){
 
           $params['create_time'] =time();
+
           $res = $this->modelMessage->setInfo($params);
 
           if($res !== false){

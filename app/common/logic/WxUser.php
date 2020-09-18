@@ -37,7 +37,6 @@ class WxUser extends  LogicBase{
               return false;
           }
 
-
           $info = $this->modelWxUser->where(['openid'=>$openid])->find();
 
           return $info?$info:'';

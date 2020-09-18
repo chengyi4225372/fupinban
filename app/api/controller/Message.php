@@ -38,13 +38,14 @@ class Message extends ApiBase{
                   return  $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请传递查询参数']);
               }
 
+
               $list = $this->logicMessage->messageApiList($order);
 
               if($list == false){
                   return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'接口参数不合法']);
               }
 
-                  return isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
+              return isset($list)?$this->apiReturn(['code'=>RESULT_SUCCESS,'data'=>$list]):$this->apiReturn(['code'=>RESULT_ERROR,'data'=>null]);
           }
 
              return $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'请求方式错误！']);
@@ -66,6 +67,7 @@ class Message extends ApiBase{
               if(empty($params['content']) || !isset($params['content']) || $params['content'] <0 || is_null($params['content'])){
                   return  $this->apiReturn(['code'=>RESULT_ERROR,'msg'=>'留言内容不能为空！']);
               }
+
 
               $result = $this->logicMessage->setParamsVal($params);
 
